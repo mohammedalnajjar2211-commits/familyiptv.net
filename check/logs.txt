@@ -1,0 +1,146 @@
+[2026-02-20 16:18:22] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Android 13; Mobile; rv:147.0) Gecko/147.0 Firefox/147.0
+[2026-02-20 16:18:22] Missing params – STOP
+[2026-02-26 20:27:29] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-02-26 20:27:29] Missing params – STOP
+[2026-02-26 22:11:05] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-02-26 22:11:05] Missing params – STOP
+[2026-03-03 17:46:04] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-03-03 17:46:04] Missing params – STOP
+[2026-03-04 06:09:51] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-03-04 06:09:51] Missing params – STOP
+[2026-03-04 06:30:44] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36
+[2026-03-04 06:30:44] Missing params – STOP
+[2026-03-13 18:07:13] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-03-13 18:07:13] Missing params – STOP
+[2026-03-14 06:08:37] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-03-14 06:08:37] Missing params – STOP
+[2026-03-15 14:17:57] Proxy accessed | Raw Query: [] | UA: meta-externalagent/1.1 (+https://developers.facebook.com/docs/sharing/webmasters/crawler)
+[2026-03-15 14:17:57] Missing params – STOP
+[2026-03-19 00:52:19] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-03-19 00:52:19] Missing params – STOP
+[2026-03-19 05:55:57] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-03-19 05:55:57] Missing params – STOP
+[2026-03-23 20:47:03] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-03-23 20:47:03] Missing params – STOP
+[2026-03-24 16:35:31] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-03-24 16:35:31] Missing params – STOP
+[2026-03-28 17:59:35] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-03-28 17:59:35] Missing params – STOP
+[2026-03-30 14:38:58] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-03-30 14:38:58] Missing params – STOP
+[2026-04-02 08:49:54] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-04-02 08:49:54] Missing params – STOP
+[2026-04-05 19:34:36] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)
+[2026-04-05 19:34:36] Missing params – STOP
+[2026-04-06 00:35:06] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot) Chrome/119.0.6045.214 Safari/537.36
+[2026-04-06 00:35:06] Missing params – STOP
+[2026-04-06 05:39:53] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-04-06 05:39:53] Missing params – STOP
+[2026-04-07 04:27:53] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-04-07 04:27:53] Missing params – STOP
+[2026-04-08 03:00:36] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-04-08 03:00:36] Missing params – STOP
+[2026-04-15 22:41:21] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-04-15 22:41:21] Missing params – STOP
+[2026-04-16 11:00:10] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-04-16 11:00:10] Missing params – STOP
+[2026-04-21 07:33:17] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-04-21 07:33:17] Missing params – STOP
+[2026-04-25 21:39:27] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-04-25 21:39:27] Missing params – STOP
+[2026-04-28 07:21:44] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-04-28 07:21:44] Missing params – STOP
+[2026-04-28 08:19:46] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
+[2026-04-28 08:19:46] Missing params – STOP
+[2026-04-28 08:47:51] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 14; CPH2461 Build/TP1A.220905.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/147.0.7727.55 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/558.0.0.46.77;]
+[2026-04-28 08:47:51] Missing params – STOP
+[2026-04-28 08:49:47] Proxy accessed | Raw Query: {"user":"136210287923","pass":"69efe6936ee52"} | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/124.0.0.0
+[2026-04-28 08:49:48] Trying: http://new-pro.tv:8080/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to new-pro.tv port 8080 after 1105 ms: Could not connect to server
+[2026-04-28 08:49:49] Backup Try: http://new-pro.tv:8080/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to new-pro.tv port 8080 after 1022 ms: Could not connect to server
+[2026-04-28 08:49:51] Trying: http://forever-locals.com:8080/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to forever-locals.com port 8080 after 1856 ms: Could not connect to server
+[2026-04-28 08:49:53] Backup Try: http://forever-locals.com:2095/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to forever-locals.com port 2095 after 1856 ms: Could not connect to server
+[2026-04-28 08:49:53] Trying: http://max.amigo00.com:2052/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Could not resolve host: max.amigo00.com
+[2026-04-28 08:49:53] Trying: http://amigo00.com:80/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Could not resolve host: amigo00.com
+[2026-04-28 08:49:53] Final Result | User: 136210287923 | Pass: 69efe6936ee52 | Server: None | Status: FAILED(Could not resolve host: amigo00.com)
+[2026-04-28 08:50:49] Proxy accessed | Raw Query: {"user":"136210287923","pass":"69efe6936ee52"} | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36
+[2026-04-28 08:50:50] Trying: http://new-pro.tv:8080/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to new-pro.tv port 8080 after 1030 ms: Could not connect to server
+[2026-04-28 08:50:51] Backup Try: http://new-pro.tv:8080/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to new-pro.tv port 8080 after 1024 ms: Could not connect to server
+[2026-04-28 08:50:53] Trying: http://forever-locals.com:8080/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to forever-locals.com port 8080 after 1854 ms: Could not connect to server
+[2026-04-28 08:50:55] Backup Try: http://forever-locals.com:2095/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Failed to connect to forever-locals.com port 2095 after 1856 ms: Could not connect to server
+[2026-04-28 08:50:55] Trying: http://max.amigo00.com:2052/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Could not resolve host: max.amigo00.com
+[2026-04-28 08:50:55] Trying: http://amigo00.com:80/player_api.php?username=136210287923&password=69efe6936ee52 | Error: Could not resolve host: amigo00.com
+[2026-04-28 08:50:55] Final Result | User: 136210287923 | Pass: 69efe6936ee52 | Server: None | Status: FAILED(Could not resolve host: amigo00.com)
+[2026-04-28 08:51:09] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Mobile Safari/537.36
+[2026-04-28 08:51:09] Missing params – STOP
+[2026-04-28 08:52:24] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)
+[2026-04-28 08:52:24] Missing params – STOP
+[2026-05-01 12:25:43] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-05-01 12:25:43] Missing params – STOP
+[2026-05-03 12:52:02] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-05-03 12:52:02] Missing params – STOP
+[2026-05-06 07:18:23] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-05-06 07:18:23] Missing params – STOP
+[2026-05-06 09:59:56] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Android 13; Mobile; rv:150.0) Gecko/150.0 Firefox/150.0
+[2026-05-06 09:59:56] Missing params – STOP
+[2026-05-06 18:05:05] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:150.0) Gecko/20100101 Firefox/150.0
+[2026-05-06 18:05:05] Missing params – STOP
+[2026-05-06 20:24:04] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Amazonbot/0.1; +https://developer.amazon.com/support/amazonbot) Chrome/119.0.6045.214 Safari/537.36
+[2026-05-06 20:24:04] Missing params – STOP
+[2026-05-10 16:47:55] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-05-10 16:47:55] Missing params – STOP
+[2026-05-13 02:28:56] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (KHTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-05-13 02:28:56] Missing params – STOP
+[2026-05-15 05:18:59] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-05-15 05:18:59] Missing params – STOP
+[2026-05-19 09:42:55] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)
+[2026-05-19 09:42:55] Missing params – STOP
+[2026-05-19 20:18:52] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-05-19 20:18:52] Missing params – STOP
+[2026-05-21 06:05:49] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/116.0.1938.76 Safari/537.36
+[2026-05-21 06:05:49] Missing params – STOP
+[2026-05-24 09:39:04] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-05-24 09:39:04] Missing params – STOP
+[2026-05-27 17:04:13] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-05-27 17:04:13] Missing params – STOP
+[2026-05-28 20:50:15] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-05-28 20:50:15] Missing params – STOP
+[2026-06-02 02:47:15] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-06-02 02:47:15] Missing params – STOP
+[2026-06-03 15:51:16] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-06-03 15:51:16] Missing params – STOP
+[2026-06-06 09:18:23] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; Barkrowler/0.9; +https://babbar.tech/crawler)
+[2026-06-06 09:18:23] Missing params – STOP
+[2026-06-09 02:08:17] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-06-09 02:08:17] Missing params – STOP
+[2026-06-09 12:46:00] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)
+[2026-06-09 12:46:00] Missing params – STOP
+[2026-06-09 17:22:18] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-06-09 17:22:18] Missing params – STOP
+[2026-06-16 19:50:34] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36
+[2026-06-16 19:50:34] Missing params – STOP
+[2026-06-18 20:02:20] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 6.3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36
+[2026-06-18 20:02:20] Missing params – STOP
+[2026-06-21 06:19:56] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-06-21 06:19:56] Missing params – STOP
+[2026-06-21 18:38:06] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0
+[2026-06-21 18:38:11] Missing params – STOP
+[2026-06-21 18:38:17] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/121.0
+[2026-06-21 18:38:17] Missing params – STOP
+[2026-06-22 08:36:49] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-06-22 08:36:49] Missing params – STOP
+[2026-06-23 23:05:38] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36 OPR/99.0.0.0
+[2026-06-23 23:05:38] Missing params – STOP
+[2026-06-23 23:05:43] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36 OPR/99.0.0.0
+[2026-06-23 23:05:43] Missing params – STOP
+[2026-06-24 20:18:31] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+[2026-06-24 20:18:31] Missing params – STOP
+[2026-06-25 08:34:55] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/120.0.0.0
+[2026-06-25 08:34:55] Missing params – STOP
+[2026-06-30 08:56:14] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/120.0.0.0
+[2026-06-30 08:56:14] Missing params – STOP
+[2026-06-30 12:05:36] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Edge/120.0.0.0
+[2026-06-30 12:05:36] Missing params – STOP
+[2026-06-30 14:07:31] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)
+[2026-06-30 14:07:31] Missing params – STOP
+[2026-07-01 04:22:04] Proxy accessed | Raw Query: [] | UA: Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML, like Gecko) Mobile Safari/537.36 (compatible; PetalBot;+https://webmaster.petalsearch.com/site/petalbot)
+[2026-07-01 04:22:04] Missing params – STOP

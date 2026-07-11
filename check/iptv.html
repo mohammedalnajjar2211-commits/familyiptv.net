@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فحص اشتراك IPTV</title>
+
+<style>
+:root {
+    --bg-color: #ffffff;
+    --card-color: #f2f2f2;
+    --text-color: #000000;
+    --button-color: #c90e0e;
+    --button-hover: #4b4646;
+    --button-glow: rgba(0, 130, 226, 0.6);
+}
+
+.dark {
+    --bg-color: #0d1117;
+    --card-color: #161b22;
+    --text-color: #ffffff;
+}
+
+body {
+    background: var(--bg-color);
+    font-family: "Tahoma", sans-serif;
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+    transition: background 0.5s, color 0.5s;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.top-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.top-btn {
+    background: var(--button-color);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s transform, 0.3s background, 0.3s box-shadow;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(255, 99, 71, 0.3);
+}
+
+.top-btn img.flag {
+    width: 18px;
+    height: 12px;
+    margin-left: 6px;
+}
+
+.top-btn:hover {
+    background: var(--button-hover);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 20px var(--button-glow), 0 6px 14px rgba(0,130,226,0.4);
+}
+
+.top-btn:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 2px 6px var(--button-glow);
+}
+
+.container {
+    max-width: 430px;
+    margin: 80px auto 20px auto;
+    background: var(--card-color);
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.15);
+    transition: background 0.5s;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeSlideIn 0.8s forwards;
+}
+
+@keyframes fadeSlideIn {
+    to { opacity:1; transform:translateY(0); }
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 15px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: logoFade 0.8s forwards 0.3s;
+}
+
+@keyframes logoFade {
+    to { opacity:1; transform:translateY(0); }
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: background 0.5s, color 0.5s, transform 0.3s;
+}
+
+input:focus {
+    transform: scale(1.02);
+    outline: none;
+    border-color: var(--button-color);
+}
+
+.dark input {
+    background: #1e2530;
+    color: white;
+    border: 1px solid #2b3240;
+}
+
+button.main-btn {
+    width: 60%;
+    max-width: 250px;
+    padding: 14px;
+    background: var(--button-color);
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 20px auto 0 auto;
+    transition: 0.3s transform, 0.3s background, 0.3s box-shadow;
+    font-weight: bold;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0,130,226,0.3);
+}
+
+button.main-btn:hover {
+    background: var(--button-hover);
+    box-shadow: 0 0 25px var(--button-glow), 0 6px 14px rgba(0,130,226,0.4);
+    transform: translateY(-2px) scale(1.03);
+}
+
+button.main-btn:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: 0 2px 6px var(--button-glow);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background: #1f2937;
+    border-radius: 10px;
+    display: none;
+    color: white;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.result.show {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.status-active, .status-inactive {
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    animation: messageSlide 0.6s ease forwards, gradientText 2s ease infinite;
+}
+
+.status-active { color: #2ecc71; }
+.status-inactive { color: #e74c3c; }
+
+.status-active img, .status-inactive img {
+    width: 24px;
+    height: 24px;
+    animation: bounce 1s infinite alternate;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+@keyframes messageSlide {
+    0% { opacity:0; transform: translateY(-10px) scale(0.95); }
+    100% { opacity:1; transform: translateY(0) scale(1); }
+}
+
+@keyframes gradientText {
+    0% { color: #2ecc71; }
+    50% { color: #f1c40f; }
+    100% { color: #e74c3c; }
+}
+</style>
+</head>
+<body class="dark">
+
+<div class="top-controls">
+    <button class="top-btn" onclick="toggleLang()" id="langBtn">
+        <span id="langText">EN</span>
+        <img class="flag" id="flagImg" src="/check/flag-of-USA.png" alt="Flag">
+    </button>
+    <button class="top-btn" onclick="toggleTheme()" id="themeBtn">🌙</button>
+</div>
+
+<div class="container">
+    <img src="https://familyiptv.net/check/logo.png" class="logo" alt="LOGO">
+
+    <h2 id="title">فحص تاريخ انتهاء اشتراك IPTV</h2>
+
+    <input id="user" type="text" placeholder="اسم المستخدم">
+    <input id="pass" type="password" placeholder="كلمة المرور">
+
+    <button class="main-btn" onclick="checkSub()" id="checkBtn">فحص الآن</button>
+
+    <div id="result" class="result">
+        <div id="status"></div>
+        <div id="expire"></div>
+    </div>
+</div>
+
+<!-- أصوات مدمجة Base64 -->
+<audio id="successSound" src="/check/success.wav." ></audio>
+<audio id="failSound" src="/check/fail.wav.." ></audio>
+
+<!-- Confetti -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+let currentLang = "ar";
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    document.getElementById("themeBtn").textContent =
+        document.body.classList.contains("dark") ? "🌙" : "☀️";
+}
+
+function toggleLang() {
+    currentLang = currentLang === "ar" ? "en" : "ar";
+    const langBtnText = document.getElementById("langText");
+    const flagImg = document.getElementById("flagImg");
+
+    if (currentLang === "en") {
+        document.documentElement.setAttribute("dir", "ltr");
+        langBtnText.textContent = "AR";
+        flagImg.src = "/check/flag-of-Iraq.png"; // علم إنجليزي Base64
+        document.getElementById("title").textContent = "Check IPTV Subscription";
+        document.getElementById("user").placeholder = "Username";
+        document.getElementById("pass").placeholder = "Password";
+        document.getElementById("checkBtn").textContent = "Check Now";
+    } else {
+        document.documentElement.setAttribute("dir", "rtl");
+        langBtnText.textContent = "EN";
+        flagImg.src = "/check/flag-of-USA.png"; // علم عربي Base64
+        document.getElementById("title").textContent = "فحص اشتراك IPTV";
+        document.getElementById("user").placeholder = "اسم المستخدم";
+        document.getElementById("pass").placeholder = "كلمة المرور";
+        document.getElementById("checkBtn").textContent = "فحص الآن";
+    }
+}
+
+function checkSub() {
+    const user = document.getElementById("user").value.trim();
+    const pass = document.getElementById("pass").value.trim();
+    const resultBox = document.getElementById("result");
+    const successSound = document.getElementById("successSound");
+    const failSound = document.getElementById("failSound");
+
+    if (!user || !pass) {
+        alert(currentLang === "ar" ? "يرجى إدخال اسم المستخدم وكلمة المرور" : "Please enter username and password");
+        return;
+    }
+
+    const url = `https://check.mohammedalnajjar2211.workers.dev/?user=${user}&pass=${pass}`;
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        resultBox.classList.remove("show");
+        void resultBox.offsetWidth;
+        resultBox.classList.add("show");
+
+        if (!data.user_info) {
+            failSound.play();
+            document.getElementById("status").innerHTML =
+                `<span class='status-inactive'>${currentLang === "ar" ? "خطأ في البيانات" : "Invalid data"}</span>`;
+            document.getElementById("expire").innerHTML = "";
+            return;
+        }
+
+        const status = data.user_info.status;
+        const exp = data.user_info.exp_date;
+        const isTrial = data.user_info.is_trial === "1" || data.user_info.is_trial === 1;
+
+        let daysRemaining = Math.ceil((exp*1000 - Date.now()) / (1000*60*60*24));
+        if (daysRemaining < 0) daysRemaining = 0;
+
+        let color;
+        if (daysRemaining > 15) color = "green";
+        else if (daysRemaining > 5) color = "yellow";
+        else color = "red";
+
+        const expireDate = exp === "Unlimited" ? (currentLang==="ar"?"غير محدود":"Unlimited")
+                         : new Date(exp*1000).toLocaleString(currentLang==="ar"?"ar-EG":"en-US");
+
+        if (status === "Active") {
+            successSound.play();
+            confetti({particleCount: 100, spread: 70, origin: { y: 0.6 }});
+            document.getElementById("status").innerHTML =
+                `<span class='status-active'>${currentLang==="ar"?"الحساب نشط":"Active"} ${isTrial?`(تجريبي)`:""}</span>`;
+            document.getElementById("expire").innerHTML =
+                `${currentLang==="ar"?"تاريخ الانتهاء":"Expire Date"}:<br><b style="color:${color}">${expireDate} (${daysRemaining} يوم)</b>`;
+        } else {
+            failSound.play();
+            document.getElementById("status").innerHTML =
+                `<span class='status-inactive'>${currentLang==="ar"?"الحساب غير نشط":"Not Active"}</span>`;
+            document.getElementById("expire").innerHTML = "";
+        }
+
+    }).catch(err=>{
+        alert(currentLang==="ar"?"⚠️ خطأ في الاتصال — تحقق من عمل proxy":"⚠️ Connection error — Check proxy");
+        console.error(err);
+    });
+}
+</script>
+
+</body>
+</html>

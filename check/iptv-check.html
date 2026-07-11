@@ -1,0 +1,33 @@
+<script>
+function checkIPTV() {
+    let user = document.getElementById("user").value;
+    let pass = document.getElementById("pass").value;
+
+    if (!user || !pass) {
+        alert("يرجى إدخال اليوزر والباس");
+        return;
+    }
+
+    // اكتب رابط ملف proxy.php الخاص بك
+    let url = `https://familyiptv.net/proxy.php?user=${user}&pass=${pass}`;
+
+    fetch(url)
+    .then(res => res.json())
+    .then(data => {
+        let box = document.getElementById("resultBox");
+        box.style.display = "block";
+
+        if (data.user_info && data.user_info.status == "Active") {
+            document.getElementById("status").innerHTML = "✔️ الحساب نشط";
+            document.getElementById("expireDate").innerHTML =
+                "تاريخ الانتهاء: " + data.user_info.exp_date;
+        } else {
+            document.getElementById("status").innerHTML = "❌ غير نشط";
+            document.getElementById("expireDate").innerHTML = "بيانات غير صحيحة";
+        }
+    })
+    .catch(err => {
+        alert("فشل الاتصال (تحقق من رابط proxy.php)");
+    });
+}
+</script>
