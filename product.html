@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>تفاصيل المنتج - فاملي العراق</title>
+
+<link rel="stylesheet" href="css/product.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html" class="back-btn">
+
+← العودة
+
+</a>
+
+<div class="logo">
+
+فاملي العراق
+
+</div>
+
+</header>
+
+<section class="product-container">
+
+<div class="product-image">
+
+<img
+id="productImage"
+src="assets/product1.jpg"
+alt=""
+>
+
+</div>
+
+<div class="product-info">
+
+<h1 id="productTitle">
+
+جاري التحميل...
+
+</h1>
+
+<div
+class="price"
+id="productPrice"
+>
+
+0$
+
+</div>
+
+<p
+class="description"
+id="productDescription"
+>
+
+...
+
+</p>
+
+<ul class="features">
+
+<li>✔ تفعيل سريع</li>
+
+<li>✔ دعم فني 24/7</li>
+
+<li>✔ جودة عالية</li>
+
+<li>✔ تحديثات مستمرة</li>
+
+</ul>
+
+<a
+id="whatsappBtn"
+class="buy-btn"
+target="_blank"
+href="#"
+>
+
+اطلب الآن عبر واتساب
+
+</a>
+
+</div>
+
+</section>
+
+<section class="related-products">
+
+<h2>
+
+منتجات مشابهة
+
+</h2>
+
+<div class="related-grid">
+
+<a href="product.html?id=1" class="related-card">
+
+<img src="assets/product1.jpg">
+
+<h3>اشتراك IPTV شهر</h3>
+
+</a>
+
+<a href="product.html?id=2" class="related-card">
+
+<img src="assets/product2.jpg">
+
+<h3>اشتراك IPTV 6 أشهر</h3>
+
+</a>
+
+<a href="product.html?id=3" class="related-card">
+
+<img src="assets/product3.jpg">
+
+<h3>اشتراك IPTV سنة</h3>
+
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+سيرفر فاملي العراق © 2026
+
+</footer>
+
+<script>
+
+const products = {
+
+1:{
+title:"اشتراك فاملي 12 شهر",
+price:"25,000 IQD",
+image:"assets/12months.jpg",
+description:"اشتراك IPTV لمدة شهر مع آلاف القنوات العالمية والأفلام والمسلسلات بجودة عالية."
+},
+
+2:{
+title:"اشتراك فاملي 6 اشهر",
+price:"15,000 IQD",
+image:"assets/6months.jpg",
+description:"اشتراك IPTV لمدة 6 أشهر مع تحديثات مستمرة وسيرفرات مستقرة."
+},
+
+3:{
+title:"اشتراك فاملي 1 شهر",
+price:"10,000 IQD",
+image:"assets/1month.jpg",
+description:"اشتراك سنوي كامل مع دعم فني وتحديثات دورية وأفضل جودة مشاهدة."
+}
+
+};
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const id = params.get("id") || "1";
+
+const product =
+products[id];
+
+document.getElementById(
+"productTitle"
+).innerText =
+product.title;
+
+document.getElementById(
+"productPrice"
+).innerText =
+product.price;
+
+document.getElementById(
+"productDescription"
+).innerText =
+product.description;
+
+document.getElementById(
+"productImage"
+).src =
+product.image;
+
+document.getElementById(
+"whatsappBtn"
+).href =
+`https://wa.me/9647809522129?text=أريد طلب ${product.title}`;
+
+</script>
+
+</body>
+
+</html>

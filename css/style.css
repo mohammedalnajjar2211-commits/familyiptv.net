@@ -1,0 +1,583 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
+}
+
+:root{
+--red:#d40000;
+--red-light:#ff2d2d;
+--bg:#050505;
+--card:#101010;
+--border:#222;
+--text:#ffffff;
+--gray:#999;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+min-height:100vh;
+}
+
+/* خلفية متوهجة */
+
+body::before{
+content:"";
+position:fixed;
+top:-200px;
+right:-200px;
+width:500px;
+height:500px;
+background:radial-gradient(
+circle,
+rgba(212,0,0,.35),
+transparent 70%
+);
+z-index:-1;
+}
+
+body::after{
+content:"";
+position:fixed;
+bottom:-200px;
+left:-200px;
+width:500px;
+height:500px;
+background:radial-gradient(
+circle,
+rgba(212,0,0,.15),
+transparent 70%
+);
+z-index:-1;
+}
+
+/* Header */
+
+header{
+height:80px;
+width:92%;
+margin:20px auto;
+background:#111;
+border:1px solid rgba(255,255,255,.05);
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
+box-shadow:0 0 20px rgba(255,0,0,.08);
+}
+
+.logo{
+font-size:24px;
+font-weight:800;
+color:var(--red-light);
+}
+
+.menu-btn{
+background:none;
+border:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* Sidebar */
+
+.sidebar{
+position:fixed;
+top:0;
+right:-320px;
+width:300px;
+height:100%;
+background:#0d0d0d;
+z-index:999;
+transition:.35s;
+border-left:1px solid rgba(255,255,255,.05);
+}
+
+.sidebar.active{
+right:0;
+}
+
+.sidebar-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px;
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.sidebar-header h2{
+color:var(--red-light);
+}
+
+.sidebar-header button{
+background:none;
+border:none;
+font-size:24px;
+color:white;
+cursor:pointer;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar li{
+border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.sidebar a{
+display:block;
+padding:18px 25px;
+text-decoration:none;
+color:white;
+transition:.3s;
+}
+
+.sidebar a:hover{
+background:rgba(255,0,0,.12);
+color:var(--red-light);
+}
+
+#overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+z-index:998;
+}
+
+#overlay.active{
+display:block;
+}
+
+/* Search */
+
+.search-section{
+width:92%;
+margin:auto;
+}
+
+.search-section input{
+width:100%;
+padding:16px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,.08);
+background:#111;
+color:white;
+font-size:16px;
+outline:none;
+}
+
+.search-section input:focus{
+border-color:var(--red);
+}
+
+/* Hero */
+
+.hero{
+width:92%;
+margin:40px auto;
+padding:45px;
+text-align:center;
+background:linear-gradient(
+135deg,
+#111,
+#181818
+);
+border-radius:25px;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.hero h1{
+font-size:38px;
+margin-bottom:15px;
+color:white;
+}
+
+.hero p{
+color:#bbb;
+font-size:18px;
+}
+
+/* Products */
+
+.products{
+width:92%;
+margin:40px auto;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+}
+
+.card{
+background:var(--card);
+border-radius:25px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.05);
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:
+0 0 25px rgba(255,0,0,.25);
+}
+
+.card img{
+width:100%;
+height:260px;
+object-fit:cover;
+}
+
+.card-content{
+padding:20px;
+}
+
+.card-content h3{
+margin-bottom:10px;
+}
+
+.card-content p{
+color:#aaa;
+margin-bottom:15px;
+}
+
+.price{
+font-size:28px;
+font-weight:800;
+color:var(--red-light);
+margin-bottom:18px;
+}
+
+/* Buttons */
+
+.order-btn{
+display:block;
+text-align:center;
+padding:14px;
+background:linear-gradient(
+90deg,
+#a00000,
+#ff0000
+);
+color:white;
+text-decoration:none;
+border-radius:14px;
+margin-top:10px;
+font-weight:700;
+}
+
+.details-btn{
+display:block;
+text-align:center;
+padding:12px;
+border:1px solid rgba(255,255,255,.08);
+color:white;
+text-decoration:none;
+border-radius:14px;
+margin-bottom:10px;
+}
+
+/* Features */
+
+.features{
+width:92%;
+margin:50px auto;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.feature{
+background:#101010;
+padding:25px;
+border-radius:20px;
+text-align:center;
+font-size:18px;
+border:1px solid rgba(255,255,255,.05);
+}
+
+/* Footer */
+
+footer{
+margin-top:60px;
+padding:35px;
+text-align:center;
+color:#888;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+footer div{
+margin:8px 0;
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.hero{
+padding:25px;
+}
+
+.hero h1{
+font-size:28px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.logo{
+font-size:20px;
+}
+
+.products{
+grid-template-columns:1fr;
+}
+
+}
+
+.whatsapp-button{
+position:fixed;
+bottom:25px;
+right:25px;
+z-index:999999;
+
+display:block;
+
+text-decoration:none;
+
+transition:.3s;
+}
+
+.whatsapp-button:hover{
+transform:scale(1.1);
+}
+
+.whatsapp-button img{
+width:60px;
+height:60px;
+display:block;
+}
+
+
+
+/* صندوق الدفع */
+
+.payment-box{
+    width:92%;
+    max-width:900px;
+    margin:50px auto;
+    padding:30px;
+    background:#101010;
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:20px;
+    text-align:center;
+    display:block;
+}
+
+.payment-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+    margin-top:20px;
+}
+
+.pay-card{
+    background:#d40000;
+    color:#fff;
+    padding:15px;
+    border-radius:12px;
+    font-weight:700;
+}
+
+.payment-note{
+    margin-top:20px;
+    color:#bbb;
+}
+
+
+
+.payment-box{
+    width:92%;
+    max-width:900px;
+    margin:50px auto;
+    border:4px dashed yellow !important;
+    background:rgba(255,255,0,.08);
+}
+
+/* آراء العملاء */
+
+.reviews-section{
+width:92%;
+max-width:1000px;
+margin:60px auto;
+}
+
+.reviews-section h2{
+text-align:center;
+font-size:32px;
+margin-bottom:30px;
+color:#fff;
+}
+
+.review-card{
+background:#151515;
+border:1px solid rgba(255,255,255,.05);
+border-radius:20px;
+padding:25px;
+margin-bottom:20px;
+transition:.3s;
+}
+
+.review-card:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px rgba(255,0,0,.15);
+}
+
+.review-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+}
+
+.review-name{
+font-size:18px;
+font-weight:700;
+color:#fff;
+}
+
+.stars{
+color:#FFD700;
+font-size:18px;
+}
+
+.review-time{
+color:#999;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.review-text{
+color:#ddd;
+line-height:2;
+font-size:16px;
+}
+
+@media(max-width:768px){
+
+.review-header{
+flex-direction:column;
+gap:8px;
+align-items:flex-start;
+}
+
+.review-name{
+font-size:16px;
+}
+
+.review-text{
+font-size:15px;
+}
+
+}
+
+
+/* البانر الرئيسي */
+
+.top-banner{
+width:92%;
+margin:30px auto;
+background:#111;
+border-radius:25px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.banner-content{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:40px;
+gap:40px;
+}
+
+.banner-text{
+flex:1;
+text-align:right;
+}
+
+.banner-badge{
+display:inline-block;
+background:#d40000;
+color:#fff;
+padding:12px 25px;
+border-radius:50px;
+font-size:24px;
+font-weight:800;
+margin-bottom:20px;
+}
+
+.banner-text h2{
+font-size:36px;
+line-height:1.7;
+margin-bottom:20px;
+}
+
+.banner-text ul{
+list-style:none;
+}
+
+.banner-text li{
+margin:12px 0;
+font-size:20px;
+}
+
+.banner-image{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.banner-image img{
+width:100%;
+max-width:450px;
+height:auto;
+display:block;
+object-fit:contain;
+}
+
+@media(max-width:768px){
+
+.banner-content{
+flex-direction:column;
+padding:20px;
+text-align:center;
+}
+
+.banner-text{
+text-align:center;
+}
+
+.banner-text h2{
+font-size:24px;
+}
+
+.banner-text li{
+font-size:16px;
+}
+
+.banner-badge{
+font-size:20px;
+}
+
+}
