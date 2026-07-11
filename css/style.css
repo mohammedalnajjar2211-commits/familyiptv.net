@@ -586,7 +586,7 @@ font-size:20px;
 .price {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* مسافة بين السعرين */
+    gap: 2px; /* مسافة بين السعرين */
 }
 
 .price .usd {
