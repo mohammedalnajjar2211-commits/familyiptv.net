@@ -29,7 +29,7 @@ $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? "Unknown";
 
 $servers = [
     ["protocol" => "http", "host" => "new-pro.tv",        "port" => 8080, "backup" => 8080, "package" => "Family"],
-    ["protocol" => "http", "host" => "forever-locals.com","port" => 8080, "backup" => 2095, "package" => "Forever"],
+    ["protocol" => "http", "host" => "forevertv.me","port" => 8080, "backup" => 2095, "package" => "Forever"],
     ["protocol" => "http", "host" => "max.amigo00.com",  "port" => 2052, "backup" => null, "package" => "Adult"],
     ["protocol" => "http", "host" => "amigo00.com",      "port" => 80,   "backup" => null, "package" => "Lite"]
 ];
