@@ -1,1 +1,704 @@
-<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>تحويل M3U</title><style>body{background:#080808;color:#fff;font-family:Arial;padding:25px}.box{max-width:650px;margin:auto;background:#121212;border:1px solid #422;border-radius:18px;padding:30px}h1{color:#e11}input,button{width:100%;padding:14px;margin:12px 0;background:#181818;color:#fff;border:1px solid #444;border-radius:10px}button{background:#c00;border-color:#e33;font-weight:bold}.note{color:#999;line-height:1.8}</style><div class="box"><h1>تحويل M3U إلى channels.json</h1><p class="note">اختر ملف M3U. التحويل يتم داخل المتصفح ولا يتم رفع الملف إلى أي خادم.</p><input id="f" type="file" accept=".m3u,.m3u8,.txt"><button onclick="go()">تحويل وتنزيل channels.json</button><p id="r"></p></div><script>function a(s,k){let m=s.match(new RegExp(k+'\\s*=\\s*"([^"]*)"','i'))||s.match(new RegExp(k+"\\s*=\\s*'([^']*)'",'i'));return m?m[1]:''}async function go(){let f=document.querySelector('#f').files[0];if(!f)return r.textContent='اختر الملف أولًا';let t=await f.text(),o=[],p=null;for(let l of t.split(/\\r?\\n/)){l=l.trim();if(l.startsWith('#EXTINF:')){let z=l.lastIndexOf(',');p={name:a(l,'tvg-name')||(z>=0?l.slice(z+1):'قناة'),logo:a(l,'tvg-logo'),group:a(l,'group-title')||'بدون قسم'}}else if(p&&l&&!l.startsWith('#')){o.push(p);p=null}}let b=new Blob([JSON.stringify(o,null,2)],{type:'application/json'}),x=document.createElement('a');x.href=URL.createObjectURL(b);x.download='channels.json';x.click();r.textContent='تم التحويل: '+o.length+' قناة'}</script>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Family IPTV - تحويل M3U</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+padding:25px;
+min-height:100vh;
+background:#070707;
+color:white;
+font-family:Arial,sans-serif;
+}
+
+.box{
+max-width:750px;
+margin:auto;
+padding:30px;
+background:#111;
+border:1px solid #4a2020;
+border-radius:20px;
+box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.logo{
+color:#e00000;
+font-size:18px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+.logo span{
+color:white;
+}
+
+h1{
+margin:12px 0;
+font-size:27px;
+}
+
+.description{
+color:#999;
+line-height:1.9;
+}
+
+input{
+width:100%;
+padding:16px;
+margin-top:20px;
+background:#181818;
+color:white;
+border:1px solid #444;
+border-radius:12px;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:linear-gradient(135deg,#d40000,#8d0000);
+border:1px solid #ff3a3a;
+border-radius:12px;
+color:white;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.message{
+display:none;
+margin-top:18px;
+padding:15px;
+border-radius:12px;
+line-height:1.8;
+}
+
+.success{
+display:block;
+background:#102615;
+color:#8ce49c;
+border:1px solid #245d31;
+}
+
+.error{
+display:block;
+background:#2a1010;
+color:#ff9292;
+border:1px solid #642525;
+}
+
+.info{
+margin-top:20px;
+padding:14px;
+background:#0b0b0b;
+border:1px solid #222;
+border-radius:12px;
+color:#888;
+font-size:13px;
+line-height:1.9;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="logo">
+FAMILY <span>IPTV</span>
+</div>
+
+<h1>تحويل ملف M3U إلى channels.json</h1>
+
+<p class="description">
+
+اختر ملف M3U من جهازك. سيتم استخراج اسم القناة وشعار القناة والقسم فقط.
+
+لن يتم حفظ روابط البث داخل ملف JSON.
+
+</p>
+
+<input
+id="m3uFile"
+type="file"
+accept=".m3u,.m3u8,.txt"
+>
+
+<button id="convertButton">
+
+تحويل وتنزيل channels.json
+
+</button>
+
+<div id="message" class="message"></div>
+
+<div class="info">
+
+بعد تنزيل ملف <b>channels.json</b>، ارفعه إلى مجلد:
+
+<br><br>
+
+<b>content/channels.json</b>
+
+<br><br>
+
+داخل GitHub واستبدل الملف القديم.
+
+</div>
+
+</div>
+
+<script>
+
+const fileInput =
+document.getElementById("m3uFile");
+
+const button =
+document.getElementById("convertButton");
+
+const message =
+document.getElementById("message");
+
+
+function showMessage(text,type){
+
+message.textContent=text;
+
+message.className=
+"message "+type;
+
+}
+
+
+/*
+
+استخراج قيمة الخصائص
+
+مثال:
+
+tvg-name="Alwan Sport"
+
+*/
+
+function getAttribute(
+line,
+attribute
+){
+
+const regex=
+
+new RegExp(
+
+attribute+
+
+'="([^"]*)"',
+
+
+"i"
+
+);
+
+const match=
+
+line.match(regex);
+
+if(match){
+
+return match[1].trim();
+
+}
+
+return "";
+
+}
+
+
+/*
+
+تحويل ملف M3U
+
+*/
+
+function parseM3U(text){
+
+const channels=[];
+
+const lines=
+
+text
+
+.replace(
+/^\uFEFF/,
+""
+)
+
+.split(
+/\r?\n/
+);
+
+
+for(
+
+let i=0;
+
+i<lines.length;
+
+i++
+
+){
+
+const line=
+
+lines[i].trim();
+
+
+if(
+
+line.startsWith(
+"#EXTINF"
+)
+
+){
+
+/*
+
+اسم القناة
+
+*/
+
+let name=
+
+getAttribute(
+
+line,
+
+"tvg-name"
+
+);
+
+
+/*
+
+إذا لم يوجد tvg-name
+
+نستخدم الاسم بعد الفاصلة
+
+*/
+
+if(
+
+!name
+
+){
+
+const comma=
+
+line.lastIndexOf(
+","
+);
+
+if(
+
+comma!==-1
+
+){
+
+name=
+
+line
+
+.substring(
+
+comma+1
+
+)
+
+.trim();
+
+}
+
+}
+
+
+/*
+
+شعار القناة
+
+*/
+
+const logo=
+
+getAttribute(
+
+line,
+
+"tvg-logo"
+
+);
+
+
+/*
+
+قسم القناة
+
+*/
+
+let group=
+
+getAttribute(
+
+line,
+
+"group-title"
+
+);
+
+
+if(
+
+!group
+
+){
+
+group=
+
+"بدون قسم";
+
+}
+
+
+/*
+
+إضافة القناة
+
+*/
+
+if(
+
+name
+
+){
+
+channels.push({
+
+name:name,
+
+logo:logo,
+
+group:group
+
+});
+
+}
+
+}
+
+}
+
+
+return channels;
+
+}
+
+
+/*
+
+زر التحويل
+
+*/
+
+button.addEventListener(
+
+"click",
+
+async function(){
+
+const file=
+
+fileInput.files[0];
+
+
+if(
+
+!file
+
+){
+
+showMessage(
+
+"اختر ملف M3U أولًا.",
+
+"error"
+
+);
+
+return;
+
+}
+
+
+try{
+
+
+const text=
+
+await file.text();
+
+
+const channels=
+
+parseM3U(
+
+text
+
+);
+
+
+/*
+
+منع تنزيل ملف فارغ
+
+*/
+
+if(
+
+channels.length===0
+
+){
+
+showMessage(
+
+"لم يتم العثور على قنوات. تأكد أنك اخترت ملف M3U الكامل.",
+
+"error"
+
+);
+
+return;
+
+}
+
+
+/*
+
+ترتيب القنوات
+
+*/
+
+channels.sort(
+
+function(
+
+a,
+
+b
+
+){
+
+return(
+
+a.group+
+
+a.name
+
+)
+
+.localeCompare(
+
+b.group+
+
+b.name,
+
+"ar"
+
+);
+
+}
+
+);
+
+
+/*
+
+تحويل إلى JSON
+
+*/
+
+const json=
+
+JSON.stringify(
+
+channels,
+
+null,
+
+2
+
+);
+
+
+/*
+
+إنشاء الملف
+
+*/
+
+const blob=
+
+new Blob(
+
+[json],
+
+{
+
+type:
+
+"application/json"
+
+}
+
+);
+
+
+const url=
+
+URL.createObjectURL(
+
+blob
+
+);
+
+
+const download=
+
+document.createElement(
+
+"a"
+
+);
+
+
+download.href=url;
+
+download.download=
+
+"channels.json";
+
+
+document.body.appendChild(
+
+download
+
+);
+
+
+download.click();
+
+
+download.remove();
+
+
+setTimeout(
+
+function(){
+
+URL.revokeObjectURL(
+
+url
+
+);
+
+},
+
+1000
+
+);
+
+
+/*
+
+عدد الأقسام
+
+*/
+
+const groups=
+
+new Set(
+
+channels.map(
+
+channel=>
+
+channel.group
+
+)
+
+).size;
+
+
+/*
+
+رسالة النجاح
+
+*/
+
+showMessage(
+
+"تم التحويل بنجاح: "+
+
+channels.length+
+
+" قناة ضمن "+
+
+groups+
+
+" قسم.",
+
+"success"
+
+);
+
+
+}
+
+catch(
+
+error
+
+){
+
+showMessage(
+
+"حدث خطأ أثناء قراءة الملف: "+
+
+error.message,
+
+"error"
+
+);
+
+}
+
+}
+
+);
+
+</script>
+
+</body>
+</html>
