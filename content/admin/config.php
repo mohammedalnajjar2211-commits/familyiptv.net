@@ -4,7 +4,7 @@ return [
     'm3u_url' => '',
 
     // كلمة مرور صفحة الاستيراد. غيّرها قبل الرفع.
-    'admin_password' => 'CHANGE_THIS_PASSWORD',
+    'admin_password' => 'Ahmed@1989',
 
     // عدد ثواني مهلة التحميل.
     'timeout' => 30,
