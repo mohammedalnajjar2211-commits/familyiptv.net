@@ -660,18 +660,7 @@ font-size:20px;
 
     letter-spacing: 0;
 
-    background: linear-gradient(
-        90deg,
-        #ff8a00,
-        #ff4d4d,
-        #d95bb7
-    );
-
-    -webkit-background-clip: text;
-
-    background-clip: text;
-
-    -webkit-text-fill-color: transparent;
+    color: #d40000;
 }
 
 
