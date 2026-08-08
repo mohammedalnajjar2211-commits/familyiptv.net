@@ -1,1 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الدعم الفني | Family IPTV</title>
+<meta name="description" content="مركز الدعم الفني Family IPTV - حلول تلقائية لمشاكل الاشتراك والتطبيق والقنوات.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+ --red:#d40000;--red2:#ff3030;--bg:#050505;--card:#101010;
+ --card2:#151515;--border:#242424;--text:#fff;--muted:#a7a7a7;
+ --green:#20c77a;--shadow:0 20px 60px rgba(0,0,0,.45)
+}
+body{font-family:Cairo,sans-serif;background:radial-gradient(circle at 50% -10%,rgba(212,0,0,.18),transparent 35%),var(--bg);color:var(--text);min-height:100vh}
+button,input{font:inherit}
+button{cursor:pointer}
+.header{height:76px;border-bottom:1px solid var(--border);background:rgba(5,5,5,.88);backdrop-filter:blur(14px);position:sticky;top:0;z-index:10}
+.nav{max-width:1100px;height:100%;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:22px;font-weight:800;letter-spacing:.3px}.logo span{color:var(--red2)}
+.lang{display:flex;gap:6px;background:#111;border:1px solid var(--border);padding:5px;border-radius:12px}
+.lang button{border:0;background:transparent;color:#aaa;padding:7px 12px;border-radius:8px}
+.lang button.active{background:var(--red);color:#fff}
+.hero{max-width:850px;margin:55px auto 25px;text-align:center;padding:0 20px}
+.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(212,0,0,.12);border:1px solid rgba(255,48,48,.25);color:#ff6969;border-radius:30px;padding:7px 14px;font-size:13px;margin-bottom:16px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.25;margin-bottom:12px}
+.hero h1 span{color:var(--red2)}
+.hero p{color:var(--muted);font-size:16px;line-height:1.9}
+.wrap{max-width:900px;margin:30px auto 70px;padding:0 20px}
+.search{position:relative;margin-bottom:25px}
+.search input{width:100%;background:var(--card);border:1px solid var(--border);color:#fff;border-radius:15px;padding:16px 50px 16px 18px;outline:none;transition:.2s}
+.search input:focus{border-color:#7b1717;box-shadow:0 0 0 4px rgba(212,0,0,.08)}
+.search .icon{position:absolute;right:17px;top:13px;font-size:22px}
+.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.issue{background:linear-gradient(145deg,#121212,#0c0c0c);border:1px solid var(--border);color:#fff;border-radius:15px;padding:17px;text-align:right;display:flex;align-items:center;gap:13px;transition:.22s;min-height:76px}
+.issue:hover{border-color:#6f1a1a;transform:translateY(-2px);background:#151515}
+.issue .ico{width:43px;height:43px;display:grid;place-items:center;background:rgba(212,0,0,.12);border-radius:12px;font-size:21px;flex:none}
+.issue b{display:block;font-size:14px;margin-bottom:3px}.issue small{color:#888;font-size:11px}
+.no-results{text-align:center;color:#888;padding:35px;display:none}
+.panel{display:none;background:linear-gradient(145deg,#121212,#0b0b0b);border:1px solid #292929;border-radius:20px;padding:25px;box-shadow:var(--shadow);animation:show .25s ease}
+@keyframes show{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.panel.show{display:block}
+.panel-top{display:flex;justify-content:space-between;gap:15px;align-items:flex-start;margin-bottom:20px}
+.panel-title{display:flex;gap:13px;align-items:center}.bigico{font-size:30px}.panel h2{font-size:20px}.close{border:1px solid var(--border);background:#151515;color:#aaa;border-radius:10px;width:38px;height:38px}
+.steps{display:grid;gap:10px}
+.step{display:flex;gap:12px;background:#0b0b0b;border:1px solid #1e1e1e;border-radius:13px;padding:14px}
+.num{width:28px;height:28px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-size:12px;font-weight:700;flex:none}
+.step p{color:#ddd;font-size:13px;line-height:1.8;padding-top:1px}
+.tip{margin-top:17px;padding:14px;border-radius:13px;background:rgba(32,199,122,.07);border:1px solid rgba(32,199,122,.18);color:#bcefd8;font-size:13px;line-height:1.8}
+.actions{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.wa{background:var(--green);color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.back{background:#181818;color:#ddd;border:1px solid var(--border);border-radius:12px;padding:12px 18px}
+.footer{text-align:center;color:#666;font-size:12px;padding:0 20px 35px}.footer span{color:#aaa}
+.ltr{direction:ltr;text-align:left}
+@media(max-width:650px){
+ .categories{grid-template-columns:1fr}
+ .hero{margin-top:38px}.wrap{margin-top:22px}
+ .panel{padding:18px}.panel h2{font-size:17px}
+ .issue{min-height:70px}
+}
+</style>
+</head>
+<body>
 
+<header class="header">
+ <nav class="nav">
+  <div class="logo">Family <span>IPTV</span></div>
+  <div class="lang">
+   <button id="arBtn" class="active" onclick="setLang('ar')">العربية</button>
+   <button id="enBtn" onclick="setLang('en')">English</button>
+  </div>
+ </nav>
+</header>
+
+<section class="hero">
+ <div class="badge">🤖 <span data-ar="مساعد الدعم التلقائي" data-en="Automatic Support Assistant">مساعد الدعم التلقائي</span></div>
+ <h1 data-ar="كيف يمكننا <span>مساعدتك؟</span>" data-en="How can we <span>help you?</span>">كيف يمكننا <span>مساعدتك؟</span></h1>
+ <p data-ar="اختر المشكلة التي تواجهها وسنقدم لك خطوات سريعة لحلها." data-en="Select the problem you are facing and we will provide quick steps to solve it.">اختر المشكلة التي تواجهها وسنقدم لك خطوات سريعة لحلها.</p>
+</section>
+
+<main class="wrap">
+ <div id="listView">
+  <div class="search">
+   <span class="icon">🔎</span>
+   <input id="search" type="text" autocomplete="off"
+    data-placeholder-ar="ابحث عن مشكلتك..." data-placeholder-en="Search for your problem..."
+    placeholder="ابحث عن مشكلتك...">
+  </div>
+  <div class="categories" id="categories"></div>
+  <div class="no-results" id="noResults" data-ar="لم يتم العثور على المشكلة." data-en="No matching problem was found.">لم يتم العثور على المشكلة.</div>
+ </div>
+
+ <section class="panel" id="panel">
+  <div class="panel-top">
+   <div class="panel-title"><div class="bigico" id="pIcon">📺</div><h2 id="pTitle"></h2></div>
+   <button class="close" onclick="closePanel()">✕</button>
+  </div>
+  <div class="steps" id="steps"></div>
+  <div class="tip" id="tip"></div>
+  <div class="actions">
+   <a class="wa" id="wa" target="_blank" rel="noopener">💬 <span id="waText"></span></a>
+   <button class="back" onclick="closePanel()" id="back"></button>
+  </div>
+ </section>
+</main>
+
+<div class="footer">© 2026 <span>Family IPTV</span> — <span data-ar="مركز الدعم الفني" data-en="Technical Support Center">مركز الدعم الفني</span></div>
+
+<script>
+const WA="9647809522129";
+let lang="ar";
+
+const issues=[
+ {id:"login",icon:"🔐",ar:"تسجيل الدخول لا يعمل",en:"Login is not working",
+  arSteps:["تأكد من كتابة اسم المستخدم وكلمة المرور بشكل صحيح.","تأكد من عدم وجود مسافات قبل أو بعد بيانات الدخول.","أغلق التطبيق بالكامل ثم افتحه من جديد.","إذا كنت قد غيرت الجهاز، تأكد من أن الاشتراك يسمح باستخدام الجهاز الجديد."],
+  enSteps:["Make sure the username and password are entered correctly.","Make sure there are no spaces before or after your login details.","Completely close the app and open it again.","If you changed devices, make sure your subscription supports the new device."],
+  arTip:"إذا استمرت المشكلة، أرسل اسم المستخدم إلى الدعم عبر WhatsApp لنتحقق من الاشتراك.",
+  enTip:"If the problem continues, send your username to support via WhatsApp so we can check the subscription."},
+ {id:"channels",icon:"📺",ar:"القنوات لا تعمل",en:"Channels are not working",
+  arSteps:["تأكد أولاً من أن الإنترنت يعمل على الجهاز.","أغلق التطبيق وأعد فتحه.","أعد تشغيل الراوتر والجهاز.","جرّب فتح قناة أخرى للتأكد من أن المشكلة ليست في قناة واحدة.","إذا كانت جميع القنوات متوقفة، تواصل مع الدعم."],
+  enSteps:["First make sure the internet is working on your device.","Close and reopen the app.","Restart your router and device.","Try another channel to check whether the issue affects only one channel.","If all channels are unavailable, contact support."],
+  arTip:"إذا كانت المشكلة في جميع القنوات، أرسل اسم التطبيق ونوع جهازك للدعم.",
+  enTip:"If all channels are unavailable, send the app name and device type to support."},
+ {id:"buffer",icon:"⏳",ar:"تقطيع أو Buffering",en:"Buffering or playback interruptions",
+  arSteps:["أغلق التطبيقات التي تستخدم الإنترنت في الخلفية.","أعد تشغيل الراوتر وانتظر دقيقة ثم جرّب.","إن أمكن، استخدم اتصال Ethernet أو اقترب من الراوتر.","جرّب خفض جودة البث مؤقتاً.","اختبر اتصالاً آخر للتأكد من أن المشكلة ليست من شبكة الإنترنت."],
+  enSteps:["Close apps that are using the internet in the background.","Restart the router, wait one minute, then try again.","If possible, use Ethernet or move closer to the router.","Temporarily lower the streaming quality.","Try another connection to check whether the issue is caused by your internet network."],
+  arTip:"سرعة الإنترنت ليست العامل الوحيد؛ ثبات الاتصال وجودة Wi‑Fi مهمان أيضاً.",
+  enTip:"Internet speed is not the only factor; connection stability and Wi‑Fi quality also matter."},
+ {id:"app",icon:"📱",ar:"مشكلة في التطبيق",en:"App problem",
+  arSteps:["أغلق التطبيق بالكامل ثم افتحه.","تأكد من تثبيت آخر إصدار متاح من التطبيق الذي تستخدمه.","أعد تشغيل الجهاز.","إذا استمرت المشكلة، احذف التطبيق وأعد تثبيته إذا كان ذلك مناسباً لجهازك.","تواصل مع الدعم واذكر اسم التطبيق ونوع الجهاز."],
+  enSteps:["Completely close the app and reopen it.","Make sure you have the latest available version of the app you use.","Restart the device.","If the issue continues, reinstall the app if appropriate for your device.","Contact support and mention the app name and device type."],
+  arTip:"لا ترسل كلمة المرور في المحادثة. يكفي إرسال اسم المستخدم ومعلومات الجهاز عند الحاجة.",
+  enTip:"Do not send your password in the chat. Send only your username and device information when needed."},
+ {id:"smarttv",icon:"📺",ar:"مشكلة في Smart TV",en:"Smart TV problem",
+  arSteps:["أعد تشغيل التلفزيون والراوتر.","تأكد من اتصال التلفزيون بالإنترنت.","أغلق تطبيق IPTV وأعد فتحه.","تحقق من صحة بيانات الاشتراك داخل التطبيق.","إذا كانت القنوات لا تعمل، جرّب شبكة أخرى إن أمكن."],
+  enSteps:["Restart the TV and router.","Make sure the TV is connected to the internet.","Close and reopen the IPTV app.","Check that your subscription details are correct in the app.","If channels do not work, try another network if possible."],
+  arTip:"عند التواصل مع الدعم، اذكر نوع التلفزيون واسم التطبيق.",
+  enTip:"When contacting support, mention your TV model/type and app name."},
+ {id:"android",icon:"🤖",ar:"مشكلة في Android",en:"Android problem",
+  arSteps:["تأكد من اتصال الهاتف أو Android TV بالإنترنت.","أعد تشغيل الجهاز.","أغلق التطبيق من التطبيقات الأخيرة وافتحه من جديد.","تأكد من وجود مساحة تخزين كافية.","حدّث التطبيق أو أعد تثبيته إذا لزم الأمر."],
+  enSteps:["Make sure your phone or Android TV is connected to the internet.","Restart the device.","Close the app from recent apps and reopen it.","Make sure there is enough storage space.","Update or reinstall the app if needed."],
+  arTip:"أرسل إصدار Android واسم التطبيق للدعم إذا لم تُحل المشكلة.",
+  enTip:"Send the Android version and app name to support if the issue remains."},
+ {id:"ios",icon:"🍎",ar:"مشكلة في iPhone / iPad",en:"iPhone / iPad problem",
+  arSteps:["تأكد من اتصال الجهاز بالإنترنت.","أغلق التطبيق من شاشة التطبيقات المفتوحة.","أعد تشغيل الجهاز.","تأكد من تحديث التطبيق والنظام عند توفر تحديث.","جرّب فتح التطبيق مرة أخرى."],
+  enSteps:["Make sure the device is connected to the internet.","Close the app from the app switcher.","Restart the device.","Make sure the app and system are updated when updates are available.","Open the app again and test playback."],
+  arTip:"عند التواصل مع الدعم، اذكر اسم التطبيق وإصدار iOS إن أمكن.",
+  enTip:"When contacting support, mention the app name and iOS version if possible."},
+ {id:"activation",icon:"🔑",ar:"مشكلة في تفعيل الاشتراك",en:"Subscription activation problem",
+  arSteps:["تأكد من إدخال بيانات التفعيل بدون أخطاء.","تأكد من استخدام بيانات الاشتراك في التطبيق الصحيح.","أغلق التطبيق وأعد فتحه بعد إدخال البيانات.","لا تقم بتغيير بيانات الاشتراك أو حذفها قبل التواصل مع الدعم إذا كنت غير متأكد."],
+  enSteps:["Make sure the activation details are entered without errors.","Make sure you are using the subscription details in the correct app.","Close and reopen the app after entering the details.","Do not change or delete your subscription details before contacting support if you are unsure."],
+  arTip:"أرسل رقم الطلب أو اسم المستخدم للدعم، ولا ترسل كلمة المرور.",
+  enTip:"Send your order number or username to support, and do not send your password."},
+ {id:"expired",icon:"⏰",ar:"الاشتراك منتهي أو لا يظهر",en:"Subscription expired or not showing",
+  arSteps:["تحقق من تاريخ انتهاء الاشتراك داخل التطبيق إن كان ظاهراً.","أغلق التطبيق وافتحه من جديد.","تأكد من أنك تستخدم بيانات الاشتراك الصحيحة.","إذا قمت بالتجديد مؤخراً، تواصل مع الدعم مع رقم الطلب."],
+  enSteps:["Check the subscription expiry date in the app if available.","Close and reopen the app.","Make sure you are using the correct subscription details.","If you renewed recently, contact support with your order number."],
+  arTip:"يمكن للدعم التحقق من حالة الاشتراك بعد تزويده باسم المستخدم أو رقم الطلب.",
+  enTip:"Support can check the subscription status using your username or order number."},
+ {id:"internet",icon:"🌐",ar:"مشكلة في الإنترنت",en:"Internet connection problem",
+  arSteps:["افتح أي موقع آخر للتأكد من وجود اتصال بالإنترنت.","أعد تشغيل الراوتر.","جرّب استخدام بيانات الهاتف أو شبكة أخرى للمقارنة.","إذا كانت المواقع الأخرى أيضاً لا تعمل، فالمشكلة غالباً من اتصال الإنترنت نفسه."],
+  enSteps:["Open another website to confirm that the internet connection works.","Restart the router.","Try mobile data or another network for comparison.","If other websites also fail, the issue is likely with the internet connection itself."],
+  arTip:"إذا عمل الاشتراك بشكل طبيعي على شبكة أخرى، تواصل مع مزود الإنترنت لفحص الاتصال.",
+  enTip:"If the subscription works normally on another network, contact your internet provider to check the connection."},
+ {id:"other",icon:"❓",ar:"مشكلة أخرى",en:"Other problem",
+  arSteps:["أعد تشغيل الجهاز والتطبيق.","تأكد من أن الإنترنت يعمل بشكل طبيعي.","دوّن رسالة الخطأ التي تظهر لك إن وجدت.","جهّز اسم التطبيق ونوع الجهاز واسم المستخدم للتواصل مع الدعم."],
+  enSteps:["Restart the device and app.","Make sure the internet is working normally.","Note the exact error message if one appears.","Prepare the app name, device type and username before contacting support."],
+  arTip:"إذا لم تجد مشكلتك ضمن القائمة، تواصل مع دعم Family IPTV وسنساعدك.",
+  enTip:"If you cannot find your issue in the list, contact Family IPTV support and we will help you."}
+];
+
+const cat=document.getElementById("categories");
+function render(){
+ cat.innerHTML=issues.map((x,i)=>`
+ <button class="issue" data-search="${x.ar.toLowerCase()} ${x.en.toLowerCase()}" onclick="openIssue(${i})">
+  <span class="ico">${x.icon}</span><span><b>${lang==="ar"?x.ar:x.en}</b><small>${lang==="ar"?"اضغط لعرض الحل":"Tap to view the solution"}</small></span>
+ </button>`).join("");
+ document.getElementById("search").placeholder=document.getElementById("search").dataset["placeholder"+(lang==="ar"?"Ar":"En")];
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="ar"?"rtl":"ltr";
+ document.getElementById("arBtn").classList.toggle("active",lang==="ar");
+ document.getElementById("enBtn").classList.toggle("active",lang==="en");
+ document.getElementById("back").textContent=lang==="ar"?"← العودة للمشاكل":"→ Back to problems";
+ document.getElementById("waText").textContent=lang==="ar"?"التواصل مع الدعم عبر WhatsApp":"Contact support via WhatsApp";
+}
+function openIssue(i){
+ const x=issues[i];
+ document.getElementById("listView").style.display="none";
+ document.getElementById("panel").classList.add("show");
+ document.getElementById("pIcon").textContent=x.icon;
+ document.getElementById("pTitle").textContent=lang==="ar"?x.ar:x.en;
+ const arr=lang==="ar"?x.arSteps:x.enSteps;
+ document.getElementById("steps").innerHTML=arr.map((s,n)=>`<div class="step"><div class="num">${n+1}</div><p>${s}</p></div>`).join("");
+ document.getElementById("tip").textContent=lang==="ar"?x.arTip:x.enTip;
+ document.getElementById("wa").href=`https://wa.me/${WA}?text=${encodeURIComponent(lang==="ar"?"مرحباً Family IPTV، أحتاج مساعدة بخصوص الاشتراك.":"Hello Family IPTV, I need help with my subscription.")}`;
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function closePanel(){
+ document.getElementById("panel").classList.remove("show");
+ document.getElementById("listView").style.display="";
+ document.getElementById("search").value="";
+ filter();
+}
+function setLang(l){lang=l;render();filter()}
+function filter(){
+ const q=document.getElementById("search").value.toLowerCase().trim();
+ let count=0;
+ document.querySelectorAll(".issue").forEach((el,i)=>{
+   const x=issues[i];
+   const text=(x.ar+" "+x.en).toLowerCase();
+   const ok=!q||text.includes(q);
+   el.style.display=ok?"flex":"none";if(ok)count++;
+ });
+ document.getElementById("noResults").style.display=count?"none":"block";
+}
+document.getElementById("search").addEventListener("input",filter);
+render();
+</script>
+</body>
+</html>
