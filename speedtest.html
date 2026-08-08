@@ -204,7 +204,7 @@ footer strong{color:#aaa}
 <body>
 <div class="container">
 <header>
-  <a class="logo-wrap" href="index.html" aria-label="Family IPTV">
+  <a class="logo-wrap" href="https://familyiptv.net/" aria-label="Family IPTV">
     <div class="logo-icon">F</div>
     <div class="logo-text">Family <span>IPTV</span></div>
   </a>
@@ -342,56 +342,78 @@ function showMessage(speed){
   }
 }
 
+async function fetchBytes(url){
+  const response = await fetch(url, {
+    cache:"no-store",
+    mode:"cors"
+  });
+  if(!response.ok) throw new Error("HTTP " + response.status);
+  return await response.arrayBuffer();
+}
+
 async function measurePing(){
+  // Use a tiny Cloudflare request. A failed request will be handled by startTest().
   const url = "https://speed.cloudflare.com/__down?bytes=1000&cache=" + Date.now();
   const start = performance.now();
-  await fetch(url,{cache:"no-store"});
-  return Math.round(performance.now()-start);
+  await fetchBytes(url);
+  return Math.max(1, Math.round(performance.now()-start));
 }
 
 async function measureDownload(onProgress){
   /*
-    Cloudflare endpoint returns a fixed-size binary response.
-    Multiple sizes improve the estimate for slower/faster connections.
+    Cloudflare speed endpoint.
+    The previous version could fail because it relied on response.text()
+    for a binary response. arrayBuffer() is safer for this test.
   */
-  const sizes = [1000000,3000000,5000000];
+  const sizes = [500000,1000000,2000000,3000000];
   let totalBytes = 0;
   let totalSeconds = 0;
 
   for(let i=0;i<sizes.length;i++){
     const bytes = sizes[i];
-    const url = "https://speed.cloudflare.com/__down?bytes=" + bytes + "&cache=" + Date.now() + "_" + i;
+    const url =
+      "https://speed.cloudflare.com/__down?bytes=" +
+      bytes + "&cache=" + Date.now() + "_" + i;
+
     const start = performance.now();
-    const response = await fetch(url,{cache:"no-store"});
-    if(!response.ok) throw new Error("Download test failed");
-    const data = await response.arrayBuffer();
-    const seconds = (performance.now()-start)/1000;
+    const data = await fetchBytes(url);
+    const seconds = Math.max((performance.now()-start)/1000,0.001);
+
     totalBytes += data.byteLength;
     totalSeconds += seconds;
-    onProgress(20 + ((i+1)/sizes.length)*50);
+
+    onProgress(15 + ((i+1)/sizes.length)*60);
   }
 
   return (totalBytes * 8 / totalSeconds) / 1000000;
 }
 
 async function measureUpload(){
-  const sizes = [300000,700000];
+  /*
+    Upload is optional because some browsers, networks or privacy
+    extensions may block POST requests to the measurement server.
+    The download result is still used for the final classification.
+  */
+  const sizes = [100000,250000];
   let totalBytes = 0;
   let totalSeconds = 0;
 
   for(const bytes of sizes){
     const data = new Uint8Array(bytes);
     const start = performance.now();
-    const response = await fetch("https://speed.cloudflare.com/__up",{ 
+
+    const response = await fetch("https://speed.cloudflare.com/__up",{
       method:"POST",
       body:data,
-      cache:"no-store"
+      cache:"no-store",
+      mode:"cors"
     });
-    if(!response.ok) throw new Error("Upload test failed");
-    await response.text().catch(()=>{});
-    const seconds = (performance.now()-start)/1000;
+
+    if(!response.ok) throw new Error("Upload HTTP " + response.status);
+
+    // Do not parse the response body; it is not needed for the measurement.
     totalBytes += bytes;
-    totalSeconds += seconds;
+    totalSeconds += Math.max((performance.now()-start)/1000,0.001);
   }
 
   return (totalBytes * 8 / totalSeconds) / 1000000;
@@ -410,15 +432,21 @@ async function startTest(){
 
   try{
     speedStatus.textContent = "جاري فحص Ping...";
-    const ping = await measurePing();
-    pingEl.innerHTML = ping + ' <small>ms</small>';
-    setProgress(12);
 
+    let ping = 0;
+    try{
+      ping = await measurePing();
+      pingEl.innerHTML = ping + ' <small>ms</small>';
+    }catch(e){
+      console.warn("Ping test failed:", e);
+      pingEl.innerHTML = "-- <small>ms</small>";
+    }
+
+    setProgress(12);
     speedStatus.textContent = "جاري فحص سرعة التحميل...";
+
     const download = await measureDownload(v=>{
       setProgress(v);
-      // Animate the displayed number during testing
-      const preview = Math.max(0,download || 0);
     });
 
     const roundedDownload = Number(download.toFixed(1));
@@ -426,39 +454,39 @@ async function startTest(){
     setSpeed(roundedDownload);
 
     speedStatus.textContent = "جاري فحص سرعة الرفع...";
-    setProgress(75);
+    setProgress(82);
 
-    let upload = 0;
     try{
-      upload = await measureUpload();
+      const upload = await measureUpload();
+      const roundedUpload = Number(upload.toFixed(1));
+      uploadEl.innerHTML = roundedUpload + ' <small>Mbps</small>';
     }catch(e){
-      // Upload can fail because of browser/network restrictions.
-      // Download result remains the main classification criterion.
-      upload = 0;
+      console.warn("Upload test unavailable:", e);
+      uploadEl.innerHTML = "-- <small>Mbps</small>";
     }
-
-    const roundedUpload = Number(upload.toFixed(1));
-    uploadEl.innerHTML = roundedUpload > 0
-      ? roundedUpload + ' <small>Mbps</small>'
-      : '-- <small>Mbps</small>';
 
     setProgress(100);
     speedStatus.textContent = "اكتمل الفحص";
     showMessage(roundedDownload);
 
   }catch(error){
-    console.error(error);
-    speedStatus.textContent = "تعذر إكمال الفحص";
+    console.error("Speed test failed:", error);
+
+    speedStatus.textContent = "تعذر الوصول إلى خادم القياس";
+    setProgress(0);
+
     message.className = "message show bad";
     messageTitle.textContent = "⚠️ تعذر إكمال فحص السرعة";
     messageText.textContent =
-      "قد يكون المتصفح أو مزود الإنترنت قد منع خادم القياس. حاول مرة أخرى بعد التأكد من اتصال الإنترنت.";
+      "تعذر الاتصال بخادم قياس السرعة. تأكد من أن اتصال الإنترنت يعمل، ثم أوقف أي VPN أو مانع إعلانات وحاول مرة أخرى.";
+
   }finally{
     speedometer.classList.remove("testing");
     startBtn.disabled = false;
     startBtn.textContent = "🔄 إعادة فحص السرعة";
   }
 }
+
 </script>
 </body>
 </html>
