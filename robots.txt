@@ -1,12 +1,6 @@
 User-agent: *
 Allow: /
-Allow: /product.html?id=
-Allow: /check/
-Allow: /assets/
-Allow: /css/
-Allow: /js/
 
 Disallow: /admin.html
-Disallow: /?
 
 Sitemap: https://familyiptv.net/sitemap.xml
