@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-
 Disallow: /admin.html
 
 Sitemap: https://familyiptv.net/sitemap.xml
