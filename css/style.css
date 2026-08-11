@@ -876,3 +876,84 @@ font-size:20px;
 .order-btn:hover{
     transform:translateY(-2px);
 }
+
+
+/* =========================
+   Family IPTV Social Icons
+========================= */
+
+.family-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto 15px;
+    direction: ltr;
+}
+
+.family-social .social {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d40000;
+    color: #fff;
+
+    text-decoration: none;
+    font-size: 19px;
+
+    border: 1px solid rgba(255,255,255,0.12);
+
+    box-shadow:
+        0 0 0 1px rgba(212,0,0,0.15),
+        0 5px 18px rgba(212,0,0,0.20);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.family-social .social:hover {
+    background: #ff2020;
+    color: #fff;
+    transform: translateY(-4px) scale(1.06);
+
+    box-shadow:
+        0 0 20px rgba(212,0,0,0.55),
+        0 8px 25px rgba(212,0,0,0.30);
+}
+
+/* تأثير خاص لكل منصة */
+.family-social .instagram:hover {
+    box-shadow: 0 0 20px rgba(225,48,108,0.55);
+}
+
+.family-social .tiktok:hover {
+    box-shadow: 0 0 20px rgba(0,242,234,0.45);
+}
+
+.family-social .telegram:hover {
+    box-shadow: 0 0 20px rgba(0,136,204,0.50);
+}
+
+.family-social .whatsapp:hover {
+    box-shadow: 0 0 20px rgba(37,211,102,0.50);
+}
+
+/* الموبايل */
+@media (max-width: 600px) {
+    .family-social {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .family-social .social {
+        width: 42px;
+        height: 42px;
+        font-size: 18px;
+    }
+}
