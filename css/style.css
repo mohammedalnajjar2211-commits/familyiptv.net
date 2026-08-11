@@ -1042,46 +1042,152 @@ font-size:20px;
    Legal Links Bar
 ========================= */
 
-/* زر تصفح الباقات */
-.packages-btn {
+/* ================================
+   Hero Section
+================================ */
+
+.hero-section {
+    width: 100%;
+    max-width: 1665px;
+    margin: 45px auto 0;
+    padding: 65px 30px 38px;
+    text-align: center;
+
+    background: linear-gradient(
+        145deg,
+        rgba(20, 20, 20, 0.98),
+        rgba(14, 14, 14, 0.98)
+    );
+
+    border: 1px solid #292929;
+    border-radius: 28px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+/* العنوان */
+
+.hero-section h1 {
+    margin: 0;
+    color: #fff;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.hero-section h1:first-letter {
+    color: #ff2d2d;
+}
+
+/* الوصف */
+
+.hero-description {
+    margin: 18px auto 0;
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* ================================
+   زر تصفح الباقات
+================================ */
+
+.hero-packages-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     gap: 9px;
-    margin-top: 16px;
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #d40000, #ff2525);
+
+    margin-top: 18px;
+
+    padding: 11px 22px;
+
+    min-width: 145px;
+
+    background: linear-gradient(
+        135deg,
+        #d40000,
+        #ff2424
+    );
+
     color: #fff;
-    border-radius: 8px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 10px;
+
     font-size: 14px;
     font-weight: 700;
+
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.08);
-    box-shadow: 0 5px 18px rgba(212,0,0,0.20);
-    transition: all .25s ease;
+
+    box-shadow:
+        0 6px 20px rgba(212, 0, 0, 0.20);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
-.packages-btn:hover {
+/* Hover */
+
+.hero-packages-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(212,0,0,0.32);
-    background: linear-gradient(135deg, #ed0000, #ff3838);
+
+    background: linear-gradient(
+        135deg,
+        #ed0000,
+        #ff3535
+    );
+
+    box-shadow:
+        0 9px 28px rgba(212, 0, 0, 0.32);
 }
 
-.packages-arrow {
+/* السهم */
+
+.hero-btn-arrow {
     font-size: 17px;
     line-height: 1;
-    transition: transform .25s ease;
+
+    transition:
+        transform 0.25s ease;
 }
 
-.packages-btn:hover .packages-arrow {
+.hero-packages-btn:hover .hero-btn-arrow {
     transform: translateX(-4px);
 }
 
-/* الموبايل */
-@media (max-width: 600px) {
-    .packages-btn {
-        padding: 9px 17px;
+
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        margin-top: 25px;
+        padding: 42px 18px 28px;
+        border-radius: 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 28px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+        margin-top: 12px;
+    }
+
+    .hero-packages-btn {
+        margin-top: 15px;
+        padding: 10px 18px;
+        min-width: 135px;
         font-size: 13px;
-        margin-top: 14px;
     }
 }
