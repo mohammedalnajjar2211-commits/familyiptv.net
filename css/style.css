@@ -886,7 +886,7 @@ font-size:20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     margin: 0 auto 15px;
     direction: ltr;
 }
@@ -895,57 +895,57 @@ font-size:20px;
     width: 44px;
     height: 44px;
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background: #d40000;
-    color: #fff;
+    /* الأيقونة باللون الأحمر */
+    color: #d40000;
+
+    /* بدون خلفية حمراء */
+    background: transparent;
+
+    /* دائرة/حد خفيف */
+    border: 1px solid rgba(212, 0, 0, 0.35);
 
     text-decoration: none;
-    font-size: 19px;
+    font-size: 20px;
 
-    border: 1px solid rgba(255,255,255,0.12);
-
-    box-shadow:
-        0 0 0 1px rgba(212,0,0,0.15),
-        0 5px 18px rgba(212,0,0,0.20);
-
-    transition:
-        transform 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
+/* عند تمرير الماوس */
 .family-social .social:hover {
-    background: #ff2020;
-    color: #fff;
-    transform: translateY(-4px) scale(1.06);
+    color: #ffffff;
+    background: #d40000;
+    border-color: #d40000;
+
+    transform: translateY(-4px) scale(1.08);
 
     box-shadow:
-        0 0 20px rgba(212,0,0,0.55),
-        0 8px 25px rgba(212,0,0,0.30);
+        0 0 18px rgba(212, 0, 0, 0.45);
 }
 
-/* تأثير خاص لكل منصة */
-.family-social .instagram:hover {
-    box-shadow: 0 0 20px rgba(225,48,108,0.55);
+/* إزالة أي ألوان خاصة بالمنصات */
+.family-social .instagram,
+.family-social .tiktok,
+.family-social .telegram,
+.family-social .whatsapp {
+    color: #d40000;
 }
 
-.family-social .tiktok:hover {
-    box-shadow: 0 0 20px rgba(0,242,234,0.45);
-}
-
-.family-social .telegram:hover {
-    box-shadow: 0 0 20px rgba(0,136,204,0.50);
-}
-
+/* عند Hover جميعها تصبح بيضاء داخل الأحمر */
+.family-social .instagram:hover,
+.family-social .tiktok:hover,
+.family-social .telegram:hover,
 .family-social .whatsapp:hover {
-    box-shadow: 0 0 20px rgba(37,211,102,0.50);
+    color: #ffffff;
 }
 
 /* الموبايل */
 @media (max-width: 600px) {
+
     .family-social {
         gap: 10px;
         margin-bottom: 14px;
@@ -954,6 +954,6 @@ font-size:20px;
     .family-social .social {
         width: 42px;
         height: 42px;
-        font-size: 18px;
+        font-size: 19px;
     }
 }
