@@ -1041,3 +1041,47 @@ font-size:20px;
 /* =========================
    Legal Links Bar
 ========================= */
+
+/* زر تصفح الباقات */
+.packages-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 16px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #d40000, #ff2525);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 5px 18px rgba(212,0,0,0.20);
+    transition: all .25s ease;
+}
+
+.packages-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(212,0,0,0.32);
+    background: linear-gradient(135deg, #ed0000, #ff3838);
+}
+
+.packages-arrow {
+    font-size: 17px;
+    line-height: 1;
+    transition: transform .25s ease;
+}
+
+.packages-btn:hover .packages-arrow {
+    transform: translateX(-4px);
+}
+
+/* الموبايل */
+@media (max-width: 600px) {
+    .packages-btn {
+        padding: 9px 17px;
+        font-size: 13px;
+        margin-top: 14px;
+    }
+}
