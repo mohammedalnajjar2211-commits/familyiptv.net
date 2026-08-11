@@ -886,74 +886,92 @@ font-size:20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     margin: 0 auto 15px;
     direction: ltr;
 }
 
-.family-social .social {
+.family-social-icon {
     width: 44px;
     height: 44px;
-    border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    /* الأيقونة باللون الأحمر */
-    color: #d40000;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 50%;
 
-    /* بدون خلفية حمراء */
-    background: transparent;
-
-    /* دائرة/حد خفيف */
-    border: 1px solid rgba(212, 0, 0, 0.35);
+    color: #d40000 !important;
 
     text-decoration: none;
-    font-size: 20px;
+    transition: all 0.3s ease;
+}
+
+.family-social-icon svg {
+    width: 27px;
+    height: 27px;
+
+    fill: #d40000;
 
     transition: all 0.3s ease;
 }
 
-/* عند تمرير الماوس */
-.family-social .social:hover {
-    color: #ffffff;
-    background: #d40000;
-    border-color: #d40000;
-
-    transform: translateY(-4px) scale(1.08);
-
-    box-shadow:
-        0 0 18px rgba(212, 0, 0, 0.45);
+/* Instagram */
+.family-social-icon svg rect,
+.family-social-icon svg circle {
+    fill: none;
+    stroke: #d40000;
+    stroke-width: 1.8;
 }
 
-/* إزالة أي ألوان خاصة بالمنصات */
-.family-social .instagram,
-.family-social .tiktok,
-.family-social .telegram,
-.family-social .whatsapp {
-    color: #d40000;
+.family-social-icon svg .fill-dot {
+    fill: #d40000;
+    stroke: none;
 }
 
-/* عند Hover جميعها تصبح بيضاء داخل الأحمر */
-.family-social .instagram:hover,
-.family-social .tiktok:hover,
-.family-social .telegram:hover,
-.family-social .whatsapp:hover {
-    color: #ffffff;
+/* باقي الأيقونات */
+.family-social-icon:nth-child(2) svg path,
+.family-social-icon:nth-child(3) svg path,
+.family-social-icon:nth-child(4) svg path {
+    fill: #d40000;
+    stroke: none;
+}
+
+/* Hover */
+.family-social-icon:hover {
+    background: transparent !important;
+    transform: translateY(-4px) scale(1.12);
+}
+
+.family-social-icon:hover svg {
+    fill: #ff2020;
+    filter: drop-shadow(0 0 7px rgba(212, 0, 0, 0.65));
+}
+
+.family-social-icon:hover svg rect,
+.family-social-icon:hover svg circle {
+    stroke: #ff2020;
+}
+
+.family-social-icon:hover svg .fill-dot {
+    fill: #ff2020;
 }
 
 /* الموبايل */
 @media (max-width: 600px) {
-
     .family-social {
-        gap: 10px;
-        margin-bottom: 14px;
+        gap: 8px;
     }
 
-    .family-social .social {
+    .family-social-icon {
         width: 42px;
         height: 42px;
-        font-size: 19px;
+    }
+
+    .family-social-icon svg {
+        width: 25px;
+        height: 25px;
     }
 }
