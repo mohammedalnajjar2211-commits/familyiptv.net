@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="دليل تثبيت Family Pro على التلفزيونات وأجهزة TV Box والهواتف والكمبيوتر">
+<title>Family Pro | <span data-i18n="guide">دليل التثبيت</span></title>
+<link rel="icon" type="image/png" href="https://familyiptv.net/favicon.png">
+<link rel="apple-touch-icon" href="https://familyiptv.net/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--red:#e50914;--red2:#ff2633;--bg:#070707;--card:#111;--card2:#171717;--text:#fff;--muted:#a7a7a7;--border:#292929}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 50% -10%,#31070b 0,#100305 28%,var(--bg) 55%);color:var(--text);font-family:Cairo,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(7,7,7,.86);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,.07)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative}.brand{font-size:23px;font-weight:800;white-space:nowrap;display:inline-block}.brand span{color:var(--red)}.nav-links{display:flex;align-items:center;gap:6px}.nav a{color:#ddd;font-size:14px;margin-right:18px}.nav a:hover{color:#fff}.menu-btn{display:none;background:#151515;color:#fff;border:1px solid #333;border-radius:10px;width:44px;height:42px;font-size:22px;cursor:pointer;font-family:inherit}.hero{padding:80px 0 50px;text-align:center}.badge{display:inline-flex;padding:7px 15px;border:1px solid #4b161a;background:#1d080a;color:#ff7379;border-radius:999px;font-size:13px}.hero h1{font-size:clamp(32px,6vw,62px);line-height:1.15;margin:20px auto 15px;max-width:850px}.hero h1 span{color:var(--red)}.hero p{color:var(--muted);max-width:720px;margin:0 auto 28px;line-height:2}.hero-btn{display:inline-flex;background:var(--red);padding:13px 24px;border-radius:10px;font-weight:700;box-shadow:0 10px 35px rgba(229,9,20,.22)}
+.section{padding:42px 0}.title{text-align:center;margin-bottom:30px}.title h2{font-size:30px;margin:0 0 8px}.title p{color:var(--muted);margin:0}.devices{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.device{background:linear-gradient(145deg,#151515,#0e0e0e);border:1px solid var(--border);border-radius:16px;padding:22px;cursor:pointer;transition:.25s}.device:hover,.device.active{border-color:#7d1117;transform:translateY(-3px);box-shadow:0 15px 35px rgba(0,0,0,.35)}.icon{width:50px;height:50px;border-radius:13px;background:#24080b;display:grid;place-items:center;font-size:25px;margin-bottom:15px}.device h3{margin:0 0 6px}.device p{margin:0;color:var(--muted);font-size:13px}
+.guide{margin-top:35px}.guide-card{display:none;background:linear-gradient(145deg,#151515,#0c0c0c);border:1px solid var(--border);border-radius:20px;padding:28px}.guide-card.show{display:block}.guide-head{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:24px}.guide-head h3{margin:0;font-size:25px}.tag{background:#26080b;color:#ff6870;padding:5px 10px;border-radius:8px;font-size:12px}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.step{background:#111;border:1px solid #242424;border-radius:15px;padding:20px;display:flex;gap:15px}.num{flex:0 0 38px;height:38px;background:var(--red);border-radius:10px;display:grid;place-items:center;font-weight:800}.step h4{margin:0 0 6px}.step p{margin:0;color:#aaa;line-height:1.8;font-size:14px}.app-box{margin-top:22px;background:#0b0b0b;border:1px solid #2a2a2a;border-radius:15px;padding:20px}.app-row{display:flex;align-items:center;gap:15px}.app-img{width:65px;height:65px;border-radius:15px;display:grid;place-items:center;background:linear-gradient(135deg,#2a0a0d,#111);font-size:28px}.app-info{flex:1}.app-info strong{display:block;font-size:17px}.app-info small{color:#999}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:9px;background:#222;border:1px solid #333;font-size:13px;font-weight:700}.btn.primary{background:var(--red);border-color:var(--red)}.btn:hover{filter:brightness(1.15)}
+.notice{margin-top:20px;padding:15px 17px;background:#18090a;border:1px solid #421114;border-radius:12px;color:#ddd;font-size:13px;line-height:1.9}.notice b{color:#ff626a}
+.visual{margin-top:24px;border:1px dashed #3a3a3a;border-radius:16px;min-height:180px;display:grid;place-items:center;text-align:center;padding:25px;background:linear-gradient(135deg,#101010,#0a0a0a)}.visual .big{font-size:45px}.visual p{color:#999;margin:8px 0 0}
+.faq{max-width:850px;margin:auto}.faq-item{background:#111;border:1px solid var(--border);border-radius:12px;margin-bottom:10px;overflow:hidden}.faq-q{padding:17px 20px;cursor:pointer;font-weight:700;display:flex;justify-content:space-between}.faq-a{display:none;padding:0 20px 18px;color:#aaa;line-height:1.9;font-size:14px}.faq-item.open .faq-a{display:block}
+footer{border-top:1px solid var(--border);margin-top:40px;padding:30px 0;text-align:center;color:#888;font-size:13px}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:100;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 0 5px rgba(37,211,102,.12);font-size:29px;transition:.25s}.wa-float:hover{transform:scale(1.08)}
+.search{max-width:600px;margin:0 auto 28px;position:relative}.search input{width:100%;background:#111;border:1px solid #292929;color:#fff;border-radius:12px;padding:15px 18px;font-family:inherit;outline:none}.search input:focus{border-color:#731018}
+@media(max-width:850px){
+  .devices{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .menu-btn{display:block}
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:68px;
+    right:0;
+    left:0;
+    background:rgba(12,12,12,.98);
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:10px;
+    flex-direction:column;
+    align-items:stretch;
+    gap:3px;
+    box-shadow:0 18px 35px rgba(0,0,0,.45);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{
+    display:block;
+    margin:0;
+    padding:13px 15px;
+    border-radius:9px;
+    font-size:14px;
+  }
+  .nav-links a:hover{background:#1a1a1a}
+  .hero{padding-top:55px}
+}
+@media(max-width:520px){
+  .container{width:min(94%,1180px)}
+  .nav{height:64px}
+  .brand{font-size:20px}
+  .devices{grid-template-columns:1fr 1fr}
+  .device{padding:15px}
+  .guide-card{padding:18px}
+  .guide-head{align-items:flex-start;flex-direction:column}
+  .app-row{align-items:flex-start}
+  .app-img{width:55px;height:55px}
+  .hero h1{font-size:36px}
+  .wa-float{right:15px;bottom:15px;width:55px;height:55px}
+}
+
+.lang-switch{display:flex;gap:5px;align-items:center;margin-right:8px}
+.lang-btn{background:#111;color:#aaa;border:1px solid #292929;border-radius:8px;padding:7px 9px;font:600 12px Cairo;cursor:pointer}
+.lang-btn.active,.lang-btn:hover{background:#26080b;color:#fff;border-color:#721018}
+@media(max-width:850px){.lang-switch{margin:0 0 5px}.lang-btn{padding:8px 11px}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <a class="brand" href="https://familyiptv.net/">Family <span>Pro</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+  <nav class="nav-links" id="navLinks">
+    <a href="https://familyiptv.net/"><span data-i18n="home">الرئيسية</span></a>
+    <a href="#devices"><span data-i18n="devices">الأجهزة</span></a>
+    <a href="#guide">دليل التثبيت</a>
+    <a href="#faq"><span data-i18n="faq">الأسئلة الشائعة</span></a>
+  </nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="container">
+  <span class="badge"><span data-i18n="badge">دليل التثبيت الرسمي</span></span>
+  <h1><span data-i18n="heroTitle">طريقة تشغيل اشتراكك على <span>جميع أجهزتك</span></span></h1>
+  <p><span data-i18n="heroText">اختر نوع جهازك من القائمة بالأسفل، وسنوضح لك التطبيق المناسب وطريقة التثبيت خطوة بخطوة.</span></p>
+  <a class="hero-btn" href="#devices"><span data-i18n="choose">اختر جهازك الآن ↓</span></a>
+</div></section>
+
+<section class="section" id="devices"><div class="container">
+  <div class="title"><h2><span data-i18n="chooseDevice">اختر نوع الجهاز</span></h2><p><span data-i18n="chooseDeviceText">اضغط على جهازك لعرض دليل التثبيت</span></p></div>
+  <div class="search"><input id="search" placeholder="ابحث عن جهاز أو نظام تشغيل..." data-i18n-placeholder="search"></div>
+  <div class="devices" id="deviceGrid"></div>
+  <div class="guide" id="guide"></div>
+</div></section>
+
+<section class="section" id="faq"><div class="container">
+<div class="title"><h2><span data-i18n="faqTitle">الأسئلة الشائعة</span></h2><p><span data-i18n="faqText">إجابات سريعة لأكثر الأسئلة شيوعاً</span></p></div>
+<div class="faq">
+ <div class="faq-item"><div class="faq-q">هل التطبيق مجاني؟ <span>＋</span></div><div class="faq-a">تثبيت التطبيق قد يكون مجانياً، أما استخدام الاشتراك فيعتمد على الباقة التي حصلت عليها.</div></div>
+ <div class="faq-item"><div class="faq-q">أين أجد بيانات الاشتراك؟ <span>＋</span></div><div class="faq-a">بعد شراء الاشتراك يتم إرسال بيانات الدخول وطريقة استخدامها حسب الجهاز والتطبيق المختار.</div></div>
+ <div class="faq-item"><div class="faq-q">هل أستطيع استخدام الاشتراك على أكثر من جهاز؟ <span>＋</span></div><div class="faq-a">يعتمد ذلك على نوع الباقة التي اشتركت بها. راجع تفاصيل باقتك قبل إضافة جهاز آخر.</div></div>
+ <div class="faq-item"><div class="faq-q">ماذا أفعل إذا لم أجد جهازي؟ <span>＋</span></div><div class="faq-a">تواصل مع الدعم، وسيتم إرشادك إلى التطبيق والطريقة المناسبة لجهازك.</div></div>
+</div></div></section>
+</main>
+
+<a class="wa-float" href="https://wa.me/9647809522129" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب" title="واتساب">◉</a>
+
+<footer><div class="container"><span data-i18n="footer">© 2026 Family Pro — دليل التثبيت والدعم</span></div></footer>
+
+<script>
+const L={
+ar:{
+home:"الرئيسية",devices:"الأجهزة",guide:"دليل التثبيت",faq:"الأسئلة الشائعة",badge:"دليل التثبيت الرسمي",
+heroTitle:"طريقة تشغيل اشتراكك على <span>جميع أجهزتك</span>",heroText:"اختر نوع جهازك من القائمة بالأسفل، وسنوضح لك التطبيق المناسب وطريقة التثبيت خطوة بخطوة.",
+choose:"اختر جهازك الآن ↓",chooseDevice:"اختر نوع الجهاز",chooseDeviceText:"اضغط على جهازك لعرض دليل التثبيت",search:"ابحث عن جهاز أو نظام تشغيل...",
+faqTitle:"الأسئلة الشائعة",faqText:"إجابات سريعة لأكثر الأسئلة شيوعاً",footer:"© 2026 Family Pro — دليل التثبيت والدعم",
+play:"Google Play ↗",appstore:"App Store ↗",smarters:"Smarters Player Lite ↗",windows:"تحميل Windows ↗",mac:"تحميل macOS ↗",
+official:"روابط التحميل الرسمية",place:"مكان صورة الشرح",placeText:"يمكنك استبدال هذه المساحة بصورة شاشة التطبيق أو خطوات التثبيت الخاصة بهذا الجهاز.",
+downloader:"كود Downloader:",downloadText:"استخدمه داخل تطبيق Downloader لتحميل التطبيق عند توفر Downloader على جهازك."
+},
+ku:{
+home:"سەرەکی",devices:"ئامێرەکان",guide:"ڕێبەری دامەزراندن",faq:"پرسیارە باوەکان",badge:"ڕێبەری فەرمی دامەزراندن",
+heroTitle:"چۆن بەشدارییەکەت لەسەر <span>هەموو ئامێرەکانت</span> بەکاربهێنیت",heroText:"جۆری ئامێرەکەت هەڵبژێرە و ڕێبەری ئەپ و دامەزراندن بە هەنگاو ببینە.",
+choose:"ئامێرەکەت هەڵبژێرە ↓",chooseDevice:"جۆری ئامێرەکەت هەڵبژێرە",chooseDeviceText:"لەسەر ئامێرەکەت کرتە بکە بۆ بینینی ڕێبەر",search:"بگەڕێ بۆ ئامێر یان سیستەم...",
+faqTitle:"پرسیارە باوەکان",faqText:"وەڵامی خێرا بۆ پرسیارە باوەکان",footer:"© 2026 Family Pro — ڕێبەری دامەزراندن و پشتگیری",
+play:"Google Play ↗",appstore:"App Store ↗",smarters:"Smarters Player Lite ↗",windows:"داگرتنی Windows ↗",mac:"داگرتنی macOS ↗",
+official:"بەستەرە فەرمییەکانی داگرتن",place:"شوێنی وێنەی ڕێنمایی",placeText:"دەتوانیت ئەم شوێنە بە وێنەی ئەپ یان هەنگاوەکانی دامەزراندن بگۆڕیت.",
+downloader:"کۆدی Downloader:",downloadText:"کۆدەکە لە ناو Downloader بنووسە بۆ داگرتنی ئەپ."
+},
+en:{
+home:"Home",devices:"Devices",guide:"Installation Guide",faq:"FAQ",badge:"Official Installation Guide",
+heroTitle:"How to use your subscription on <span>all your devices</span>",heroText:"Choose your device below and we will show you the recommended app and installation steps.",
+choose:"Choose your device ↓",chooseDevice:"Choose your device",chooseDeviceText:"Click your device to view the installation guide",search:"Search for a device or operating system...",
+faqTitle:"Frequently Asked Questions",faqText:"Quick answers to common questions",footer:"© 2026 Family Pro — Installation & Support",
+play:"Google Play ↗",appstore:"App Store ↗",smarters:"Smarters Player Lite ↗",windows:"Download Windows ↗",mac:"Download macOS ↗",
+official:"Official download links",place:"Instruction image area",placeText:"Replace this area with an app screenshot or installation-step image.",
+downloader:"Downloader code:",downloadText:"Enter this code inside Downloader to download the app."
+}};
+const devices=[
+["📺",["Smart TV","Smart TV","Smart TV"],["Samsung • LG • Hisense • Philips","Samsung • LG • Hisense • Philips","Samsung • LG • Hisense • Philips"],"Ora Player / IBO Player"],
+["📺",["Android TV / Google TV","Android TV / Google TV","Android TV / Google TV"],["Android TV • Google TV • TCL","Android TV • Google TV • TCL","Android TV • Google TV • TCL"],"Family Pro","https://play.google.com/store/apps/details?id=com.shadeed.familypro"],
+["📦",["Android TV Box","Android TV Box","Android TV Box"],["أجهزة TV Box بنظام Android","TV Box بە سیستەمی Android","Android TV Box devices"],"Family Pro","https://play.google.com/store/apps/details?id=com.shadeed.familypro"],
+["📱",["Android","Android","Android"],["الهواتف والأجهزة اللوحية","مۆبایل و تابلێت","Phones & tablets"],"Family Pro","https://play.google.com/store/apps/details?id=com.shadeed.familypro"],
+["🍎",["iPhone / iPad","iPhone / iPad","iPhone / iPad"],["iOS • iPadOS","iOS • iPadOS","iOS • iPadOS"],"20 Platform / Smarters Player Lite","https://apps.apple.com/us/app/20-platform/id6502774600","https://apps.apple.com/us/app/smarters-player-lite/id1628995509"],
+["🖥️",["Windows","Windows","Windows"],["أجهزة الكمبيوتر واللابتوب","کۆمپیوتەر و لاپتۆپ","PC & laptop"],"IPTV Smarters - Windows","https://www.iptvsmarters.com/download?download=windows_app"],
+["💻",["macOS","macOS","macOS"],["MacBook • iMac","MacBook • iMac","MacBook • iMac"],"IPTV Smarters - macOS","https://www.iptvsmarters.com/download?download=mac"]
+];
+let lang=localStorage.getItem("familyGuideLang")||"ar";
+const t=k=>L[lang][k]||k;
+function apply(){
+document.documentElement.lang=lang;document.documentElement.dir=lang==="en"?"ltr":"rtl";
+document.querySelectorAll("[data-i18n]").forEach(e=>e.innerHTML=t(e.dataset.i18n));
+document.querySelectorAll("[data-i18n-placeholder]").forEach(e=>e.placeholder=t(e.dataset.i18nPlaceholder));
+document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b.dataset.lang===lang));
+render();
+}
+function render(q=""){
+const grid=document.getElementById("deviceGrid");grid.innerHTML="";
+devices.filter(d=>(d[1][lang==="ar"?0:lang==="ku"?1:2]+" "+d[2][lang==="ar"?0:lang==="ku"?1:2]).toLowerCase().includes(q.toLowerCase())).forEach((d,i)=>{
+let e=document.createElement("div");e.className="device";e.dataset.id=i;
+e.innerHTML=`<div class="icon">${d[0]}</div><h3>${d[1][lang==="ar"?0:lang==="ku"?1:2]}</h3><p>${d[2][lang==="ar"?0:lang==="ku"?1:2]}</p>`;
+e.onclick=()=>show(i);grid.appendChild(e);
+});
+}
+function show(i){
+const d=devices[i],idx=lang==="ar"?0:lang==="ku"?1:2;
+const names=[
+[["افتح متجر التطبيقات","فرۆشگای ئەپەکان بکەرەوە","Open the app store"],["ثبّت التطبيق","ئەپەکە دابمەزرێنە","Install the app"],["افتح التطبيق","ئەپەکە بکەرەوە","Open the app"],["أدخل بيانات الاشتراك","زانیاری بەشداری بنووسە","Enter subscription details"],["ابدأ المشاهدة","دەست بە بینین بکە","Start watching"]],
+[["افتح Google Play","Google Play بکەرەوە","Open Google Play"],["ابحث عن Family Pro","Family Pro بگەڕێ","Search for Family Pro"],["ثبّت التطبيق","ئەپەکە دابمەزرێنە","Install the app"],["بديل: Downloader","هەڵبژاردەی Downloader","Alternative: Downloader"],["افتح Family Pro","Family Pro بکەرەوە","Open Family Pro"]],
+[["اتصل بالإنترنت","بە ئینتەرنێت پەیوەست بە","Connect to the internet"],["Google Play","Google Play","Google Play"],["استخدم Downloader","Downloader بەکاربهێنە","Use Downloader"],["افتح التطبيق","ئەپەکە بکەرەوە","Open the app"],["أدخل بيانات الاشتراك","زانیاری بەشداری بنووسە","Enter subscription details"]],
+[["افتح Google Play","Google Play بکەرەوە","Open Google Play"],["ابحث عن Family Pro","Family Pro بگەڕێ","Search for Family Pro"],["ثبّت التطبيق","ئەپەکە دابمەزرێنە","Install the app"],["افتح التطبيق","ئەپەکە بکەرەوە","Open the app"],["أدخل بيانات الاشتراك","زانیاری بەشداری بنووسە","Enter subscription details"]],
+[["افتح App Store","App Store بکەرەوە","Open App Store"],["تطبيقنا الخاص","ئەپە تایبەتەکەمان","Our app"],["بديل: Smarters Player Lite","هەڵبژاردە: Smarters Player Lite","Alternative: Smarters Player Lite"],["ثبّت التطبيق","ئەپەکە دابمەزرێنە","Install the app"],["أدخل بيانات الاشتراك","زانیاری بەشداری بنووسە","Enter subscription details"]],
+[["افتح رابط التحميل","بەستەری داگرتن بکەرەوە","Open download link"],["ثبّت البرنامج","بەرنامەکە دابمەزرێنە","Install the program"],["شغّل البرنامج","بەرنامەکە بکەرەوە","Launch the program"],["أدخل بيانات الاشتراك","زانیاری بەشداری بنووسە","Enter subscription details"],["ابدأ الاستخدام","دەست بە بەکارهێنان بکە","Start using it"]],
+[["افتح رابط التحميل","بەستەری داگرتن بکەرەوە","Open download link"],["ثبّت البرنامج","بەرنامەکە دابمەزرێنە","Install the program"],["شغّل البرنامج","بەرنامەکە بکەرەوە","Launch the program"],["أدخل بيانات الاشتراك","زانیاری بەشداری بنووسە","Enter subscription details"],["ابدأ المشاهدة","دەست بە بینین بکە","Start watching"]]
+];
+const texts=[
+["افتح متجر التطبيقات الموجود في تلفزيونك وابحث عن التطبيق المناسب.","فرۆشگای ئەپەکانی تەلەفزیۆنەکەت بکەرەوە و ئەپی گونجاو بگەڕێ.","Open your TV's app store and search for the suitable app."],
+["اختر التطبيق واضغط تثبيت.","ئەپەکە هەڵبژێرە و دایمەزرێنە.","Choose the app and install it."],
+["بعد التثبيت افتح التطبيق.","دوای دامەزراندن ئەپەکە بکەرەوە.","Open the app after installation."],
+["أدخل بيانات الاشتراك التي استلمتها من Family Pro.","زانیاری بەشدارییەکەت لە Family Pro بنووسە.","Enter the subscription details provided by Family Pro."],
+["بعد تحميل المحتوى يمكنك البدء.","دوای بارکردنی ناوەڕۆک دەتوانیت دەست پێبکەیت.","After the content loads, you can start."]
+];
+let steps=names[i]||names[0];
+let title=d[1][idx], links="";
+if(d[4]) links+=`<a class="btn primary" target="_blank" rel="noopener" href="${d[4]}">${d[0]==="🍎"?t("appstore"):t("play")}</a>`;
+if(d[5]) links+=`<a class="btn" target="_blank" rel="noopener" href="${d[5]}">${t("smarters")}</a>`;
+document.getElementById("guide").innerHTML=`<div class="guide-card show"><div class="guide-head"><div><h3>${title}</h3><div style="color:#999;font-size:13px;margin-top:5px">${d[3]}</div></div><span class="tag">${d[3]}</span></div><div class="steps">${steps.map((x,n)=>`<div class="step"><div class="num">${n+1}</div><div><h4>${x[idx]}</h4><p>${texts[n][idx]}</p></div></div>`).join("")}</div><div class="app-box"><div class="app-row"><div class="app-img">${d[0]}</div><div class="app-info"><strong>${d[3]}</strong><small>${t("official")}</small></div></div><div class="buttons">${links}</div>${["Android TV / Google TV","Android TV Box","Android"].includes(d[1][0])?`<div class="notice"><b>${t("downloader")}</b> 3520676 — ${t("downloadText")}</div>`:""}</div><div class="visual"><div><div class="big">${d[0]}</div><strong>${t("place")}</strong><p>${t("placeText")}</p></div></div></div>`;
+document.getElementById("guide").scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.querySelectorAll(".lang-btn").forEach(b=>b.addEventListener("click",()=>{lang=b.dataset.lang;localStorage.setItem("familyGuideLang",lang);apply()}));
+document.getElementById("search").addEventListener("input",e=>render(e.target.value));
+const mb=document.getElementById("menuBtn"),nl=document.getElementById("navLinks");
+mb.addEventListener("click",()=>{let o=nl.classList.toggle("open");mb.textContent=o?"×":"☰";mb.setAttribute("aria-expanded",o)});
+nl.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>{nl.classList.remove("open");mb.textContent="☰";mb.setAttribute("aria-expanded","false")}));
+apply();
+</script>
+</body>
+</html>
