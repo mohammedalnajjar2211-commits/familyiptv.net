@@ -715,5 +715,151 @@ document.querySelectorAll(".faq-item").forEach(function(item) {
 
 <script src="js/app.js"></script>
 
+
+<!-- Family IPTV - Mobile Bottom Navigation -->
+<nav class="family-mobile-nav">
+
+    <a href="/" class="family-nav-item active">
+        <i class="fa-solid fa-house"></i>
+        <span>الرئيسية</span>
+    </a>
+
+    <a href="#subscriptions" class="family-nav-item">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>الاشتراكات</span>
+    </a>
+
+    <a href="#apps" class="family-nav-item">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <span>التطبيقات</span>
+    </a>
+
+    <a href="#check" class="family-nav-item">
+        <i class="fa-solid fa-circle-check"></i>
+        <span>افحص اشتراكك</span>
+    </a>
+
+</nav>
+
+<style>
+/* =========================================
+   Family IPTV - Mobile Bottom Navigation
+   ========================================= */
+
+.family-mobile-nav {
+    display: none;
+}
+
+/* يظهر فقط على الهاتف */
+@media (max-width: 768px) {
+
+    .family-mobile-nav {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 68px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        background: rgba(10, 10, 10, 0.97);
+        border-top: 1px solid rgba(220, 0, 0, 0.35);
+
+        box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.45);
+
+        z-index: 99999;
+
+        direction: rtl;
+
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .family-nav-item {
+        flex: 1;
+        height: 68px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 5px;
+
+        text-decoration: none;
+
+        color: #aaa;
+
+        font-family: inherit;
+
+        transition: all 0.25s ease;
+
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .family-nav-item i {
+        font-size: 19px;
+        line-height: 1;
+
+        transition: all 0.25s ease;
+    }
+
+    .family-nav-item span {
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    /* العنصر النشط */
+    .family-nav-item.active {
+        color: #e00000;
+    }
+
+    .family-nav-item.active i {
+        transform: translateY(-1px);
+        filter: drop-shadow(0 0 7px rgba(224, 0, 0, 0.45));
+    }
+
+    .family-nav-item:active {
+        transform: scale(0.92);
+    }
+
+    .family-nav-item:hover {
+        color: #ffffff;
+    }
+
+    /* خط صغير فوق العنصر النشط */
+    .family-nav-item.active::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+
+        width: 32px;
+        height: 2px;
+
+        background: #e00000;
+
+        border-radius: 0 0 5px 5px;
+
+        box-shadow: 0 0 10px rgba(224, 0, 0, 0.5);
+    }
+
+    /* حتى لا يغطي الشريط محتوى الصفحة */
+    body {
+        padding-bottom: 78px;
+    }
+}
+
+/* الشاشات الكبيرة */
+@media (min-width: 769px) {
+    .family-mobile-nav {
+        display: none !important;
+    }
+}
+</style>
+    
 </body>
 </html>
