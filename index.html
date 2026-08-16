@@ -121,20 +121,7 @@
     </script>
 
 
-    <script>
-(function () {
-    // معالجة الروابط العشوائية للصفحة الرئيسية فقط
-    // لا يؤثر على product.html أو باقي صفحات الموقع
-
-    if (window.location.pathname === "/" && window.location.search) {
-        window.history.replaceState(
-            {},
-            document.title,
-            window.location.origin + "/"
-        );
-    }
-})();
-</script>
+    
 </head>
 
 <body>
