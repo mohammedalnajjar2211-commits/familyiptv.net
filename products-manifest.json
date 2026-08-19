@@ -1,0 +1,70 @@
+{
+  "files": [
+    "family-iptv-global-36-months.html",
+    "family-iptv-global-24-months.html",
+    "family-iptv-global-12-months.html",
+    "family-iptv-global-6-months.html",
+    "family-iptv-global-1-month.html",
+    "family-iptv-iraq-12-months.html",
+    "family-iptv-saudi-12-months.html",
+    "family-iptv-kuwait-12-months.html"
+  ],
+  "products": [
+    {
+      "name": "اشتراك فاملي عالمي 36 شهر",
+      "price": "$89.99",
+      "old_price": "$120",
+      "description": "اشتراك عالمي يعمل في جميع أنحاء العالم",
+      "file": "family-iptv-global-36-months.html"
+    },
+    {
+      "name": "اشتراك فاملي عالمي 24 شهر",
+      "price": "$69.99",
+      "old_price": "$80",
+      "description": "اشتراك عالمي يعمل في جميع أنحاء العالم",
+      "file": "family-iptv-global-24-months.html"
+    },
+    {
+      "name": "اشتراك فاملي عالمي 12 شهر",
+      "price": "$39.99",
+      "old_price": "$60",
+      "description": "أكثر من 9500+ قناة عالمية وعربية",
+      "file": "family-iptv-global-12-months.html"
+    },
+    {
+      "name": "اشتراك فاملي عالمي 6 أشهر",
+      "price": "$29.99",
+      "old_price": "$40",
+      "description": "أكثر من 9500+ قناة عالمية وعربية",
+      "file": "family-iptv-global-6-months.html"
+    },
+    {
+      "name": "اشتراك فاملي عالمي 1 شهر",
+      "price": "$9.99",
+      "old_price": "$15",
+      "description": "اشتراك عالمي قصير المدة للتجربة",
+      "file": "family-iptv-global-1-month.html"
+    },
+    {
+      "name": "اشتراك فاملي العراق 12 شهر",
+      "price": "25,000 IQD",
+      "old_price": "50,000 IQD",
+      "description": "باقة خاصة للمشتركين داخل العراق",
+      "file": "family-iptv-iraq-12-months.html"
+    },
+    {
+      "name": "اشتراك فاملي السعودية 12 شهر",
+      "price": "$25",
+      "old_price": "$40",
+      "description": "باقة خاصة للمشتركين داخل السعودية",
+      "file": "family-iptv-saudi-12-months.html"
+    },
+    {
+      "name": "اشتراك فاملي الكويت 12 شهر",
+      "price": "$25",
+      "old_price": "$40",
+      "description": "باقة خاصة للمشتركين داخل الكويت",
+      "file": "family-iptv-kuwait-12-months.html"
+    }
+  ]
+}
