@@ -1,230 +1,133 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>اشتراك فاملي عالمي 1 شهر | Family IPTV</title>
-<meta name="description" content="اشتراك عالمي قصير المدة للتجربة، لمدة 1 شهر، بجودة عالية وتفعيل سريع ودعم مستمر.">
-<meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="googlebot" content="index, follow, max-image-preview:large">
-<link rel="canonical" href="https://familyiptv.net/family-iptv-global-1-month.html">
-
-<meta property="og:type" content="product">
-<meta property="og:site_name" content="Family IPTV">
-<meta property="og:title" content="اشتراك فاملي عالمي 1 شهر | Family IPTV">
-<meta property="og:description" content="اشتراك عالمي قصير المدة للتجربة، لمدة 1 شهر، بجودة عالية وتفعيل سريع ودعم مستمر.">
-<meta property="og:url" content="https://familyiptv.net/family-iptv-global-1-month.html">
-<meta property="og:image" content="https://familyiptv.net/assets/1month.jpg">
-<meta property="og:locale" content="ar_IQ">
-
-<link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="shortcut icon" href="assets/favicon.png">
-<link rel="apple-touch-icon" href="assets/favicon.png">
-
-<!-- نفس ملفات تصميم الموقع + نفس product.html -->
-<link rel="stylesheet" href="css/style.css?v=2">
-<link rel="stylesheet" href="css/product.css">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Family Player | IPTV Web Player</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "اشتراك فاملي عالمي 1 شهر",
-  "description": "اشتراك عالمي قصير المدة للتجربة، لمدة 1 شهر، بجودة عالية وتفعيل سريع ودعم مستمر.",
-  "image": "https://familyiptv.net/assets/1month.jpg",
-  "brand": {
-    "@type": "Brand",
-    "name": "Family IPTV"
-  },
-  "offers": {
-    "@type": "Offer",
-    "url": "https://familyiptv.net/family-iptv-global-1-month.html",
-    "priceCurrency": "USD",
-    "price": "9.99",
-    "availability": "https://schema.org/InStock"
-  }
-}
-</script>
-
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <style>
-
-.family-mobile-nav{display:none}
-@media(max-width:768px){
-.family-mobile-nav{position:fixed;bottom:0;right:0;left:0;height:68px;display:flex;align-items:center;justify-content:space-around;background:rgba(10,10,10,.97);border-top:1px solid rgba(220,0,0,.35);box-shadow:0 -5px 25px rgba(0,0,0,.45);z-index:99999;direction:rtl;padding-bottom:env(safe-area-inset-bottom)}
-.family-nav-item{flex:1;height:68px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;text-decoration:none;color:#aaa;font-family:inherit;transition:.25s;-webkit-tap-highlight-color:transparent}
-.family-nav-item i{font-size:19px}.family-nav-item span{font-size:12px;font-weight:500;white-space:nowrap}.family-nav-item.active{color:#e00000}
-body{padding-bottom:78px}}
-@media(min-width:769px){.family-mobile-nav{display:none!important}}
-.product-meta-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:-6px;margin-bottom:16px}
-.product-old-price{color:#777;text-decoration:line-through;font-size:18px;font-weight:700}
-.product-duration{display:inline-block;background:#141414;border:1px solid #292929;color:#bbb;padding:7px 12px;border-radius:20px;font-size:13px}
-
+:root{--red:#d40000;--bg:#090909;--panel:#141414;--panel2:#1d1d1d;--txt:#fff;--muted:#aaa;--line:#2a2a2a;--ok:#20c997}
+*{box-sizing:border-box}body{margin:0;font-family:Cairo,sans-serif;background:radial-gradient(circle at top right,#260000 0,#090909 35%);color:var(--txt);min-height:100vh}
+button,input,select{font:inherit}.hidden{display:none!important}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}.login-card{width:min(460px,100%);background:rgba(18,18,18,.9);border:1px solid #2f2f2f;border-radius:28px;padding:32px;box-shadow:0 30px 80px #0008;backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:10px}.logo{width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,#ff3131,var(--red));display:grid;place-items:center;font-weight:900;font-size:22px;box-shadow:0 12px 35px #d4000040}.brand h1{margin:0;font-size:28px}.sub{text-align:center;color:var(--muted);font-size:14px;margin:0 0 26px}
+.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:#ddd;margin-bottom:7px}.field input,.field select{width:100%;padding:14px 15px;border-radius:14px;border:1px solid #303030;background:#0d0d0d;color:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--red);box-shadow:0 0 0 3px #d4000026}
+.btn{border:0;border-radius:14px;padding:14px 18px;cursor:pointer;font-weight:800}.btn-primary{width:100%;background:linear-gradient(135deg,#f21b1b,#a90000);color:#fff;box-shadow:0 10px 30px #d4000038}.status{margin-top:12px;min-height:24px;font-size:13px;color:#ff8b8b;text-align:center}
+.demo{margin-top:18px;padding:13px;border:1px solid #2d2d2d;background:#101010;border-radius:14px;font-size:12px;color:#bbb;line-height:1.9}.demo b{color:#fff}
+.app{min-height:100vh}.topbar{position:sticky;top:0;z-index:20;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#090909e8;backdrop-filter:blur(16px);border-bottom:1px solid #222}.mini-brand{display:flex;align-items:center;gap:10px}.mini-logo{width:38px;height:38px;border-radius:12px;background:var(--red);display:grid;place-items:center;font-weight:900}.actions{display:flex;gap:8px}.iconbtn{background:#151515;border:1px solid #292929;color:#fff;border-radius:12px;padding:10px 12px;cursor:pointer}
+.shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 72px)}.sidebar{border-left:1px solid #222;background:#0b0b0b;padding:20px 14px}.navbtn{width:100%;display:flex;gap:10px;align-items:center;background:transparent;color:#ccc;border:0;padding:13px 14px;border-radius:13px;cursor:pointer;margin:3px 0;text-align:right}.navbtn.active,.navbtn:hover{background:#211010;color:#fff}.content{padding:24px;min-width:0}.hero{background:linear-gradient(135deg,#300000,#111);border:1px solid #351515;border-radius:24px;padding:24px;display:flex;justify-content:space-between;gap:20px;align-items:center}.hero h2{margin:0 0 6px;font-size:28px}.hero p{margin:0;color:#bbb}.pill{padding:9px 12px;border-radius:999px;background:#15291f;color:#9ef0c8;border:1px solid #24553d;font-size:12px;white-space:nowrap}
+.section-title{display:flex;align-items:center;justify-content:space-between;margin:26px 0 12px}.section-title h3{margin:0;font-size:20px}.search{width:min(340px,100%);padding:11px 14px;border-radius:12px;border:1px solid #2b2b2b;background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}.card{background:#121212;border:1px solid #242424;border-radius:17px;overflow:hidden;cursor:pointer;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#4c2020}.poster{aspect-ratio:2/3;background:#1d1d1d;display:grid;place-items:center;overflow:hidden}.poster img{width:100%;height:100%;object-fit:cover}.poster .ph{font-size:38px;color:#777}.meta{padding:11px}.name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.small{font-size:11px;color:#8f8f8f;margin-top:4px}
+.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.cat{padding:20px;border-radius:18px;background:linear-gradient(145deg,#171717,#0e0e0e);border:1px solid #292929;cursor:pointer}.cat strong{display:block;margin-bottom:5px}.cat span{font-size:12px;color:#999}
+.player-modal{position:fixed;inset:0;background:#000d;z-index:50;display:grid;place-items:center;padding:24px}.player-box{width:min(1100px,100%);background:#101010;border:1px solid #2b2b2b;border-radius:18px;overflow:hidden}.player-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}.player-head h4{margin:0}.player-box video{width:100%;max-height:72vh;background:#000;display:block}.close{background:#251010;color:#fff;border:1px solid #4e1d1d;border-radius:10px;padding:8px 12px;cursor:pointer}
+.empty{padding:40px;text-align:center;color:#888;border:1px dashed #333;border-radius:18px}.spinner{width:34px;height:34px;border:4px solid #333;border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:20px auto}@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:800px){.shell{grid-template-columns:1fr}.sidebar{position:fixed;bottom:0;left:0;right:0;z-index:30;border:0;border-top:1px solid #222;padding:7px;background:#0b0b0bf5;display:grid;grid-template-columns:repeat(4,1fr)}.navbtn{justify-content:center;font-size:12px;padding:10px 5px}.navbtn .label{display:none}.content{padding:16px 16px 90px}.grid{grid-template-columns:repeat(3,1fr)}.category-grid{grid-template-columns:repeat(2,1fr)}.hero{align-items:flex-start;flex-direction:column}.topbar{padding:0 15px}}@media(max-width:520px){.grid{grid-template-columns:repeat(2,1fr)}.hero h2{font-size:22px}.login-card{padding:23px}}
 </style>
 </head>
-
 <body>
-
-<div id="overlay"></div>
-
-<!-- نفس القائمة الجانبية للموقع -->
-<aside class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <h2>سيرفر فاملي</h2>
-        <button onclick="toggleMenu()">✕</button>
-    </div>
-    <ul>
-        <li><a href="https://familyiptv.net/">الرئيسية</a></li>
-        <li><a href="https://apps.familyiptv.net/#apps">التطبيقات</a></li>
-        <li><a href="https://familyiptv.net/check/iptv.html">افحص اشتراكك</a></li>
-        <li><a href="https://familyiptv.net/guide">دليل التثبيت والدعم</a></li>
-        <li><a href="https://familyiptv.net/speedtest">أداة فحص سرعة الإنترنت</a></li>
-        <li><a href="https://m3u.familyiptv.net/">تحويل الرابط</a></li>
-        <li><a href="https://familyiptv.net/support">الدعم الفني</a></li>
-        <li><a href="https://wa.me/9647809522129" target="_blank" rel="noopener">اتصل بنا</a></li>
-    </ul>
-</aside>
-
-<!-- نفس هيدر الموقع -->
-<header>
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
-    <div class="logo">
-        <span class="logo-name">سيرفر فاملي</span>
-        <span class="verified-badge" title="حساب موثّق">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M22 12c0-1.43-1.5-2.39-2.04-3.62-.56-1.27-.22-3.01-1.23-4.02-1.01-1.01-2.75-.67-4.02-1.23C13.39 2.5 12.43 1 11 1S8.61 2.5 7.38 3.04c-1.27.56-3.01.22-4.02 1.23-1.01 1.01-.67 2.75-1.23 4.02C1.5 9.61 0 10.57 0 12s1.5 2.39 2.04 3.62c.56 1.27.22 3.01 1.23 4.02 1.01 1.01 2.75.67 4.02 1.23C8.61 21.5 9.57 23 11 23s2.39-1.5 3.62-2.04c1.27-.56 3.01-.22 4.02-1.23 1.01-1.01.67-2.75 1.23-4.02C20.5 14.39 22 13.43 22 12z" fill="currentColor"/>
-                <path d="M7.4 12.1l2.8 2.8 5.7-6" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </span>
-    </div>
-</header>
-
-<!-- نفس بانر الموقع -->
-<section class="hero-section">
-    <h1>⚡ اشتراك فاملي عالمي 1 شهر</h1>
-    <p class="hero-description">اشتراك عالمي قصير المدة للتجربة، مع تفعيل سريع ودعم فني للمشتركين.</p>
-    <a href="shop.html" class="hero-packages-btn">
-        <span>تصفح جميع الباقات</span>
-        <span class="hero-btn-arrow">←</span>
-    </a>
+<section id="loginView" class="login-wrap">
+  <div class="login-card">
+    <div class="brand"><div class="logo">F</div><h1>Family Player</h1></div>
+    <p class="sub">مشغل فاملي — Live TV • Movies • Series</p>
+    <div class="field"><label>اختر السيرفر</label><select id="dnsSelect"><option value="uae">Family Server UAE</option></select></div>
+    <div class="field"><label>اسم المستخدم</label><input id="username" value="29542719927199" autocomplete="username"></div>
+    <div class="field"><label>كلمة المرور</label><input id="password" type="password" value="83016608822180" autocomplete="current-password"></div>
+    <button id="loginBtn" class="btn btn-primary">تسجيل الدخول</button>
+    <div id="loginStatus" class="status"></div>
+    <div class="demo"><b>Family Multi DNS</b><br>اختر السيرفر ثم أدخل اسم المستخدم وكلمة المرور. يتم الاتصال عبر بوابة Family الآمنة.</div>
+  </div>
 </section>
 
-<!-- منطقة المنتج بنفس تركيب product.html?id -->
-<section class="product-container">
-
-    <div class="product-image">
-        <img
-            id="productImage"
-            src="assets/1month.jpg"
-            alt="اشتراك فاملي عالمي 1 شهر"
-        >
-    </div>
-
-    <div class="product-info">
-
-        <h1 id="productTitle">اشتراك فاملي عالمي 1 شهر</h1>
-
-        <div class="price" id="productPrice">$9.99</div>
-
-        <div class="product-meta-row">
-            <span class="product-old-price">$15</span>
-            <span class="product-duration">مدة الاشتراك: 1 شهر</span>
-        </div>
-
-        <p class="description" id="productDescription">اشتراك عالمي قصير المدة للتجربة، لمدة 1 شهر، بجودة عالية وتفعيل سريع ودعم مستمر.</p>
-
-        <div class="features">
-            <div>✅ جميع القنوات الرياضية والترفيهية</div>
-            <div>⚡ سيرفر سريع بدون تقطيع</div>
-            <div>🎬 أحدث الأفلام والمسلسلات</div>
-            <div>📺 يعمل على جميع الأجهزة</div>
-        </div>
-
-        <a
-            id="whatsappBtn"
-            class="buy-btn"
-            target="_blank"
-            rel="noopener"
-            href="https://wa.me/9647809522129?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D8%A7%D8%B4%D8%AA%D8%B1%D8%A7%D9%83%20%D9%81%D8%A7%D9%85%D9%84%D9%8A%20%D8%B9%D8%A7%D9%84%D9%85%D9%8A%201%20%D8%B4%D9%87%D8%B1%20%D8%A8%D8%B3%D8%B9%D8%B1%20%249.99"
-        >
-            اطلب الآن عبر واتساب
-        </a>
-
-    </div>
-
+<section id="appView" class="app hidden">
+  <header class="topbar"><div class="mini-brand"><div class="mini-logo">F</div><strong>Family Player</strong></div><div class="actions"><button id="refreshBtn" class="iconbtn">↻ تحديث</button><button id="logoutBtn" class="iconbtn">خروج</button></div></header>
+  <div class="shell">
+    <aside class="sidebar">
+      <button class="navbtn active" data-section="home">🏠 <span class="label">الرئيسية</span></button>
+      <button class="navbtn" data-section="live">📺 <span class="label">البث المباشر</span></button>
+      <button class="navbtn" data-section="movies">🎬 <span class="label">الأفلام</span></button>
+      <button class="navbtn" data-section="series">📚 <span class="label">المسلسلات</span></button>
+    </aside>
+    <main id="content" class="content"></main>
+  </div>
 </section>
 
-<section class="related-products">
-    <h2>منتجات مشابهة</h2>
-    <div class="related-grid">
-        
-            <a href="family-iptv-global-36-months.html" class="related-card">
-                <img src="assets/12months.jpg" alt="اشتراك فاملي عالمي 36 شهر" loading="lazy">
-                <h3>اشتراك فاملي عالمي 36 شهر</h3>
-            </a>
-            <a href="family-iptv-global-24-months.html" class="related-card">
-                <img src="assets/12months.jpg" alt="اشتراك فاملي عالمي 24 شهر" loading="lazy">
-                <h3>اشتراك فاملي عالمي 24 شهر</h3>
-            </a>
-            <a href="family-iptv-global-12-months.html" class="related-card">
-                <img src="assets/12months.jpg" alt="اشتراك فاملي عالمي 12 شهر" loading="lazy">
-                <h3>اشتراك فاملي عالمي 12 شهر</h3>
-            </a>
-    </div>
-</section>
+<div id="playerModal" class="player-modal hidden"><div class="player-box"><div class="player-head"><h4 id="playerTitle">Family Player</h4><button id="closePlayer" class="close">إغلاق ✕</button></div><video id="video" controls playsinline></video></div></div>
 
-<!-- زر واتساب العائم -->
-<a href="https://wa.me/9647809522129"
-   target="_blank"
-   rel="noopener"
-   aria-label="التواصل مع Family IPTV عبر واتساب"
-   style="position:fixed;bottom:80px;right:20px;width:60px;height:60px;background:transparent;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:999999;box-shadow:0 4px 15px rgba(0,0,0,.35);text-decoration:none;">
-    <img src="assets/whatsapp.png" style="width:75px;height:75px;" alt="واتساب Family IPTV">
-</a>
+<script>
+const PROXY_BASE='https://api.mohammedalnajjar2211.workers.dev';
+const DNS_LIST=[
+  {id:'uae',name:'Family Server UAE'}
+  // لإضافة DNS جديد: أضفه أولاً داخل SERVERS في Cloudflare Worker
+  // ثم أضف هنا مثلاً: {id:'iraq',name:'Family Server Iraq'}
+];
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+let session={serverId:'',serverName:'',username:'',password:'',auth:null};
+let cache={liveCats:null,movieCats:null,seriesCats:null};
 
-<!-- نفس شريط الروابط القانونية -->
-<div class="legal-links">
-    <a href="terms.html">الشروط والأحكام</a>
-    <span>|</span>
-    <a href="privacy.html">سياسة الخصوصية</a>
-    <span>|</span>
-    <a href="refund.html">سياسة الاسترداد</a>
-    <span>|</span>
-    <a href="dmca.html">DMCA</a>
-</div>
+function proxyPath(path=''){return `${PROXY_BASE}/p/${encodeURIComponent(session.serverId)}/${String(path).replace(/^\/+/, '')}`}
+function api(action='',extra={}){
+  const p=new URLSearchParams({username:session.username,password:session.password,...extra});
+  if(action)p.set('action',action);
+  return `${proxyPath('player_api.php')}?${p.toString()}`;
+}
+async function getJSON(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function poster(src,title){return src?`<img loading="lazy" src="${escapeHtml(src)}" alt="${escapeHtml(title)}" onerror="this.parentElement.innerHTML='<div class=ph>▶</div>'">`:`<div class="ph">▶</div>`}
+function showLoading(msg='جاري التحميل...'){$('#content').innerHTML=`<div class="empty"><div class="spinner"></div>${msg}</div>`}
+function expDate(ts){if(!ts||ts==='0')return 'غير محدد';return new Date(Number(ts)*1000).toLocaleDateString('ar')}
 
-<!-- نفس الفوتر -->
-<footer>
-    <div>موقع سيرفر فاملي الرسمي © 2026</div>
-    <div>واتساب 009647809522129</div>
-</footer>
+async function login(){
+ const btn=$('#loginBtn'),st=$('#loginStatus'); btn.disabled=true;st.textContent='جاري التحقق من الحساب...';
+ session.serverId=$('#dnsSelect').value;session.serverName=DNS_LIST.find(d=>d.id===session.serverId)?.name||'Family Server';session.username=$('#username').value.trim();session.password=$('#password').value.trim();
+ try{const data=await getJSON(api());if(!data.user_info||String(data.user_info.auth)!=='1')throw new Error('بيانات الدخول غير صحيحة');session.auth=data;localStorage.setItem('familyPlayerSession',JSON.stringify({serverId:session.serverId,username:session.username}));$('#loginView').classList.add('hidden');$('#appView').classList.remove('hidden');renderHome();}
+ catch(e){st.textContent='تعذر تسجيل الدخول. تحقق من اسم المستخدم وكلمة المرور أو حالة السيرفر.';console.error(e)}finally{btn.disabled=false}
+}
 
-<script src="js/app.js"></script>
+function renderHome(){
+ const u=session.auth?.user_info||{};
+ $('#content').innerHTML=`<section class="hero"><div><h2>مرحباً بك في Family Player</h2><p>تم الاتصال بنجاح. اختر البث المباشر أو الأفلام أو المسلسلات.</p></div><span class="pill">● الحساب ${u.status||'Active'}</span></section>
+ <div class="section-title"><h3>معلومات الاشتراك</h3></div>
+ <div class="category-grid"><div class="cat"><strong>اسم المستخدم</strong><span>${escapeHtml(u.username||session.username)}</span></div><div class="cat"><strong>تاريخ الانتهاء</strong><span>${expDate(u.exp_date)}</span></div><div class="cat"><strong>الاتصالات</strong><span>${escapeHtml(u.active_cons||'0')} / ${escapeHtml(u.max_connections||'1')}</span></div><div class="cat"><strong>السيرفر</strong><span>${escapeHtml(session.serverName)}</span></div></div>
+ <div class="section-title"><h3>الأقسام</h3></div><div class="category-grid"><div class="cat" onclick="loadSection('live')"><strong>📺 البث المباشر</strong><span>القنوات والتصنيفات</span></div><div class="cat" onclick="loadSection('movies')"><strong>🎬 الأفلام</strong><span>مكتبة VOD</span></div><div class="cat" onclick="loadSection('series')"><strong>📚 المسلسلات</strong><span>المواسم والحلقات</span></div><div class="cat" onclick="renderHome()"><strong>⭐ المفضلة</strong><span>يمكن توسيعها لاحقاً</span></div></div>`;
+}
 
-<!-- نفس شريط الموبايل -->
-<nav class="family-mobile-nav">
-    <a href="https://familyiptv.net/" class="family-nav-item">
-        <i class="fa-solid fa-house"></i>
-        <span>الرئيسية</span>
-    </a>
-    <a href="https://familyiptv.net/shop" class="family-nav-item active">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span>الاشتراكات</span>
-    </a>
-    <a href="https://apps.familyiptv.net/" class="family-nav-item">
-        <i class="fa-solid fa-mobile-screen-button"></i>
-        <span>التطبيقات</span>
-    </a>
-    <a href="https://familyiptv.net/check/iptv" class="family-nav-item">
-        <i class="fa-solid fa-circle-check"></i>
-        <span>افحص اشتراكك</span>
-    </a>
-</nav>
+async function categories(type){const map={live:'get_live_categories',movies:'get_vod_categories',series:'get_series_categories'};if(cache[type+'Cats'])return cache[type+'Cats'];return cache[type+'Cats']=await getJSON(api(map[type]));}
+async function streams(type,categoryId){const map={live:'get_live_streams',movies:'get_vod_streams',series:'get_series'};return getJSON(api(map[type],categoryId?{category_id:categoryId}:{}))}
 
+async function loadSection(type){
+ $$('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.section===type));showLoading();
+ try{const cats=await categories(type);const label={live:'البث المباشر',movies:'الأفلام',series:'المسلسلات'}[type];$('#content').innerHTML=`<div class="section-title"><h3>${label}</h3><input id="searchInput" class="search" placeholder="بحث..."></div><div id="cats" class="category-grid"></div><div id="itemsWrap"></div>`;const c=$('#cats');c.innerHTML=`<div class="cat" data-id=""><strong>الكل</strong><span>عرض جميع العناصر</span></div>`+cats.map(x=>`<div class="cat" data-id="${escapeHtml(x.category_id)}"><strong>${escapeHtml(x.category_name)}</strong><span>فتح التصنيف</span></div>`).join('');c.querySelectorAll('.cat').forEach(el=>el.onclick=()=>loadItems(type,el.dataset.id));$('#searchInput').oninput=e=>filterCards(e.target.value);await loadItems(type,'');}
+ catch(e){$('#content').innerHTML=`<div class="empty">تعذر تحميل البيانات من السيرفر.<br><small>${escapeHtml(e.message)}</small></div>`}
+}
+
+async function loadItems(type,cat){const wrap=$('#itemsWrap');wrap.innerHTML='<div class="spinner"></div>';try{const data=await streams(type,cat);if(!Array.isArray(data)||!data.length){wrap.innerHTML='<div class="empty">لا توجد عناصر في هذا القسم</div>';return}wrap.innerHTML=`<div class="section-title"><h3>المحتوى</h3><span class="small">${data.length} عنصر</span></div><div class="grid" id="itemsGrid">${data.map(x=>itemCard(type,x)).join('')}</div>`;wrap.querySelectorAll('.card').forEach(card=>card.onclick=()=>openItem(type,card.dataset.id,card.dataset.ext,card.dataset.name));}catch(e){wrap.innerHTML=`<div class="empty">فشل تحميل المحتوى: ${escapeHtml(e.message)}</div>`}}
+function itemCard(type,x){const id=type==='series'?x.series_id:x.stream_id;const image=x.stream_icon||x.cover||'';const ext=x.container_extension||'m3u8';return `<article class="card" data-name="${escapeHtml(x.name||x.title||'')}" data-id="${escapeHtml(id)}" data-ext="${escapeHtml(ext)}"><div class="poster">${poster(image,x.name||x.title)}</div><div class="meta"><div class="name">${escapeHtml(x.name||x.title||'بدون اسم')}</div><div class="small">${type==='live'?'قناة':type==='movies'?'فيلم':'مسلسل'}</div></div></article>`}
+function filterCards(q){q=q.trim().toLowerCase();$$('#itemsGrid .card').forEach(c=>c.style.display=c.dataset.name.toLowerCase().includes(q)?'':'none')}
+
+async function openItem(type,id,ext,name){if(type==='series'){return openSeries(id,name)};const folder=type==='live'?'live':'movie';const fallback=type==='live'?'m3u8':ext;const url=proxyPath(`${folder}/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${id}.${fallback}`);play(url,name)}
+async function openSeries(id,name){showLoading('جاري تحميل تفاصيل المسلسل...');try{const info=await getJSON(api('get_series_info',{series_id:id}));const eps=[];Object.values(info.episodes||{}).forEach(season=>season.forEach(ep=>eps.push(ep)));$('#content').innerHTML=`<div class="section-title"><h3>${escapeHtml(name)}</h3><button class="iconbtn" onclick="loadSection('series')">رجوع</button></div><div class="grid">${eps.map(ep=>`<article class="card" onclick="play(proxyPath('series/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${ep.id}.${ep.container_extension||'mp4'}'),'${escapeHtml(ep.title||'حلقة')}')"><div class="poster">${poster(ep.info?.movie_image||'',ep.title)}</div><div class="meta"><div class="name">${escapeHtml(ep.title||'حلقة')}</div><div class="small">الموسم ${ep.season||'-'} • الحلقة ${ep.episode_num||'-'}</div></div></article>`).join('')}</div>`}catch(e){$('#content').innerHTML=`<div class="empty">تعذر تحميل الحلقات</div>`}}
+function play(url,title){const v=$('#video');$('#playerTitle').textContent=title||'Family Player';$('#playerModal').classList.remove('hidden');if(window.Hls&&Hls.isSupported()&&url.includes('.m3u8')){if(window._hls)window._hls.destroy();window._hls=new Hls({enableWorker:true});window._hls.loadSource(url);window._hls.attachMedia(v)}else{v.src=url}v.play().catch(()=>{})}
+function closePlayer(){const v=$('#video');v.pause();v.removeAttribute('src');v.load();if(window._hls){window._hls.destroy();window._hls=null}$('#playerModal').classList.add('hidden')}
+function logout(){localStorage.removeItem('familyPlayerSession');location.reload()}
+
+$('#loginBtn').onclick=login;$('#logoutBtn').onclick=logout;$('#refreshBtn').onclick=()=>{cache={liveCats:null,movieCats:null,seriesCats:null};renderHome()};$('#closePlayer').onclick=closePlayer;$$('.navbtn').forEach(b=>b.onclick=()=>b.dataset.section==='home'?renderHome():loadSection(b.dataset.section));
+
+(function init(){
+  const sel=$('#dnsSelect');
+  sel.innerHTML=DNS_LIST.map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
+  const old=localStorage.getItem('familyPlayerSession');
+  if(old){
+    try{
+      const o=JSON.parse(old);
+      if([...sel.options].some(x=>x.value===o.serverId)) sel.value=o.serverId;
+      $('#username').value=o.username||'';
+      $('#password').value='';
+    }catch{}
+  }
+})();
+</script>
 </body>
 </html>
