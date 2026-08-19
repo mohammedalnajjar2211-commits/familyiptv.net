@@ -109,9 +109,7 @@ function itemCard(type,x){const id=type==='series'?x.series_id:x.stream_id;const
 function filterCards(q){q=q.trim().toLowerCase();$$('#itemsGrid .card').forEach(c=>c.style.display=c.dataset.name.toLowerCase().includes(q)?'':'none')}
 
 async function openItem(type,id,ext,name){if(type==='series'){return openSeries(id,name)};const folder=type==='live'?'live':'movie';const fallback=type==='live'?(ext||'ts'):(ext||'mp4');const url=proxyPath(`${folder}/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${id}.${fallback}`);play(url,name,fallback)}
-async function openSeries(id,name){showLoading('جاري تحميل تفاصيل المسلسل...');try{const info=await getJSON(api('get_series_info',{series_id:id}));const eps=[];Object.values(info.episodes||{}).forEach(season=>season.forEach(ep=>eps.push(ep)));$('#content').innerHTML=`<div class="section-title"><h3>${escapeHtml(name)}</h3><button class="iconbtn" onclick="loadSection('series')">رجوع</button></div><div class="grid">${eps.map(ep=>`<article class="card" onclick="play(proxyPath('series/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${ep.id}.${ep.container_extension||'mp4'}'),'${escapeHtml(ep.title||'حلقة')}')"><div class="poster">${poster(ep.info?.movie_image||'',ep.title)}</div><div class="meta"><div class="name">${escapeHtml(ep.title||'حلقة')}</div><div class="small">الموسم ${ep.season||'-'} • الحلقة ${ep.episode_num||'-'}</div></div></article>`).join('')}</div>`}catch(e){$('#content').innerHTML=`<div class="empty">تعذر تحميل الحلقات</div>`}}
-function play(url,title){const v=$('#video');$('#playerTitle').textContent=title||'Family Player';$('#playerModal').classList.remove('hidden');if(window.Hls&&Hls.isSupported()&&url.includes('.m3u8')){if(window._hls)window._hls.destroy();window._hls=new Hls({enableWorker:true});window._hls.loadSource(url);window._hls.attachMedia(v)}else{v.src=url}v.play().catch(()=>{})}
-function closePlayer(){const v=$('#video');v.pause();v.removeAttribute('src');v.load();if(window._hls){window._hls.destroy();window._hls=null}$('#playerModal').classList.add('hidden')}
+async function openSeries(id,name){showLoading('جاري تحميل تفاصيل المسلسل...');try{const info=await getJSON(api('get_series_info',{series_id:id}));const eps=[];Object.values(info.episodes||{}).forEach(season=>season.forEach(ep=>eps.push(ep)));$('#content').innerHTML=`<div class="section-title"><h3>${escapeHtml(name)}</h3><button class="iconbtn" onclick="loadSection('series')">رجوع</button></div><div class="grid">${eps.map(ep=>`<article class="card" onclick="play(proxyPath('series/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${ep.id}.${ep.container_extension||'mp4'}'),'${escapeHtml(ep.title||'حلقة')}','${ep.container_extension||'mp4'}')"><div class="poster">${poster(ep.info?.movie_image||'',ep.title)}</div><div class="meta"><div class="name">${escapeHtml(ep.title||'حلقة')}</div><div class="small">الموسم ${ep.season||'-'} • الحلقة ${ep.episode_num||'-'}</div></div></article>`).join('')}</div>`}catch(e){$('#content').innerHTML=`<div class="empty">تعذر تحميل الحلقات</div>`}}
 function logout(){localStorage.removeItem('familyPlayerSession');location.reload()}
 
 $('#loginBtn').onclick=login;$('#logoutBtn').onclick=logout;$('#refreshBtn').onclick=()=>{cache={liveCats:null,movieCats:null,seriesCats:null};renderHome()};$('#closePlayer').onclick=closePlayer;$$('.navbtn').forEach(b=>b.onclick=()=>b.dataset.section==='home'?renderHome():loadSection(b.dataset.section));
@@ -167,7 +165,7 @@ function play(url,name,ext=''){
   video.removeAttribute('src');
   video.load();
 
-  modal.classList.add('show');
+  modal.classList.remove('hidden');
 
   const cleanExt=String(ext||url.split('?')[0].split('.').pop()||'').toLowerCase();
 
@@ -258,6 +256,23 @@ function play(url,name,ext=''){
     showPlayerError('تعذر تشغيل هذا التنسيق في المتصفح.');
   });
 }
+
+function closePlayer(){
+  destroyPlayers();
+  const v=$('#video');
+  v.pause();
+  v.removeAttribute('src');
+  v.load();
+
+  const err=$('#playerError');
+  if(err){
+    err.style.display='none';
+    err.textContent='';
+  }
+
+  $('#playerModal').classList.add('hidden');
+}
+
 (function init(){
   const sel=$('#dnsSelect');
   sel.innerHTML=DNS_LIST.map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
