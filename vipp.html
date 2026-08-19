@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/mpegts.js@latest/dist/mpegts.js"></script>
 <style>
 :root{--red:#d40000;--bg:#090909;--panel:#141414;--panel2:#1d1d1d;--txt:#fff;--muted:#aaa;--line:#2a2a2a;--ok:#20c997}
 *{box-sizing:border-box}body{margin:0;font-family:Cairo,sans-serif;background:radial-gradient(circle at top right,#260000 0,#090909 35%);color:var(--txt);min-height:100vh}
@@ -104,10 +105,10 @@ async function loadSection(type){
 }
 
 async function loadItems(type,cat){const wrap=$('#itemsWrap');wrap.innerHTML='<div class="spinner"></div>';try{const data=await streams(type,cat);if(!Array.isArray(data)||!data.length){wrap.innerHTML='<div class="empty">لا توجد عناصر في هذا القسم</div>';return}wrap.innerHTML=`<div class="section-title"><h3>المحتوى</h3><span class="small">${data.length} عنصر</span></div><div class="grid" id="itemsGrid">${data.map(x=>itemCard(type,x)).join('')}</div>`;wrap.querySelectorAll('.card').forEach(card=>card.onclick=()=>openItem(type,card.dataset.id,card.dataset.ext,card.dataset.name));}catch(e){wrap.innerHTML=`<div class="empty">فشل تحميل المحتوى: ${escapeHtml(e.message)}</div>`}}
-function itemCard(type,x){const id=type==='series'?x.series_id:x.stream_id;const image=x.stream_icon||x.cover||'';const ext=x.container_extension||'m3u8';return `<article class="card" data-name="${escapeHtml(x.name||x.title||'')}" data-id="${escapeHtml(id)}" data-ext="${escapeHtml(ext)}"><div class="poster">${poster(image,x.name||x.title)}</div><div class="meta"><div class="name">${escapeHtml(x.name||x.title||'بدون اسم')}</div><div class="small">${type==='live'?'قناة':type==='movies'?'فيلم':'مسلسل'}</div></div></article>`}
+function itemCard(type,x){const id=type==='series'?x.series_id:x.stream_id;const image=x.stream_icon||x.cover||'';const ext=x.container_extension||(type==='live'?'ts':'mp4');return `<article class="card" data-name="${escapeHtml(x.name||x.title||'')}" data-id="${escapeHtml(id)}" data-ext="${escapeHtml(ext)}"><div class="poster">${poster(image,x.name||x.title)}</div><div class="meta"><div class="name">${escapeHtml(x.name||x.title||'بدون اسم')}</div><div class="small">${type==='live'?'قناة':type==='movies'?'فيلم':'مسلسل'}</div></div></article>`}
 function filterCards(q){q=q.trim().toLowerCase();$$('#itemsGrid .card').forEach(c=>c.style.display=c.dataset.name.toLowerCase().includes(q)?'':'none')}
 
-async function openItem(type,id,ext,name){if(type==='series'){return openSeries(id,name)};const folder=type==='live'?'live':'movie';const fallback=type==='live'?'m3u8':ext;const url=proxyPath(`${folder}/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${id}.${fallback}`);play(url,name)}
+async function openItem(type,id,ext,name){if(type==='series'){return openSeries(id,name)};const folder=type==='live'?'live':'movie';const fallback=type==='live'?(ext||'ts'):(ext||'mp4');const url=proxyPath(`${folder}/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${id}.${fallback}`);play(url,name,fallback)}
 async function openSeries(id,name){showLoading('جاري تحميل تفاصيل المسلسل...');try{const info=await getJSON(api('get_series_info',{series_id:id}));const eps=[];Object.values(info.episodes||{}).forEach(season=>season.forEach(ep=>eps.push(ep)));$('#content').innerHTML=`<div class="section-title"><h3>${escapeHtml(name)}</h3><button class="iconbtn" onclick="loadSection('series')">رجوع</button></div><div class="grid">${eps.map(ep=>`<article class="card" onclick="play(proxyPath('series/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${ep.id}.${ep.container_extension||'mp4'}'),'${escapeHtml(ep.title||'حلقة')}')"><div class="poster">${poster(ep.info?.movie_image||'',ep.title)}</div><div class="meta"><div class="name">${escapeHtml(ep.title||'حلقة')}</div><div class="small">الموسم ${ep.season||'-'} • الحلقة ${ep.episode_num||'-'}</div></div></article>`).join('')}</div>`}catch(e){$('#content').innerHTML=`<div class="empty">تعذر تحميل الحلقات</div>`}}
 function play(url,title){const v=$('#video');$('#playerTitle').textContent=title||'Family Player';$('#playerModal').classList.remove('hidden');if(window.Hls&&Hls.isSupported()&&url.includes('.m3u8')){if(window._hls)window._hls.destroy();window._hls=new Hls({enableWorker:true});window._hls.loadSource(url);window._hls.attachMedia(v)}else{v.src=url}v.play().catch(()=>{})}
 function closePlayer(){const v=$('#video');v.pause();v.removeAttribute('src');v.load();if(window._hls){window._hls.destroy();window._hls=null}$('#playerModal').classList.add('hidden')}
@@ -115,6 +116,148 @@ function logout(){localStorage.removeItem('familyPlayerSession');location.reload
 
 $('#loginBtn').onclick=login;$('#logoutBtn').onclick=logout;$('#refreshBtn').onclick=()=>{cache={liveCats:null,movieCats:null,seriesCats:null};renderHome()};$('#closePlayer').onclick=closePlayer;$$('.navbtn').forEach(b=>b.onclick=()=>b.dataset.section==='home'?renderHome():loadSection(b.dataset.section));
 
+let activeHls=null;
+let activeMpegts=null;
+
+function destroyPlayers(){
+  try{
+    if(activeHls){
+      activeHls.destroy();
+      activeHls=null;
+    }
+  }catch(e){}
+  try{
+    if(activeMpegts){
+      activeMpegts.pause();
+      activeMpegts.unload();
+      activeMpegts.detachMediaElement();
+      activeMpegts.destroy();
+      activeMpegts=null;
+    }
+  }catch(e){}
+}
+
+function showPlayerError(message){
+  const box=document.querySelector('#playerError');
+  if(box){
+    box.textContent=message;
+    box.style.display='block';
+  }
+  console.error('[Family Player]',message);
+}
+
+function play(url,name,ext=''){
+  const modal=$('#playerModal');
+  const video=$('#video');
+  $('#playerTitle').textContent=name||'Family Player';
+
+  let err=$('#playerError');
+  if(!err){
+    const e=document.createElement('div');
+    e.id='playerError';
+    e.style.cssText='display:none;margin:10px 20px;padding:12px 14px;border:1px solid rgba(255,50,50,.35);background:rgba(120,0,0,.25);border-radius:10px;color:#ffd7d7;font-size:13px;direction:rtl';
+    video.parentElement.insertBefore(e,video);
+  }else{
+    err.style.display='none';
+    err.textContent='';
+  }
+
+  destroyPlayers();
+  video.pause();
+  video.removeAttribute('src');
+  video.load();
+
+  modal.classList.add('show');
+
+  const cleanExt=String(ext||url.split('?')[0].split('.').pop()||'').toLowerCase();
+
+  // HLS manifest
+  if(cleanExt==='m3u8'){
+    if(video.canPlayType('application/vnd.apple.mpegurl')){
+      video.src=url;
+      video.play().catch(()=>{});
+      return;
+    }
+
+    if(window.Hls && Hls.isSupported()){
+      activeHls=new Hls({
+        enableWorker:true,
+        lowLatencyMode:false,
+        backBufferLength:30,
+        maxBufferLength:20,
+        manifestLoadingTimeOut:15000,
+        levelLoadingTimeOut:15000,
+        fragLoadingTimeOut:20000
+      });
+
+      activeHls.loadSource(url);
+      activeHls.attachMedia(video);
+
+      activeHls.on(Hls.Events.MANIFEST_PARSED,()=>{
+        video.play().catch(()=>{});
+      });
+
+      activeHls.on(Hls.Events.ERROR,(_,data)=>{
+        console.error('HLS ERROR',data);
+        if(data.fatal){
+          showPlayerError(`خطأ HLS: ${data.type || ''} / ${data.details || 'تعذر تشغيل البث'}`);
+        }
+      });
+      return;
+    }
+
+    showPlayerError('هذا المتصفح لا يدعم HLS.');
+    return;
+  }
+
+  // Xtream live streams are commonly MPEG-TS (.ts).
+  if(cleanExt==='ts'){
+    if(window.mpegts && mpegts.getFeatureList().mseLivePlayback){
+      try{
+        activeMpegts=mpegts.createPlayer(
+          {
+            type:'mpegts',
+            isLive:true,
+            url:url
+          },
+          {
+            enableWorker:true,
+            enableStashBuffer:false,
+            stashInitialSize:128,
+            liveBufferLatencyChasing:true,
+            liveBufferLatencyMaxLatency:5,
+            liveBufferLatencyMinRemain:1
+          }
+        );
+
+        activeMpegts.attachMediaElement(video);
+        activeMpegts.load();
+
+        activeMpegts.on(mpegts.Events.ERROR,(type,detail,info)=>{
+          console.error('MPEGTS ERROR',type,detail,info);
+          showPlayerError(`خطأ البث: ${detail || type || 'تعذر تشغيل MPEG-TS'}`);
+        });
+
+        video.play().catch(()=>{});
+        return;
+      }catch(e){
+        console.error(e);
+        showPlayerError('تعذر تهيئة مشغل MPEG-TS.');
+        return;
+      }
+    }
+
+    showPlayerError('المتصفح لا يدعم تشغيل MPEG-TS عبر MSE.');
+    return;
+  }
+
+  // MP4 and browser-native formats
+  video.src=url;
+  video.play().catch(e=>{
+    console.error(e);
+    showPlayerError('تعذر تشغيل هذا التنسيق في المتصفح.');
+  });
+}
 (function init(){
   const sel=$('#dnsSelect');
   sel.innerHTML=DNS_LIST.map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
