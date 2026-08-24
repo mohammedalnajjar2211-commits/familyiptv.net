@@ -1,291 +1,2561 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Family Player | IPTV Web Player</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/mpegts.js@latest/dist/mpegts.js"></script>
-<style>
-:root{--red:#d40000;--bg:#090909;--panel:#141414;--panel2:#1d1d1d;--txt:#fff;--muted:#aaa;--line:#2a2a2a;--ok:#20c997}
-*{box-sizing:border-box}body{margin:0;font-family:Cairo,sans-serif;background:radial-gradient(circle at top right,#260000 0,#090909 35%);color:var(--txt);min-height:100vh}
-button,input,select{font:inherit}.hidden{display:none!important}
-.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px}.login-card{width:min(460px,100%);background:rgba(18,18,18,.9);border:1px solid #2f2f2f;border-radius:28px;padding:32px;box-shadow:0 30px 80px #0008;backdrop-filter:blur(14px)}
-.brand{display:flex;align-items:center;gap:12px;justify-content:center;margin-bottom:10px}.logo{width:54px;height:54px;border-radius:18px;background:linear-gradient(135deg,#ff3131,var(--red));display:grid;place-items:center;font-weight:900;font-size:22px;box-shadow:0 12px 35px #d4000040}.brand h1{margin:0;font-size:28px}.sub{text-align:center;color:var(--muted);font-size:14px;margin:0 0 26px}
-.field{margin-bottom:14px}.field label{display:block;font-size:13px;color:#ddd;margin-bottom:7px}.field input,.field select{width:100%;padding:14px 15px;border-radius:14px;border:1px solid #303030;background:#0d0d0d;color:#fff;outline:none}.field input:focus,.field select:focus{border-color:var(--red);box-shadow:0 0 0 3px #d4000026}
-.btn{border:0;border-radius:14px;padding:14px 18px;cursor:pointer;font-weight:800}.btn-primary{width:100%;background:linear-gradient(135deg,#f21b1b,#a90000);color:#fff;box-shadow:0 10px 30px #d4000038}.status{margin-top:12px;min-height:24px;font-size:13px;color:#ff8b8b;text-align:center}
-.demo{margin-top:18px;padding:13px;border:1px solid #2d2d2d;background:#101010;border-radius:14px;font-size:12px;color:#bbb;line-height:1.9}.demo b{color:#fff}
-.app{min-height:100vh}.topbar{position:sticky;top:0;z-index:20;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#090909e8;backdrop-filter:blur(16px);border-bottom:1px solid #222}.mini-brand{display:flex;align-items:center;gap:10px}.mini-logo{width:38px;height:38px;border-radius:12px;background:var(--red);display:grid;place-items:center;font-weight:900}.actions{display:flex;gap:8px}.iconbtn{background:#151515;border:1px solid #292929;color:#fff;border-radius:12px;padding:10px 12px;cursor:pointer}
-.shell{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 72px)}.sidebar{border-left:1px solid #222;background:#0b0b0b;padding:20px 14px}.navbtn{width:100%;display:flex;gap:10px;align-items:center;background:transparent;color:#ccc;border:0;padding:13px 14px;border-radius:13px;cursor:pointer;margin:3px 0;text-align:right}.navbtn.active,.navbtn:hover{background:#211010;color:#fff}.content{padding:24px;min-width:0}.hero{background:linear-gradient(135deg,#300000,#111);border:1px solid #351515;border-radius:24px;padding:24px;display:flex;justify-content:space-between;gap:20px;align-items:center}.hero h2{margin:0 0 6px;font-size:28px}.hero p{margin:0;color:#bbb}.pill{padding:9px 12px;border-radius:999px;background:#15291f;color:#9ef0c8;border:1px solid #24553d;font-size:12px;white-space:nowrap}
-.section-title{display:flex;align-items:center;justify-content:space-between;margin:26px 0 12px}.section-title h3{margin:0;font-size:20px}.search{width:min(340px,100%);padding:11px 14px;border-radius:12px;border:1px solid #2b2b2b;background:#111;color:#fff}
-.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}.card{background:#121212;border:1px solid #242424;border-radius:17px;overflow:hidden;cursor:pointer;transition:.2s}.card:hover{transform:translateY(-3px);border-color:#4c2020}.poster{aspect-ratio:2/3;background:#1d1d1d;display:grid;place-items:center;overflow:hidden}.poster img{width:100%;height:100%;object-fit:cover}.poster .ph{font-size:38px;color:#777}.meta{padding:11px}.name{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.small{font-size:11px;color:#8f8f8f;margin-top:4px}
-.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.cat{padding:20px;border-radius:18px;background:linear-gradient(145deg,#171717,#0e0e0e);border:1px solid #292929;cursor:pointer}.cat strong{display:block;margin-bottom:5px}.cat span{font-size:12px;color:#999}
-.player-modal{position:fixed;inset:0;background:#000d;z-index:50;display:grid;place-items:center;padding:24px}.player-box{width:min(1100px,100%);background:#101010;border:1px solid #2b2b2b;border-radius:18px;overflow:hidden}.player-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px}.player-head h4{margin:0}.player-box video{width:100%;max-height:72vh;background:#000;display:block}.close{background:#251010;color:#fff;border:1px solid #4e1d1d;border-radius:10px;padding:8px 12px;cursor:pointer}
-.empty{padding:40px;text-align:center;color:#888;border:1px dashed #333;border-radius:18px}.spinner{width:34px;height:34px;border:4px solid #333;border-top-color:var(--red);border-radius:50%;animation:spin .8s linear infinite;margin:20px auto}@keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:1100px){.grid{grid-template-columns:repeat(4,1fr)}}@media(max-width:800px){.shell{grid-template-columns:1fr}.sidebar{position:fixed;bottom:0;left:0;right:0;z-index:30;border:0;border-top:1px solid #222;padding:7px;background:#0b0b0bf5;display:grid;grid-template-columns:repeat(4,1fr)}.navbtn{justify-content:center;font-size:12px;padding:10px 5px}.navbtn .label{display:none}.content{padding:16px 16px 90px}.grid{grid-template-columns:repeat(3,1fr)}.category-grid{grid-template-columns:repeat(2,1fr)}.hero{align-items:flex-start;flex-direction:column}.topbar{padding:0 15px}}@media(max-width:520px){.grid{grid-template-columns:repeat(2,1fr)}.hero h2{font-size:22px}.login-card{padding:23px}}
-</style>
-</head>
-<body>
-<section id="loginView" class="login-wrap">
-  <div class="login-card">
-    <div class="brand"><div class="logo">F</div><h1>Family Player</h1></div>
-    <p class="sub">مشغل فاملي — Live TV • Movies • Series</p>
-    <div class="field"><label>اختر السيرفر</label><select id="dnsSelect"><option value="uae">Family Server UAE</option></select></div>
-    <div class="field"><label>اسم المستخدم</label><input id="username" value="29542719927199" autocomplete="username"></div>
-    <div class="field"><label>كلمة المرور</label><input id="password" type="password" value="83016608822180" autocomplete="current-password"></div>
-    <button id="loginBtn" class="btn btn-primary">تسجيل الدخول</button>
-    <div id="loginStatus" class="status"></div>
-    <div class="demo"><b>Family Multi DNS</b><br>اختر السيرفر ثم أدخل اسم المستخدم وكلمة المرور. يتم الاتصال عبر بوابة Family الآمنة.</div>
-  </div>
-</section>
 
-<section id="appView" class="app hidden">
-  <header class="topbar"><div class="mini-brand"><div class="mini-logo">F</div><strong>Family Player</strong></div><div class="actions"><button id="refreshBtn" class="iconbtn">↻ تحديث</button><button id="logoutBtn" class="iconbtn">خروج</button></div></header>
-  <div class="shell">
-    <aside class="sidebar">
-      <button class="navbtn active" data-section="home">🏠 <span class="label">الرئيسية</span></button>
-      <button class="navbtn" data-section="live">📺 <span class="label">البث المباشر</span></button>
-      <button class="navbtn" data-section="movies">🎬 <span class="label">الأفلام</span></button>
-      <button class="navbtn" data-section="series">📚 <span class="label">المسلسلات</span></button>
-    </aside>
-    <main id="content" class="content"></main>
-  </div>
-</section>
+    <meta charset="UTF-8">
 
-<div id="playerModal" class="player-modal hidden"><div class="player-box"><div class="player-head"><h4 id="playerTitle">Family Player</h4><button id="closePlayer" class="close">إغلاق ✕</button></div><video id="video" controls playsinline></video></div></div>
+    <title>لماذا تختار سيرفر فاملي؟ | مميزات اشتراك Family IPTV</title>
 
-<script>
-const PROXY_BASE='https://api.mohammedalnajjar2211.workers.dev';
-const DNS_LIST=[
-  {id:'uae',name:'Family Server UAE'}
-  // لإضافة DNS جديد: أضفه أولاً داخل SERVERS في Cloudflare Worker
-  // ثم أضف هنا مثلاً: {id:'iraq',name:'Family Server Iraq'}
-];
-const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
-let session={serverId:'',serverName:'',username:'',password:'',auth:null};
-let cache={liveCats:null,movieCats:null,seriesCats:null};
+    <meta name="description"
+          content="تعرف على مميزات سيرفر فاملي Family IPTV، جودة البث، الأجهزة المدعومة، سرعة الإنترنت المطلوبة، سهولة التفعيل والدعم الفني، ولماذا يعتبر اشتراك فاملي خياراً مناسباً لمشاهدة IPTV.">
 
-function proxyPath(path=''){return `${PROXY_BASE}/p/${encodeURIComponent(session.serverId)}/${String(path).replace(/^\/+/, '')}`}
-function api(action='',extra={}){
-  const p=new URLSearchParams({username:session.username,password:session.password,...extra});
-  if(action)p.set('action',action);
-  return `${proxyPath('player_api.php')}?${p.toString()}`;
-}
-async function getJSON(url){const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
-function escapeHtml(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function poster(src,title){return src?`<img loading="lazy" src="${escapeHtml(src)}" alt="${escapeHtml(title)}" onerror="this.parentElement.innerHTML='<div class=ph>▶</div>'">`:`<div class="ph">▶</div>`}
-function showLoading(msg='جاري التحميل...'){$('#content').innerHTML=`<div class="empty"><div class="spinner"></div>${msg}</div>`}
-function expDate(ts){if(!ts||ts==='0')return 'غير محدد';return new Date(Number(ts)*1000).toLocaleDateString('ar')}
+    <meta name="keywords"
+          content="Family IPTV, سيرفر فاملي, اشتراك IPTV, مميزات Family IPTV, اشتراك فاملي, IPTV 4K, IPTV العراق, IPTV السعودية, IPTV الكويت, أفضل اشتراك IPTV">
 
-async function login(){
- const btn=$('#loginBtn'),st=$('#loginStatus'); btn.disabled=true;st.textContent='جاري التحقق من الحساب...';
- session.serverId=$('#dnsSelect').value;session.serverName=DNS_LIST.find(d=>d.id===session.serverId)?.name||'Family Server';session.username=$('#username').value.trim();session.password=$('#password').value.trim();
- try{const data=await getJSON(api());if(!data.user_info||String(data.user_info.auth)!=='1')throw new Error('بيانات الدخول غير صحيحة');session.auth=data;localStorage.setItem('familyPlayerSession',JSON.stringify({serverId:session.serverId,username:session.username}));$('#loginView').classList.add('hidden');$('#appView').classList.remove('hidden');renderHome();}
- catch(e){st.textContent='تعذر تسجيل الدخول. تحقق من اسم المستخدم وكلمة المرور أو حالة السيرفر.';console.error(e)}finally{btn.disabled=false}
-}
+    <meta name="author" content="Family IPTV">
 
-function renderHome(){
- const u=session.auth?.user_info||{};
- $('#content').innerHTML=`<section class="hero"><div><h2>مرحباً بك في Family Player</h2><p>تم الاتصال بنجاح. اختر البث المباشر أو الأفلام أو المسلسلات.</p></div><span class="pill">● الحساب ${u.status||'Active'}</span></section>
- <div class="section-title"><h3>معلومات الاشتراك</h3></div>
- <div class="category-grid"><div class="cat"><strong>اسم المستخدم</strong><span>${escapeHtml(u.username||session.username)}</span></div><div class="cat"><strong>تاريخ الانتهاء</strong><span>${expDate(u.exp_date)}</span></div><div class="cat"><strong>الاتصالات</strong><span>${escapeHtml(u.active_cons||'0')} / ${escapeHtml(u.max_connections||'1')}</span></div><div class="cat"><strong>السيرفر</strong><span>${escapeHtml(session.serverName)}</span></div></div>
- <div class="section-title"><h3>الأقسام</h3></div><div class="category-grid"><div class="cat" onclick="loadSection('live')"><strong>📺 البث المباشر</strong><span>القنوات والتصنيفات</span></div><div class="cat" onclick="loadSection('movies')"><strong>🎬 الأفلام</strong><span>مكتبة VOD</span></div><div class="cat" onclick="loadSection('series')"><strong>📚 المسلسلات</strong><span>المواسم والحلقات</span></div><div class="cat" onclick="renderHome()"><strong>⭐ المفضلة</strong><span>يمكن توسيعها لاحقاً</span></div></div>`;
-}
+    <meta name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-async function categories(type){const map={live:'get_live_categories',movies:'get_vod_categories',series:'get_series_categories'};if(cache[type+'Cats'])return cache[type+'Cats'];return cache[type+'Cats']=await getJSON(api(map[type]));}
-async function streams(type,categoryId){const map={live:'get_live_streams',movies:'get_vod_streams',series:'get_series'};return getJSON(api(map[type],categoryId?{category_id:categoryId}:{}))}
+    <meta name="googlebot"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-async function loadSection(type){
- $$('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.section===type));showLoading();
- try{const cats=await categories(type);const label={live:'البث المباشر',movies:'الأفلام',series:'المسلسلات'}[type];$('#content').innerHTML=`<div class="section-title"><h3>${label}</h3><input id="searchInput" class="search" placeholder="بحث..."></div><div id="cats" class="category-grid"></div><div id="itemsWrap"></div>`;const c=$('#cats');c.innerHTML=`<div class="cat" data-id=""><strong>الكل</strong><span>عرض جميع العناصر</span></div>`+cats.map(x=>`<div class="cat" data-id="${escapeHtml(x.category_id)}"><strong>${escapeHtml(x.category_name)}</strong><span>فتح التصنيف</span></div>`).join('');c.querySelectorAll('.cat').forEach(el=>el.onclick=()=>loadItems(type,el.dataset.id));$('#searchInput').oninput=e=>filterCards(e.target.value);await loadItems(type,'');}
- catch(e){$('#content').innerHTML=`<div class="empty">تعذر تحميل البيانات من السيرفر.<br><small>${escapeHtml(e.message)}</small></div>`}
-}
+    <meta name="theme-color" content="#d40000">
 
-async function loadItems(type,cat){const wrap=$('#itemsWrap');wrap.innerHTML='<div class="spinner"></div>';try{const data=await streams(type,cat);if(!Array.isArray(data)||!data.length){wrap.innerHTML='<div class="empty">لا توجد عناصر في هذا القسم</div>';return}wrap.innerHTML=`<div class="section-title"><h3>المحتوى</h3><span class="small">${data.length} عنصر</span></div><div class="grid" id="itemsGrid">${data.map(x=>itemCard(type,x)).join('')}</div>`;wrap.querySelectorAll('.card').forEach(card=>card.onclick=()=>openItem(type,card.dataset.id,card.dataset.ext,card.dataset.name));}catch(e){wrap.innerHTML=`<div class="empty">فشل تحميل المحتوى: ${escapeHtml(e.message)}</div>`}}
-function itemCard(type,x){const id=type==='series'?x.series_id:x.stream_id;const image=x.stream_icon||x.cover||'';const ext=x.container_extension||(type==='live'?'ts':'mp4');return `<article class="card" data-name="${escapeHtml(x.name||x.title||'')}" data-id="${escapeHtml(id)}" data-ext="${escapeHtml(ext)}"><div class="poster">${poster(image,x.name||x.title)}</div><div class="meta"><div class="name">${escapeHtml(x.name||x.title||'بدون اسم')}</div><div class="small">${type==='live'?'قناة':type==='movies'?'فيلم':'مسلسل'}</div></div></article>`}
-function filterCards(q){q=q.trim().toLowerCase();$$('#itemsGrid .card').forEach(c=>c.style.display=c.dataset.name.toLowerCase().includes(q)?'':'none')}
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-async function openItem(type,id,ext,name){if(type==='series'){return openSeries(id,name)};const folder=type==='live'?'live':'movie';const fallback=type==='live'?(ext||'ts'):(ext||'mp4');const url=proxyPath(`${folder}/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${id}.${fallback}`);play(url,name,fallback)}
-async function openSeries(id,name){showLoading('جاري تحميل تفاصيل المسلسل...');try{const info=await getJSON(api('get_series_info',{series_id:id}));const eps=[];Object.values(info.episodes||{}).forEach(season=>season.forEach(ep=>eps.push(ep)));$('#content').innerHTML=`<div class="section-title"><h3>${escapeHtml(name)}</h3><button class="iconbtn" onclick="loadSection('series')">رجوع</button></div><div class="grid">${eps.map(ep=>`<article class="card" onclick="play(proxyPath('series/${encodeURIComponent(session.username)}/${encodeURIComponent(session.password)}/${ep.id}.${ep.container_extension||'mp4'}'),'${escapeHtml(ep.title||'حلقة')}','${ep.container_extension||'mp4'}')"><div class="poster">${poster(ep.info?.movie_image||'',ep.title)}</div><div class="meta"><div class="name">${escapeHtml(ep.title||'حلقة')}</div><div class="small">الموسم ${ep.season||'-'} • الحلقة ${ep.episode_num||'-'}</div></div></article>`).join('')}</div>`}catch(e){$('#content').innerHTML=`<div class="empty">تعذر تحميل الحلقات</div>`}}
-function logout(){localStorage.removeItem('familyPlayerSession');location.reload()}
+    <!-- Canonical -->
 
-$('#loginBtn').onclick=login;$('#logoutBtn').onclick=logout;$('#refreshBtn').onclick=()=>{cache={liveCats:null,movieCats:null,seriesCats:null};renderHome()};$('#closePlayer').onclick=closePlayer;$$('.navbtn').forEach(b=>b.onclick=()=>b.dataset.section==='home'?renderHome():loadSection(b.dataset.section));
+    <link rel="canonical"
+          href="https://familyiptv.net/why-family-iptv.html">
 
-let activeHls=null;
-let activeMpegts=null;
+    <!-- Open Graph -->
 
-function destroyPlayers(){
-  try{
-    if(activeHls){
-      activeHls.destroy();
-      activeHls=null;
-    }
-  }catch(e){}
-  try{
-    if(activeMpegts){
-      activeMpegts.pause();
-      activeMpegts.unload();
-      activeMpegts.detachMediaElement();
-      activeMpegts.destroy();
-      activeMpegts=null;
-    }
-  }catch(e){}
-}
+    <meta property="og:type"
+          content="article">
 
-function showPlayerError(message){
-  const box=document.querySelector('#playerError');
-  if(box){
-    box.textContent=message;
-    box.style.display='block';
-  }
-  console.error('[Family Player]',message);
-}
+    <meta property="og:site_name"
+          content="Family IPTV">
 
-function play(url,name,ext=''){
-  const modal=$('#playerModal');
-  const video=$('#video');
-  $('#playerTitle').textContent=name||'Family Player';
+    <meta property="og:title"
+          content="لماذا تختار سيرفر فاملي؟ | مميزات Family IPTV">
 
-  let err=$('#playerError');
-  if(!err){
-    const e=document.createElement('div');
-    e.id='playerError';
-    e.style.cssText='display:none;margin:10px 20px;padding:12px 14px;border:1px solid rgba(255,50,50,.35);background:rgba(120,0,0,.25);border-radius:10px;color:#ffd7d7;font-size:13px;direction:rtl';
-    video.parentElement.insertBefore(e,video);
-  }else{
-    err.style.display='none';
-    err.textContent='';
-  }
+    <meta property="og:description"
+          content="اكتشف أهم مميزات Family IPTV، الأجهزة المدعومة، جودة المشاهدة، سرعة الإنترنت المناسبة وطريقة الاشتراك في سيرفر فاملي.">
 
-  destroyPlayers();
-  video.pause();
-  video.removeAttribute('src');
-  video.load();
+    <meta property="og:url"
+          content="https://familyiptv.net/why-family-iptv.html">
 
-  modal.classList.remove('hidden');
+    <meta property="og:locale"
+          content="ar_IQ">
 
-  const cleanExt=String(ext||url.split('?')[0].split('.').pop()||'').toLowerCase();
+    <meta property="og:image"
+          content="https://familyiptv.net/assets/12months.png">
 
-  // HLS manifest
-  if(cleanExt==='m3u8'){
-    if(video.canPlayType('application/vnd.apple.mpegurl')){
-      video.src=url;
-      video.play().catch(()=>{});
-      return;
-    }
+    <meta property="og:image:alt"
+          content="مميزات اشتراك Family IPTV">
 
-    if(window.Hls && Hls.isSupported()){
-      activeHls=new Hls({
-        enableWorker:true,
-        lowLatencyMode:false,
-        backBufferLength:30,
-        maxBufferLength:20,
-        manifestLoadingTimeOut:15000,
-        levelLoadingTimeOut:15000,
-        fragLoadingTimeOut:20000
-      });
+    <meta property="og:image:type"
+          content="image/png">
 
-      activeHls.loadSource(url);
-      activeHls.attachMedia(video);
+    <!-- Twitter / X -->
 
-      activeHls.on(Hls.Events.MANIFEST_PARSED,()=>{
-        video.play().catch(()=>{});
-      });
+    <meta name="twitter:card"
+          content="summary_large_image">
 
-      activeHls.on(Hls.Events.ERROR,(_,data)=>{
-        console.error('HLS ERROR',data);
-        if(data.fatal){
-          showPlayerError(`خطأ HLS: ${data.type || ''} / ${data.details || 'تعذر تشغيل البث'}`);
-        }
-      });
-      return;
-    }
+    <meta name="twitter:title"
+          content="لماذا تختار سيرفر فاملي؟ | Family IPTV">
 
-    showPlayerError('هذا المتصفح لا يدعم HLS.');
-    return;
-  }
+    <meta name="twitter:description"
+          content="تعرف على أهم مميزات اشتراك سيرفر فاملي Family IPTV والأجهزة المدعومة وجودة المشاهدة.">
 
-  // Xtream live streams are commonly MPEG-TS (.ts).
-  if(cleanExt==='ts'){
-    if(window.mpegts && mpegts.getFeatureList().mseLivePlayback){
-      try{
-        activeMpegts=mpegts.createPlayer(
-          {
-            type:'mpegts',
-            isLive:true,
-            url:url
-          },
-          {
-            enableWorker:true,
-            enableStashBuffer:false,
-            stashInitialSize:128,
-            liveBufferLatencyChasing:true,
-            liveBufferLatencyMaxLatency:5,
-            liveBufferLatencyMinRemain:1
-          }
-        );
+    <meta name="twitter:image"
+          content="https://familyiptv.net/assets/12months.png">
 
-        activeMpegts.attachMediaElement(video);
-        activeMpegts.load();
+    <!-- Icons / PWA -->
 
-        activeMpegts.on(mpegts.Events.ERROR,(type,detail,info)=>{
-          console.error('MPEGTS ERROR',type,detail,info);
-          showPlayerError(`خطأ البث: ${detail || type || 'تعذر تشغيل MPEG-TS'}`);
-        });
+    <link rel="icon"
+          type="image/png"
+          href="assets/favicon.png">
 
-        video.play().catch(()=>{});
-        return;
-      }catch(e){
-        console.error(e);
-        showPlayerError('تعذر تهيئة مشغل MPEG-TS.');
-        return;
+    <link rel="shortcut icon"
+          href="assets/favicon.png">
+
+    <link rel="apple-touch-icon"
+          href="assets/favicon.png">
+
+    <link rel="manifest"
+          href="manifest.json">
+
+    <!-- Performance -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <!-- Fonts / Main CSS -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="css/style.css?v=2">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Organization Schema -->
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://familyiptv.net/#organization",
+      "name": "Family IPTV",
+      "alternateName": "سيرفر فاملي",
+      "url": "https://familyiptv.net/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://familyiptv.net/assets/favicon.png"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+9647809522129",
+        "contactType": "customer service",
+        "availableLanguage": [
+          "ar",
+          "en"
+        ]
       }
     }
+    </script>
 
-    showPlayerError('المتصفح لا يدعم تشغيل MPEG-TS عبر MSE.');
-    return;
-  }
+    <!-- Article Schema -->
 
-  // MP4 and browser-native formats
-  video.src=url;
-  video.play().catch(e=>{
-    console.error(e);
-    showPlayerError('تعذر تشغيل هذا التنسيق في المتصفح.');
-  });
-}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "@id": "https://familyiptv.net/why-family-iptv.html#article",
+      "headline": "لماذا تختار سيرفر فاملي؟ مميزات اشتراك Family IPTV",
+      "description": "دليل للتعرف على مميزات Family IPTV وجودة المشاهدة والأجهزة المدعومة ومتطلبات الإنترنت وطريقة الاشتراك.",
+      "url": "https://familyiptv.net/why-family-iptv.html",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://familyiptv.net/why-family-iptv.html"
+      },
+      "image": "https://familyiptv.net/assets/12months.png",
+      "inLanguage": "ar-IQ",
+      "author": {
+        "@id": "https://familyiptv.net/#organization"
+      },
+      "publisher": {
+        "@id": "https://familyiptv.net/#organization"
+      }
+    }
+    </script>
 
-function closePlayer(){
-  destroyPlayers();
-  const v=$('#video');
-  v.pause();
-  v.removeAttribute('src');
-  v.load();
+    <!-- Breadcrumb Schema -->
 
-  const err=$('#playerError');
-  if(err){
-    err.style.display='none';
-    err.textContent='';
-  }
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "الرئيسية",
+          "item": "https://familyiptv.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "لماذا سيرفر فاملي؟",
+          "item": "https://familyiptv.net/why-family-iptv.html"
+        }
+      ]
+    }
+    </script>
 
-  $('#playerModal').classList.add('hidden');
-}
+    <!-- FAQ Schema -->
 
-(function init(){
-  const sel=$('#dnsSelect');
-  sel.innerHTML=DNS_LIST.map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
-  const old=localStorage.getItem('familyPlayerSession');
-  if(old){
-    try{
-      const o=JSON.parse(old);
-      if([...sel.options].some(x=>x.value===o.serverId)) sel.value=o.serverId;
-      $('#username').value=o.username||'';
-      $('#password').value='';
-    }catch{}
-  }
-})();
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هو Family IPTV؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Family IPTV هو اشتراك IPTV يعمل عبر اتصال الإنترنت ويمكن استخدامه على مجموعة متنوعة من الأجهزة والتطبيقات المتوافقة."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يعمل Family IPTV على Smart TV؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يمكن تشغيل اشتراك Family IPTV على العديد من أجهزة Smart TV باستخدام تطبيق IPTV متوافق مع نظام الجهاز."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يدعم Family IPTV جودة 4K؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "قد تتوفر بعض القنوات والمصادر بجودة تصل إلى 4K حسب المحتوى والجهاز وسرعة اتصال الإنترنت."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "ما سرعة الإنترنت المطلوبة؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يفضل اتصال إنترنت مستقر بسرعة لا تقل عن 10 ميغابت في الثانية، وقد تحتاج الجودة العالية إلى سرعة أعلى."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل يحتاج IPTV إلى طبق استقبال؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "لا، يعتمد IPTV على اتصال الإنترنت والتطبيق المتوافق ولا يحتاج إلى طبق استقبال فضائي."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أشترك في سيرفر فاملي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يمكن اختيار الباقة المناسبة من موقع Family IPTV ثم إتمام الطلب والتواصل عبر واتساب للحصول على بيانات التفعيل."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- CSS خاص بهذه الصفحة فقط -->
+
+    <style>
+
+        /* =========================================
+           WHY FAMILY IPTV PAGE
+        ========================================= */
+
+        .why-page {
+            width: 100%;
+        }
+
+        /* HERO */
+
+        .why-hero {
+            position: relative;
+            overflow: hidden;
+
+            max-width: 1180px;
+
+            margin: 35px auto 25px;
+
+            padding: 70px 30px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(circle at 85% 20%,
+                    rgba(212, 0, 0, 0.22),
+                    transparent 38%),
+                linear-gradient(
+                    145deg,
+                    #151515,
+                    #090909
+                );
+
+            border: 1px solid #292929;
+
+            border-radius: 26px;
+
+            box-shadow:
+                0 20px 55px rgba(0,0,0,.35);
+        }
+
+        .why-hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            border-radius: 50%;
+
+            background: rgba(212,0,0,.12);
+
+            filter: blur(80px);
+
+            top: -100px;
+            right: -60px;
+        }
+
+        .why-hero-content {
+            position: relative;
+            z-index: 2;
+
+            max-width: 880px;
+
+            margin: auto;
+        }
+
+        .why-badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 8px 18px;
+
+            margin-bottom: 20px;
+
+            color: #fff;
+
+            background: rgba(212,0,0,.14);
+
+            border: 1px solid rgba(212,0,0,.45);
+
+            border-radius: 30px;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .why-hero h1 {
+
+            margin: 0 0 20px;
+
+            color: #fff;
+
+            font-size: clamp(31px, 5vw, 52px);
+
+            line-height: 1.5;
+
+            font-weight: 800;
+        }
+
+        .why-hero h1 span {
+            color: #e00000;
+        }
+
+        .why-hero p {
+
+            max-width: 780px;
+
+            margin: auto;
+
+            color: #b8b8b8;
+
+            font-size: 17px;
+
+            line-height: 2.1;
+        }
+
+        .why-actions {
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 13px;
+
+            margin-top: 28px;
+        }
+
+        .why-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 8px;
+
+            padding: 13px 25px;
+
+            border-radius: 12px;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            transition: .25s;
+        }
+
+        .why-btn-main {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d40000,
+                    #ff2020
+                );
+
+            box-shadow:
+                0 8px 25px rgba(212,0,0,.28);
+        }
+
+        .why-btn-main:hover {
+            transform: translateY(-3px);
+        }
+
+        .why-btn-outline {
+
+            background: #151515;
+
+            border: 1px solid #343434;
+        }
+
+        .why-btn-outline:hover {
+
+            border-color: #d40000;
+
+            color: #fff;
+        }
+
+        /* ARTICLE */
+
+        .why-container {
+
+            width: calc(100% - 30px);
+
+            max-width: 1050px;
+
+            margin: 40px auto 80px;
+        }
+
+        .why-article {
+
+            padding: 45px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #111111,
+                    #0a0a0a
+                );
+
+            border: 1px solid #282828;
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.25);
+        }
+
+        .why-article h2 {
+
+            position: relative;
+
+            margin:
+                50px
+                0
+                20px;
+
+            padding-right: 18px;
+
+            color: #fff;
+
+            font-size: 29px;
+
+            font-weight: 800;
+
+            line-height: 1.6;
+        }
+
+        .why-article h2:first-child {
+            margin-top: 0;
+        }
+
+        .why-article h2::before {
+
+            content: "";
+
+            position: absolute;
+
+            right: 0;
+
+            top: 8px;
+
+            width: 5px;
+
+            height: 32px;
+
+            background:
+                linear-gradient(
+                    #e00000,
+                    #8c0000
+                );
+
+            border-radius: 10px;
+        }
+
+        .why-article h3 {
+
+            margin:
+                25px
+                0
+                10px;
+
+            color: #fff;
+
+            font-size: 21px;
+        }
+
+        .why-article p {
+
+            margin: 0 0 18px;
+
+            color: #bcbcbc;
+
+            font-size: 16px;
+
+            line-height: 2.15;
+        }
+
+        .why-article strong {
+            color: #fff;
+        }
+
+        /* FEATURE CARDS */
+
+        .why-features {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 16px;
+
+            margin: 30px 0;
+        }
+
+        .why-feature {
+
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 25px;
+
+            background: #151515;
+
+            border: 1px solid #292929;
+
+            border-radius: 18px;
+
+            transition: .3s ease;
+        }
+
+        .why-feature:hover {
+
+            transform: translateY(-5px);
+
+            border-color: #d40000;
+
+            box-shadow:
+                0 12px 30px
+                rgba(212,0,0,.10);
+        }
+
+        .why-feature-icon {
+
+            width: 50px;
+            height: 50px;
+
+            margin-bottom: 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #fff;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #d40000,
+                    #990000
+                );
+
+            border-radius: 15px;
+
+            font-size: 20px;
+
+            box-shadow:
+                0 8px 20px rgba(212,0,0,.18);
+        }
+
+        .why-feature h3 {
+
+            margin: 0 0 8px;
+
+            color: #fff;
+
+            font-size: 18px;
+        }
+
+        .why-feature p {
+
+            margin: 0;
+
+            color: #aaa;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+        /* INFO */
+
+        .why-info {
+
+            margin: 28px 0;
+
+            padding: 22px;
+
+            color: #ddd;
+
+            background:
+                rgba(212,0,0,.07);
+
+            border:
+                1px solid
+                rgba(212,0,0,.25);
+
+            border-right:
+                4px solid #d40000;
+
+            border-radius: 14px;
+
+            line-height: 2;
+        }
+
+        .why-info i {
+
+            margin-left: 8px;
+
+            color: #e00000;
+        }
+
+        /* LIST */
+
+        .why-list {
+
+            margin: 20px 0 30px;
+
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .why-list li {
+
+            position: relative;
+
+            margin: 11px 0;
+
+            padding-right: 30px;
+
+            color: #bbb;
+
+            font-size: 15px;
+
+            line-height: 1.9;
+        }
+
+        .why-list li::before {
+
+            content: "\f058";
+
+            position: absolute;
+
+            right: 0;
+
+            top: 1px;
+
+            color: #d40000;
+
+            font-family:
+                "Font Awesome 6 Free";
+
+            font-weight: 900;
+        }
+
+        /* DEVICES */
+
+        .device-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0,1fr));
+
+            gap: 12px;
+
+            margin: 25px 0;
+        }
+
+        .device-card {
+
+            padding: 18px 10px;
+
+            text-align: center;
+
+            color: #ddd;
+
+            background: #151515;
+
+            border: 1px solid #292929;
+
+            border-radius: 14px;
+
+            font-size: 14px;
+
+            transition: .25s;
+        }
+
+        .device-card i {
+
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #d40000;
+
+            font-size: 24px;
+        }
+
+        .device-card:hover {
+
+            transform: translateY(-3px);
+
+            border-color: #d40000;
+        }
+
+        /* STEPS */
+
+        .why-steps {
+
+            display: grid;
+
+            gap: 12px;
+
+            margin-top: 25px;
+        }
+
+        .why-step {
+
+            display: flex;
+
+            gap: 15px;
+
+            align-items: flex-start;
+
+            padding: 18px;
+
+            background: #151515;
+
+            border: 1px solid #292929;
+
+            border-radius: 14px;
+        }
+
+        .why-step-number {
+
+            width: 42px;
+            height: 42px;
+
+            flex: 0 0 42px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #fff;
+
+            background: #d40000;
+
+            border-radius: 50%;
+
+            font-weight: 800;
+        }
+
+        .why-step-content strong {
+
+            display: block;
+
+            margin-bottom: 4px;
+
+            color: #fff;
+        }
+
+        .why-step-content p {
+
+            margin: 0;
+
+            font-size: 14px;
+        }
+
+        /* INTERNAL LINKS */
+
+        .internal-links-box {
+
+            margin: 45px 0 5px;
+
+            padding: 30px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(212,0,0,.12),
+                    transparent 70%
+                ),
+                #101010;
+
+            border: 1px solid #292929;
+
+            border-radius: 20px;
+        }
+
+        .internal-links-box h2 {
+
+            margin-top: 0;
+
+            padding-right: 0;
+        }
+
+        .internal-links-box h2::before {
+            display: none;
+        }
+
+        .internal-link-buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 20px;
+        }
+
+        .internal-link-buttons a {
+
+            padding: 10px 17px;
+
+            color: #fff;
+
+            background: #1b1b1b;
+
+            border: 1px solid #333;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition: .25s;
+        }
+
+        .internal-link-buttons a:hover {
+
+            background: #d40000;
+
+            border-color: #d40000;
+        }
+
+        /* FAQ */
+
+        .why-faq-section {
+
+            max-width: 1050px;
+
+            margin: 0 auto 75px;
+
+            padding: 0 15px;
+        }
+
+        .why-faq-header {
+
+            margin-bottom: 25px;
+
+            text-align: center;
+        }
+
+        .why-faq-header span {
+
+            display: inline-block;
+
+            padding: 7px 16px;
+
+            margin-bottom: 10px;
+
+            color: #fff;
+
+            background: #d40000;
+
+            border-radius: 30px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+        .why-faq-header h2 {
+
+            margin: 0 0 8px;
+
+            color: #fff;
+
+            font-size: 29px;
+        }
+
+        .why-faq-header p {
+
+            margin: 0;
+
+            color: #999;
+
+            font-size: 14px;
+        }
+
+        .why-faq-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+        .why-faq-item {
+
+            overflow: hidden;
+
+            background: #101010;
+
+            border: 1px solid #292929;
+
+            border-radius: 14px;
+
+            transition: .3s;
+        }
+
+        .why-faq-item:hover,
+        .why-faq-item[open] {
+
+            border-color: #d40000;
+        }
+
+        .why-faq-item summary {
+
+            position: relative;
+
+            padding:
+                19px
+                52px
+                19px
+                20px;
+
+            color: #fff;
+
+            cursor: pointer;
+
+            list-style: none;
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+        .why-faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .why-faq-item summary::before {
+
+            content: "+";
+
+            position: absolute;
+
+            right: 16px;
+
+            top: 50%;
+
+            width: 26px;
+            height: 26px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            transform:
+                translateY(-50%);
+
+            color: #fff;
+
+            background: #d40000;
+
+            border-radius: 50%;
+
+            font-size: 20px;
+        }
+
+        .why-faq-item[open] summary::before {
+            content: "−";
+        }
+
+        .why-faq-answer {
+
+            padding:
+                0
+                20px
+                20px;
+
+            color: #bcbcbc;
+
+            border-top:
+                1px solid #242424;
+
+            font-size: 14px;
+
+            line-height: 2;
+        }
+
+        /* CTA */
+
+        .why-final-cta {
+
+            max-width: 1050px;
+
+            margin: 0 auto 70px;
+
+            padding: 45px 25px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(212,0,0,.17),
+                    #0d0d0d
+                );
+
+            border:
+                1px solid
+                rgba(212,0,0,.30);
+
+            border-radius: 24px;
+        }
+
+        .why-final-cta h2 {
+
+            margin: 0 0 12px;
+
+            color: #fff;
+
+            font-size: 30px;
+        }
+
+        .why-final-cta p {
+
+            max-width: 680px;
+
+            margin: auto;
+
+            color: #aaa;
+
+            line-height: 2;
+        }
+
+        /* ACTIVE SIDEBAR */
+
+        .sidebar a.why-active {
+
+            color: #fff;
+
+            background:
+                rgba(212,0,0,.14);
+
+            border-right:
+                3px solid #d40000;
+        }
+
+        /* MOBILE */
+
+        @media(max-width: 850px) {
+
+            .why-hero {
+
+                width:
+                    calc(100% - 24px);
+
+                margin-top: 20px;
+
+                padding:
+                    50px
+                    18px;
+            }
+
+            .why-article {
+
+                padding:
+                    30px
+                    22px;
+            }
+
+            .why-features {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .device-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media(max-width: 600px) {
+
+            .why-hero {
+
+                border-radius: 18px;
+            }
+
+            .why-hero p {
+
+                font-size: 14px;
+
+                line-height: 2;
+            }
+
+            .why-actions {
+
+                flex-direction: column;
+            }
+
+            .why-btn {
+
+                width: 100%;
+
+                max-width: 280px;
+            }
+
+            .why-container {
+
+                margin-top: 25px;
+            }
+
+            .why-article {
+
+                padding:
+                    25px
+                    17px;
+
+                border-radius: 18px;
+            }
+
+            .why-article h2 {
+
+                font-size: 23px;
+            }
+
+            .why-article p {
+
+                font-size: 14px;
+            }
+
+            .device-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+            .internal-links-box {
+
+                padding:
+                    25px
+                    15px;
+            }
+
+            .why-final-cta {
+
+                width:
+                    calc(100% - 30px);
+
+                padding:
+                    35px
+                    18px;
+            }
+
+            .why-final-cta h2 {
+
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div id="overlay"></div>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-header">
+
+        <h2>سيرفر فاملي</h2>
+
+        <button onclick="toggleMenu()"
+                aria-label="إغلاق القائمة">
+
+            ✕
+
+        </button>
+
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="/">
+                الرئيسية
+            </a>
+        </li>
+
+        <li>
+            <a href="why-family-iptv.html"
+               class="why-active"
+               aria-current="page">
+
+                لماذا فاملي؟
+
+            </a>
+        </li>
+
+        <li>
+            <a href="https://apps.familyiptv.net/#apps">
+
+                التطبيقات
+
+            </a>
+        </li>
+
+        <li>
+            <a href="https://familyiptv.net/check/iptv.html">
+
+                افحص اشتراكك
+
+            </a>
+        </li>
+
+        <li>
+            <a href="https://familyiptv.net/guide">
+
+                دليل التثبيت والدعم
+
+            </a>
+        </li>
+
+        <li>
+            <a href="https://familyiptv.net/speedtest">
+
+                أداة فحص سرعة الإنترنت
+
+            </a>
+        </li>
+
+        <li>
+            <a href="https://m3u.familyiptv.net/">
+
+                تحويل الرابط
+
+            </a>
+        </li>
+
+        <li>
+            <a href="https://familyiptv.net/support">
+
+                الدعم الفني
+
+            </a>
+        </li>
+
+        <li>
+            <a href="https://wa.me/9647809522129"
+               target="_blank"
+               rel="noopener noreferrer">
+
+                اتصل بنا
+
+            </a>
+        </li>
+
+    </ul>
+
+</aside>
+
+<!-- HEADER -->
+
+<header>
+
+    <button class="menu-btn"
+            onclick="toggleMenu()"
+            aria-label="فتح القائمة">
+
+        ☰
+
+    </button>
+
+    <div class="logo">
+
+        <span class="logo-name">
+            سيرفر فاملي
+        </span>
+
+        <span class="verified-badge"
+              title="حساب موثّق"
+              aria-label="حساب موثّق">
+
+            <svg viewBox="0 0 24 24"
+                 aria-hidden="true">
+
+                <path d="M22 12c0-1.43-1.5-2.39-2.04-3.62-.56-1.27-.22-3.01-1.23-4.02-1.01-1.01-2.75-.67-4.02-1.23C13.39 2.5 12.43 1 11 1S8.61 2.5 7.38 3.04c-1.27.56-3.01.22-4.02 1.23-1.01 1.01-.67 2.75-1.23 4.02C1.5 9.61 0 10.57 0 12s1.5 2.39 2.04 3.62c.56 1.27.22 3.01 1.23 4.02 1.01 1.01 2.75.67 4.02 1.23C8.61 21.5 9.57 23 11 23s2.61-1.5 3.62-2.04c1.27-.56 3.01-.22 4.02-1.23 1.01-1.01.67-2.75 1.23-4.02C20.5 14.39 22 13.43 22 12z"
+                      fill="currentColor"/>
+
+                <path d="M7.4 12.1l2.8 2.8 5.7-6"
+                      fill="none"
+                      stroke="#ffffff"
+                      stroke-width="2.2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"/>
+
+            </svg>
+
+        </span>
+
+    </div>
+
+</header>
+
+<main class="why-page">
+
+    <!-- HERO -->
+
+    <section class="why-hero">
+
+        <div class="why-hero-content">
+
+            <div class="why-badge">
+
+                <i class="fa-solid fa-star"></i>
+
+                دليلك إلى Family IPTV
+
+            </div>
+
+            <h1>
+
+                لماذا تختار
+                <span>سيرفر فاملي IPTV؟</span>
+
+            </h1>
+
+            <p>
+
+                تعرف على أهم مميزات اشتراك
+                <strong>Family IPTV</strong>
+                والأجهزة المدعومة وجودة المشاهدة
+                وطريقة التفعيل، وكيف تحصل على تجربة
+                IPTV مناسبة لك ولعائلتك.
+
+            </p>
+
+            <div class="why-actions">
+
+                <a href="shop"
+                   class="why-btn why-btn-main">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    تصفح الباقات
+
+                </a>
+
+                <a href="#why-details"
+                   class="why-btn why-btn-outline">
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    اكتشف المميزات
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ARTICLE -->
+
+    <div class="why-container"
+         id="why-details">
+
+        <article class="why-article">
+
+            <h2>
+                ما هو سيرفر فاملي Family IPTV؟
+            </h2>
+
+            <p>
+
+                <strong>Family IPTV</strong>
+                أو
+                <strong>سيرفر فاملي</strong>
+                هو اشتراك مشاهدة يعتمد على اتصال الإنترنت
+                ويتيح تشغيل الخدمة من خلال العديد من الأجهزة
+                والتطبيقات المتوافقة مع IPTV.
+
+            </p>
+
+            <p>
+
+                تم تصميم تجربة فاملي لتكون سهلة للمستخدم،
+                بدءاً من اختيار الباقة المناسبة ومروراً
+                بتفعيل الاشتراك، ووصولاً إلى إعداد التطبيق
+                المناسب والحصول على الدعم عند الحاجة.
+
+            </p>
+
+            <div class="why-info">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                لا يحتاج IPTV إلى طبق استقبال فضائي تقليدي،
+                وإنما يعتمد بصورة أساسية على اتصال إنترنت
+                مستقر وجهاز أو تطبيق متوافق.
+
+            </div>
+
+            <h2>
+                لماذا يختار المستخدمون Family IPTV؟
+            </h2>
+
+            <div class="why-features">
+
+                <div class="why-feature">
+
+                    <div class="why-feature-icon">
+
+                        <i class="fa-solid fa-tv"></i>
+
+                    </div>
+
+                    <h3>
+                        جودة مشاهدة عالية
+                    </h3>
+
+                    <p>
+
+                        دعم مستويات مختلفة من جودة البث
+                        حسب القناة والمصدر، مع توفر محتوى
+                        عالي الدقة وقد تصل بعض المصادر
+                        إلى جودة 4K.
+
+                    </p>
+
+                </div>
+
+                <div class="why-feature">
+
+                    <div class="why-feature-icon">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                    </div>
+
+                    <h3>
+                        تفعيل سريع
+                    </h3>
+
+                    <p>
+
+                        بعد إتمام الطلب وتأكيد الدفع
+                        يتم تزويد المشترك ببيانات التشغيل
+                        اللازمة لإعداد الخدمة.
+
+                    </p>
+
+                </div>
+
+                <div class="why-feature">
+
+                    <div class="why-feature-icon">
+
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+
+                    </div>
+
+                    <h3>
+                        توافق مع أجهزة متعددة
+                    </h3>
+
+                    <p>
+
+                        يمكن استخدام الخدمة على العديد
+                        من أجهزة Smart TV وAndroid TV
+                        والهواتف وأجهزة البث المتوافقة.
+
+                    </p>
+
+                </div>
+
+                <div class="why-feature">
+
+                    <div class="why-feature-icon">
+
+                        <i class="fa-solid fa-headset"></i>
+
+                    </div>
+
+                    <h3>
+                        دعم فني
+                    </h3>
+
+                    <p>
+
+                        مساعدة المشترك في اختيار التطبيق
+                        المناسب وإعداد بيانات الاشتراك
+                        ومعالجة مشاكل الإعداد.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <h2>
+                جودة مشاهدة تصل إلى 4K
+            </h2>
+
+            <p>
+
+                تدعم خدمة
+                <strong>Family IPTV</strong>
+                عدة مستويات من جودة البث حسب القناة
+                أو المحتوى المتوفر.
+
+            </p>
+
+            <p>
+
+                ويمكن أن تتوفر بعض مصادر البث بدقة
+                <strong>Full HD</strong>
+                أو
+                <strong>4K Ultra HD</strong>
+                عندما يكون المصدر والجهاز المستخدم
+                واتصال الإنترنت مناسباً لهذه الجودة.
+
+            </p>
+
+            <div class="why-info">
+
+                <i class="fa-solid fa-wifi"></i>
+
+                للحصول على تجربة جيدة ننصح بسرعة اتصال
+                مستقرة لا تقل عن
+                <strong>10 Mbps</strong>
+                للاستخدام العام، وقد تحتاج جودة 4K
+                إلى سرعة أعلى.
+
+            </div>
+
+            <h2>
+                الأجهزة التي يعمل عليها Family IPTV
+            </h2>
+
+            <p>
+
+                من أهم مميزات اشتراك فاملي مرونة التشغيل
+                على العديد من الأجهزة وأنظمة التشغيل
+                من خلال التطبيقات المتوافقة.
+
+            </p>
+
+            <div class="device-grid">
+
+                <div class="device-card">
+
+                    <i class="fa-solid fa-tv"></i>
+
+                    Smart TV
+
+                </div>
+
+                <div class="device-card">
+
+                    <i class="fa-brands fa-android"></i>
+
+                    Android TV
+
+                </div>
+
+                <div class="device-card">
+
+                    <i class="fa-solid fa-fire"></i>
+
+                    Fire TV
+
+                </div>
+
+                <div class="device-card">
+
+                    <i class="fa-brands fa-apple"></i>
+
+                    iPhone / iPad
+
+                </div>
+
+                <div class="device-card">
+
+                    <i class="fa-brands fa-android"></i>
+
+                    Android
+
+                </div>
+
+                <div class="device-card">
+
+                    <i class="fa-solid fa-laptop"></i>
+
+                    الكمبيوتر
+
+                </div>
+
+                <div class="device-card">
+
+                    <i class="fa-solid fa-box"></i>
+
+                    IPTV Box
+
+                </div>
+
+                <div class="device-card">
+
+                    <i class="fa-solid fa-display"></i>
+
+                    Google TV
+
+                </div>
+
+            </div>
+
+            <p>
+
+                ويمكنك زيارة
+                <a href="https://apps.familyiptv.net/"
+                   style="color:#e00000;font-weight:700;">
+
+                    صفحة تطبيقات Family IPTV
+
+                </a>
+                لاختيار التطبيق المناسب لجهازك.
+
+            </p>
+
+            <h2>
+                مميزات استخدام سيرفر فاملي
+            </h2>
+
+            <ul class="why-list">
+
+                <li>
+                    تشغيل الخدمة عبر الإنترنت بدون طبق استقبال.
+                </li>
+
+                <li>
+                    توافق مع عدد كبير من الأجهزة الحديثة.
+                </li>
+
+                <li>
+                    تطبيقات متعددة حسب نوع الجهاز ونظام التشغيل.
+                </li>
+
+                <li>
+                    إمكانية اختيار باقات اشتراك بمدد مختلفة.
+                </li>
+
+                <li>
+                    دعم فني للمساعدة في إعداد الاشتراك.
+                </li>
+
+                <li>
+                    سهولة التفعيل وإضافة الاشتراك إلى التطبيق.
+                </li>
+
+                <li>
+                    مستويات مختلفة من جودة المشاهدة حسب المصدر.
+                </li>
+
+            </ul>
+
+            <h2>
+                كيف تحصل على أفضل تجربة مشاهدة؟
+            </h2>
+
+            <p>
+
+                جودة تجربة IPTV لا تعتمد فقط على السيرفر،
+                وإنما تتأثر أيضاً باتصال الإنترنت والجهاز
+                والتطبيق المستخدم.
+
+            </p>
+
+            <ul class="why-list">
+
+                <li>
+                    استخدم اتصال إنترنت سريع ومستقر.
+                </li>
+
+                <li>
+                    يفضل استخدام كابل Ethernet عندما يكون ذلك ممكناً.
+                </li>
+
+                <li>
+                    إذا كنت تستخدم Wi-Fi فتأكد من قوة الإشارة.
+                </li>
+
+                <li>
+                    أغلق التنزيلات والتطبيقات التي تستهلك الإنترنت.
+                </li>
+
+                <li>
+                    قم بتحديث تطبيق IPTV بصورة دورية.
+                </li>
+
+                <li>
+                    اختر جودة بث مناسبة لسرعة اتصالك.
+                </li>
+
+            </ul>
+
+            <p>
+
+                يمكنك أيضاً استخدام
+                <a href="https://familyiptv.net/speedtest"
+                   style="color:#e00000;font-weight:700;">
+
+                    أداة فحص سرعة الإنترنت
+
+                </a>
+                الموجودة في موقع فاملي قبل الاشتراك.
+
+            </p>
+
+            <h2>
+                كيف أشترك في Family IPTV؟
+            </h2>
+
+            <div class="why-steps">
+
+                <div class="why-step">
+
+                    <div class="why-step-number">
+                        1
+                    </div>
+
+                    <div class="why-step-content">
+
+                        <strong>
+                            اختر الباقة
+                        </strong>
+
+                        <p>
+
+                            انتقل إلى صفحة الاشتراكات
+                            واختر مدة وباقة الاشتراك المناسبة لك.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="why-step">
+
+                    <div class="why-step-number">
+                        2
+                    </div>
+
+                    <div class="why-step-content">
+
+                        <strong>
+                            أرسل طلبك
+                        </strong>
+
+                        <p>
+
+                            أكمل الطلب وتواصل معنا
+                            عبر واتساب عند الحاجة.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="why-step">
+
+                    <div class="why-step-number">
+                        3
+                    </div>
+
+                    <div class="why-step-content">
+
+                        <strong>
+                            استلم بيانات الاشتراك
+                        </strong>
+
+                        <p>
+
+                            بعد تأكيد الطلب يتم إرسال
+                            بيانات التفعيل الخاصة بالخدمة.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="why-step">
+
+                    <div class="why-step-number">
+                        4
+                    </div>
+
+                    <div class="why-step-content">
+
+                        <strong>
+                            ابدأ الاستخدام
+                        </strong>
+
+                        <p>
+
+                            أضف بيانات الاشتراك إلى التطبيق
+                            المناسب واستمتع بالخدمة.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <h2>
+                Family IPTV أم التلفزيون التقليدي؟
+            </h2>
+
+            <p>
+
+                يختلف IPTV عن التلفزيون الفضائي التقليدي
+                في طريقة نقل المحتوى، حيث يعتمد IPTV
+                على اتصال الإنترنت بدلاً من طبق الاستقبال.
+
+            </p>
+
+            <p>
+
+                وهذا يمنح المستخدم مرونة أكبر في اختيار
+                الجهاز والتطبيق المناسبين له،
+                خصوصاً مع انتشار أجهزة Smart TV
+                وAndroid TV والهواتف الذكية.
+
+            </p>
+
+            <!-- INTERNAL LINKS -->
+
+            <div class="internal-links-box">
+
+                <h2>
+                    اكتشف خدمات Family IPTV
+                </h2>
+
+                <p>
+
+                    يمكنك الوصول مباشرة إلى أهم صفحات
+                    وخدمات موقع سيرفر فاملي.
+
+                </p>
+
+                <div class="internal-link-buttons">
+
+                    <a href="shop">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        الباقات
+
+                    </a>
+
+                    <a href="https://apps.familyiptv.net/">
+
+                        <i class="fa-solid fa-mobile-screen"></i>
+
+                        التطبيقات
+
+                    </a>
+
+                    <a href="guide">
+
+                        <i class="fa-solid fa-book"></i>
+
+                        دليل التثبيت
+
+                    </a>
+
+                    <a href="speedtest">
+
+                        <i class="fa-solid fa-gauge-high"></i>
+
+                        فحص السرعة
+
+                    </a>
+
+                    <a href="support">
+
+                        <i class="fa-solid fa-headset"></i>
+
+                        الدعم الفني
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+    <!-- FAQ -->
+
+    <section class="why-faq-section">
+
+        <div class="why-faq-header">
+
+            <span>
+                الأسئلة الشائعة
+            </span>
+
+            <h2>
+                أسئلة عن Family IPTV
+            </h2>
+
+            <p>
+
+                إجابات سريعة على أهم الأسئلة
+                قبل الاشتراك.
+
+            </p>
+
+        </div>
+
+        <div class="why-faq-list">
+
+            <details class="why-faq-item"
+                     open>
+
+                <summary>
+
+                    ما هو Family IPTV؟
+
+                </summary>
+
+                <div class="why-faq-answer">
+
+                    Family IPTV هو اشتراك IPTV
+                    يعتمد على اتصال الإنترنت
+                    ويمكن استخدامه على أجهزة
+                    وتطبيقات متعددة متوافقة مع الخدمة.
+
+                </div>
+
+            </details>
+
+            <details class="why-faq-item">
+
+                <summary>
+
+                    هل يعمل Family IPTV على Smart TV؟
+
+                </summary>
+
+                <div class="why-faq-answer">
+
+                    نعم، يمكن تشغيل الاشتراك
+                    على العديد من أجهزة Smart TV
+                    باستخدام تطبيق IPTV متوافق
+                    مع نظام التلفزيون.
+
+                </div>
+
+            </details>
+
+            <details class="why-faq-item">
+
+                <summary>
+
+                    هل يعمل على Android TV وFire Stick؟
+
+                </summary>
+
+                <div class="why-faq-answer">
+
+                    نعم، يمكن استخدام الاشتراك
+                    على أجهزة Android TV وGoogle TV
+                    وAmazon Fire TV Stick باستخدام
+                    تطبيق متوافق.
+
+                </div>
+
+            </details>
+
+            <details class="why-faq-item">
+
+                <summary>
+
+                    هل يدعم Family IPTV جودة 4K؟
+
+                </summary>
+
+                <div class="why-faq-answer">
+
+                    قد تتوفر بعض القنوات والمصادر
+                    بجودة تصل إلى 4K حسب توفر المصدر
+                    بهذه الجودة والجهاز وسرعة الإنترنت.
+
+                </div>
+
+            </details>
+
+            <details class="why-faq-item">
+
+                <summary>
+
+                    ما سرعة الإنترنت المناسبة؟
+
+                </summary>
+
+                <div class="why-faq-answer">
+
+                    يفضل اتصال إنترنت مستقر
+                    بسرعة لا تقل عن 10 ميغابت
+                    في الثانية للاستخدام العام،
+                    مع الحاجة إلى سرعة أعلى
+                    للمحتوى عالي الدقة.
+
+                </div>
+
+            </details>
+
+            <details class="why-faq-item">
+
+                <summary>
+
+                    هل أحتاج إلى طبق استقبال؟
+
+                </summary>
+
+                <div class="why-faq-answer">
+
+                    لا، تعتمد خدمة IPTV
+                    على اتصال الإنترنت ولا تحتاج
+                    إلى طبق استقبال فضائي تقليدي.
+
+                </div>
+
+            </details>
+
+            <details class="why-faq-item">
+
+                <summary>
+
+                    كيف أحصل على المساعدة في الإعداد؟
+
+                </summary>
+
+                <div class="why-faq-answer">
+
+                    يمكنك التواصل مع الدعم الفني
+                    عبر واتساب أو زيارة دليل التثبيت
+                    في موقع Family IPTV.
+
+                </div>
+
+            </details>
+
+        </div>
+
+    </section>
+
+    <!-- FINAL CTA -->
+
+    <section class="why-final-cta">
+
+        <h2>
+            جاهز لتجربة سيرفر فاملي؟
+        </h2>
+
+        <p>
+
+            تصفح باقات Family IPTV واختر الباقة
+            المناسبة لك، أو تواصل معنا إذا كنت
+            تحتاج إلى مساعدة قبل الاشتراك.
+
+        </p>
+
+        <div class="why-actions">
+
+            <a href="shop"
+               class="why-btn why-btn-main">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                تصفح الباقات
+
+            </a>
+
+            <a href="https://wa.me/9647809522129"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="why-btn why-btn-outline">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+                تواصل معنا
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- WHATSAPP -->
+
+<a href="https://wa.me/9647809522129"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="التواصل مع Family IPTV عبر واتساب"
+   style="
+   position:fixed;
+   bottom:80px;
+   right:20px;
+   width:60px;
+   height:60px;
+   background:transparent;
+   border-radius:50%;
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   z-index:999999;
+   box-shadow:0 4px 15px rgba(0,0,0,.35);
+   text-decoration:none;">
+
+    <img src="assets/whatsapp.png"
+         style="width:75px;height:75px;"
+         alt="واتساب Family IPTV">
+
+</a>
+
+<!-- Social Media -->
+
+<div class="family-social">
+
+    <!-- Instagram -->
+
+    <a href="https://www.instagram.com/fam.store.iq"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="family-social-icon"
+       aria-label="Instagram">
+
+        <svg viewBox="0 0 24 24"
+             aria-hidden="true">
+
+            <rect x="3"
+                  y="3"
+                  width="18"
+                  height="18"
+                  rx="5"></rect>
+
+            <circle cx="12"
+                    cy="12"
+                    r="4"></circle>
+
+            <circle cx="17.5"
+                    cy="6.5"
+                    r="1.2"
+                    class="fill-dot"></circle>
+
+        </svg>
+
+    </a>
+
+    <!-- TikTok -->
+
+    <a href="https://www.tiktok.com/@family.server.official"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="family-social-icon"
+       aria-label="TikTok">
+
+        <svg viewBox="0 0 24 24"
+             aria-hidden="true">
+
+            <path d="M15 3v11.2a4.8 4.8 0 1 1-4-4.7v3.1a1.8 1.8 0 1 0 1.8 1.8V3h2.2c.3 1.8 1.4 3.1 3 3.8v2.4A6.4 6.4 0 0 1 15 7.8V3z"></path>
+
+        </svg>
+
+    </a>
+
+    <!-- Telegram -->
+
+    <a href="https://t.me/familyiptv4k"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="family-social-icon"
+       aria-label="Telegram">
+
+        <svg viewBox="0 0 24 24"
+             aria-hidden="true">
+
+            <path d="M21.8 3.2 18.5 20c-.25 1.18-.92 1.47-1.86.91l-5.1-3.76-2.46 2.37c-.27.27-.5.5-1.02.5l.36-5.18 9.43-8.52c.41-.36-.09-.56-.64-.2L5.55 13.5.5 11.92c-1.1-.34-1.12-1.1.23-1.63L20.45 2.7c.91-.34 1.71.21 1.35.5z"></path>
+
+        </svg>
+
+    </a>
+
+    <!-- WhatsApp -->
+
+    <a href="https://wa.me/9647809522129"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="family-social-icon"
+       aria-label="WhatsApp">
+
+        <svg viewBox="0 0 24 24"
+             aria-hidden="true">
+
+            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.08.54 4.1 1.58 5.88L.2 24l6.46-1.65a11.8 11.8 0 0 0 5.43 1.3h.01c6.5 0 11.8-5.3 11.8-11.8 0-3.16-1.23-6.13-3.4-8.35zM12.1 21.5c-1.7 0-3.36-.46-4.82-1.33l-.35-.2-3.83.98 1.02-3.73-.23-.38a9.65 9.65 0 0 1-1.48-5.04c0-5.34 4.35-9.68 9.7-9.68 2.59 0 5.02 1.01 6.85 2.84a9.63 9.63 0 0 1 2.84 6.86c0 5.34-4.35 9.68-9.7 9.68z"></path>
+
+        </svg>
+
+    </a>
+
+</div>
+
+<!-- Legal Links -->
+
+<div class="legal-links">
+
+    <a href="terms.html">
+        الشروط والأحكام
+    </a>
+
+    <span>|</span>
+
+    <a href="privacy.html">
+        سياسة الخصوصية
+    </a>
+
+    <span>|</span>
+
+    <a href="refund.html">
+        سياسة الاسترداد
+    </a>
+
+    <span>|</span>
+
+    <a href="dmca.html">
+        DMCA
+    </a>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div>
+        موقع سيرفر فاملي الرسمي © 2026
+    </div>
+
+    <div>
+        واتساب +9647809522129
+    </div>
+
+</footer>
+
+<!-- MAIN SITE JS -->
+
+<script src="js/app.js"></script>
+
+<!-- FAQ SCRIPT -->
+
+<script>
+
+document
+.querySelectorAll(".why-faq-item")
+.forEach(function(item) {
+
+    item.addEventListener(
+        "toggle",
+        function() {
+
+            if(item.open) {
+
+                document
+                .querySelectorAll(".why-faq-item")
+                .forEach(function(otherItem) {
+
+                    if(otherItem !== item) {
+
+                        otherItem
+                        .removeAttribute("open");
+
+                    }
+
+                });
+
+            }
+
+        }
+    );
+
+});
+
 </script>
+
+<!-- MOBILE BOTTOM NAVIGATION -->
+
+<nav class="family-mobile-nav"
+     aria-label="التنقل الرئيسي">
+
+    <a href="https://familyiptv.net/"
+       class="family-nav-item">
+
+        <i class="fa-solid fa-house"
+           aria-hidden="true"></i>
+
+        <span>
+            الرئيسية
+        </span>
+
+    </a>
+
+    <a href="https://familyiptv.net/shop"
+       class="family-nav-item">
+
+        <i class="fa-solid fa-cart-shopping"
+           aria-hidden="true"></i>
+
+        <span>
+            الاشتراكات
+        </span>
+
+    </a>
+
+    <a href="https://apps.familyiptv.net/"
+       class="family-nav-item">
+
+        <i class="fa-solid fa-mobile-screen-button"
+           aria-hidden="true"></i>
+
+        <span>
+            التطبيقات
+        </span>
+
+    </a>
+
+    <a href="https://familyiptv.net/check/iptv"
+       class="family-nav-item">
+
+        <i class="fa-solid fa-circle-check"
+           aria-hidden="true"></i>
+
+        <span>
+            افحص اشتراكك
+        </span>
+
+    </a>
+
+</nav>
+
+<style>
+
+/* =========================================
+   Family IPTV - Mobile Bottom Navigation
+========================================= */
+
+.family-mobile-nav {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .family-mobile-nav {
+
+        position: fixed;
+
+        bottom: 0;
+        right: 0;
+        left: 0;
+
+        height: 68px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: space-around;
+
+        background:
+            rgba(10,10,10,.97);
+
+        border-top:
+            1px solid
+            rgba(220,0,0,.35);
+
+        box-shadow:
+            0 -5px 25px
+            rgba(0,0,0,.45);
+
+        z-index: 99999;
+
+        direction: rtl;
+
+        padding-bottom:
+            env(safe-area-inset-bottom);
+    }
+
+    .family-nav-item {
+
+        position: relative;
+
+        flex: 1;
+
+        height: 68px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        gap: 5px;
+
+        text-decoration: none;
+
+        color: #aaa;
+
+        font-family: inherit;
+
+        transition: .25s;
+
+        -webkit-tap-highlight-color:
+            transparent;
+    }
+
+    .family-nav-item i {
+
+        font-size: 19px;
+
+        line-height: 1;
+    }
+
+    .family-nav-item span {
+
+        font-size: 12px;
+
+        font-weight: 500;
+
+        white-space: nowrap;
+    }
+
+    .family-nav-item:active {
+
+        transform:
+            scale(.92);
+    }
+
+    .family-nav-item:hover {
+
+        color: #fff;
+    }
+
+    body {
+
+        padding-bottom: 78px;
+    }
+
+}
+
+@media (min-width:769px) {
+
+    .family-mobile-nav {
+
+        display: none !important;
+    }
+
+}
+
+</style>
+
 </body>
+
 </html>
