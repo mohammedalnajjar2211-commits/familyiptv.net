@@ -143,9 +143,13 @@
     }
     .method input{position:absolute;opacity:0}
     .method-icon{
-      width:42px;height:42px;border-radius:13px;background:#fff;color:#111;
-      display:grid;place-items:center;font-weight:900;margin-bottom:10px
+      width:48px;height:48px;border-radius:14px;overflow:hidden;
+      display:grid;place-items:center;margin-bottom:10px;background:#fff;
+      box-shadow:0 5px 15px rgba(0,0,0,.22)
     }
+    .method-icon img{width:100%;height:100%;object-fit:cover;display:block}
+    .method-icon.fib-app{background:#50d8bd;padding:8px}
+    .method-icon.fib-app img{object-fit:contain;filter:brightness(0) invert(1)}
     .method-name{font-size:14px;font-weight:900}
     .method-desc{font-size:11px;color:#999;margin-top:2px}
     .payment-details{
@@ -308,14 +312,14 @@
           <div class="methods">
             <label class="method active" data-method="superqi">
               <input type="radio" name="method" value="SuperQi" checked>
-              <div class="method-icon">SQ</div>
+              <div class="method-icon"><img src="https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e5/5b/c4/e55bc4e7-584e-9a55-70e6-0a1405b30b3a/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg" alt="تطبيق SuperQi"></div>
               <div class="method-name">SuperQi — مصرف الرافدين</div>
               <div class="method-desc">تحويل محلي عبر تطبيق سوبر كي</div>
             </label>
 
             <label class="method" data-method="fib">
               <input type="radio" name="method" value="FIB">
-              <div class="method-icon">FIB</div>
+              <div class="method-icon fib-app"><img src="https://fib.iq/wp-content/themes/FIB/assets/images/fib-footer-logo-mobile.svg" alt="تطبيق FIB"></div>
               <div class="method-name">First Iraqi Bank — FIB</div>
               <div class="method-desc">تحويل مباشر عبر تطبيق FIB</div>
             </label>
