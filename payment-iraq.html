@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#d40000">
+  <title>الدفع داخل العراق | Family IPTV</title>
+  <meta name="description" content="صفحة الدفع المخصصة لمشتركي Family IPTV داخل العراق بواسطة SuperQi أو FIB.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --red:#d40000;
+      --red2:#ff2d2d;
+      --dark:#090909;
+      --card:#121212;
+      --card2:#171717;
+      --line:#2a2a2a;
+      --text:#fff;
+      --muted:#a9a9a9;
+      --green:#21c55d;
+      --yellow:#ffbf00;
+      --shadow:0 18px 50px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Cairo",sans-serif;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(212,0,0,.19), transparent 30%),
+        radial-gradient(circle at 100% 35%, rgba(255,45,45,.09), transparent 26%),
+        #080808;
+      color:var(--text);
+      min-height:100vh;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input,textarea{font:inherit}
+    .topbar{
+      background:linear-gradient(90deg,#8e0000,var(--red),#8e0000);
+      color:#fff;
+      text-align:center;
+      padding:8px 14px;
+      font-size:13px;
+      font-weight:700;
+    }
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(14px);
+      background:rgba(8,8,8,.86);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{
+      max-width:1100px;margin:auto;padding:14px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+    }
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:21px}
+    .brand-mark{
+      width:39px;height:39px;border-radius:12px;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--red2),#8c0000);
+      box-shadow:0 0 24px rgba(212,0,0,.35);
+      font-weight:900;
+    }
+    .back{
+      color:#ddd;border:1px solid var(--line);padding:9px 14px;border-radius:12px;
+      font-size:13px;background:#111;
+    }
+    main{max-width:980px;margin:0 auto;padding:34px 18px 55px}
+    .hero{text-align:center;margin-bottom:24px}
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:7px;
+      background:rgba(33,197,93,.1);border:1px solid rgba(33,197,93,.26);
+      color:#7cec9f;padding:7px 12px;border-radius:100px;font-size:12px;font-weight:800
+    }
+    .hero h1{font-size:clamp(28px,5vw,45px);margin:13px 0 7px;line-height:1.3}
+    .hero h1 span{color:var(--red2)}
+    .hero p{max-width:650px;margin:auto;color:var(--muted);font-size:14px;line-height:1.9}
+    .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px;align-items:start}
+    .card{
+      background:linear-gradient(180deg,rgba(23,23,23,.97),rgba(15,15,15,.97));
+      border:1px solid var(--line);border-radius:22px;padding:21px;box-shadow:var(--shadow);
+    }
+    .card + .card{margin-top:18px}
+    .title{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:900;margin:0 0 17px}
+    .dot{
+      width:31px;height:31px;border-radius:10px;background:rgba(212,0,0,.15);
+      color:#ff5b5b;display:grid;place-items:center;font-size:15px
+    }
+    .order-row{
+      display:flex;justify-content:space-between;gap:12px;padding:12px 0;
+      border-bottom:1px dashed #2a2a2a;font-size:14px
+    }
+    .order-row:last-child{border-bottom:0}
+    .order-row span{color:#aaa}
+    .order-row strong{text-align:left}
+    .status{
+      display:inline-flex;align-items:center;gap:6px;background:rgba(255,191,0,.1);
+      color:#ffd25a;border:1px solid rgba(255,191,0,.2);padding:5px 10px;border-radius:999px;font-size:11px
+    }
+    .amount-box{
+      margin-top:15px;padding:17px;border-radius:16px;text-align:center;
+      background:linear-gradient(135deg,rgba(212,0,0,.16),rgba(255,45,45,.05));
+      border:1px solid rgba(255,45,45,.22)
+    }
+    .amount-box small{color:#aaa;display:block}
+    .amount-box b{display:block;font-size:28px;color:#fff;margin-top:4px}
+    .notice{
+      padding:14px 15px;border-radius:14px;background:rgba(255,191,0,.07);
+      border:1px solid rgba(255,191,0,.18);color:#ddd;font-size:12px;line-height:1.9;
+      margin-top:15px
+    }
+    
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:20px}
+    .plan{
+      position:relative;border:1px solid var(--line);background:#101010;border-radius:17px;
+      padding:15px 13px;cursor:pointer;transition:.2s;text-align:center
+    }
+    .plan:hover{border-color:#555;transform:translateY(-1px)}
+    .plan.active{
+      border-color:var(--red2);background:linear-gradient(145deg,rgba(212,0,0,.18),#111);
+      box-shadow:0 0 0 2px rgba(212,0,0,.08)
+    }
+    .plan input{position:absolute;opacity:0}
+    .plan-badge{
+      position:absolute;top:-9px;right:12px;background:linear-gradient(90deg,#b00000,var(--red2));
+      color:#fff;border-radius:999px;padding:3px 8px;font-size:9px;font-weight:900
+    }
+    .plan-title{font-size:13px;font-weight:900}
+    .plan-price{font-size:18px;font-weight:900;margin-top:5px;color:#fff}
+    .plan-price small{font-size:10px;color:#999;font-weight:600}
+    .plan-note{font-size:10px;color:#888;margin-top:2px}
+    .methods{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .method{
+      position:relative;border:1px solid var(--line);background:#101010;border-radius:17px;
+      padding:16px;cursor:pointer;transition:.2s;min-height:116px
+    }
+    .method:hover{border-color:#555;transform:translateY(-1px)}
+    .method.active{
+      border-color:var(--red2);background:linear-gradient(145deg,rgba(212,0,0,.17),#111);
+      box-shadow:0 0 0 2px rgba(212,0,0,.08)
+    }
+    .method input{position:absolute;opacity:0}
+    .method-icon{
+      width:42px;height:42px;border-radius:13px;background:#fff;color:#111;
+      display:grid;place-items:center;font-weight:900;margin-bottom:10px
+    }
+    .method-name{font-size:14px;font-weight:900}
+    .method-desc{font-size:11px;color:#999;margin-top:2px}
+    .payment-details{
+      display:none;margin-top:15px;border:1px solid var(--line);border-radius:16px;
+      overflow:hidden;background:#0d0d0d
+    }
+    .payment-details.active{display:block}
+    .pay-head{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      padding:13px 15px;background:#141414;border-bottom:1px solid #262626
+    }
+    .pay-head strong{font-size:14px}
+    .pay-body{padding:15px}
+    .field-label{font-size:11px;color:#999;margin-bottom:6px}
+    .copy-row{display:flex;gap:8px;margin-bottom:12px}
+    .copy-value{
+      flex:1;direction:ltr;text-align:left;background:#161616;border:1px solid #2d2d2d;
+      color:#fff;padding:11px 12px;border-radius:11px;font-size:13px;overflow:auto;white-space:nowrap
+    }
+    .copy-btn{
+      border:0;background:#272727;color:white;border-radius:11px;padding:0 13px;cursor:pointer;font-weight:800;
+      transition:.2s
+    }
+    .copy-btn:hover{background:var(--red)}
+    .steps{margin:10px 0 0;padding:0 20px 0 0;color:#bbb;font-size:12px;line-height:2}
+    .upload{
+      margin-top:16px;border:1.5px dashed #3a3a3a;border-radius:16px;padding:18px;text-align:center;
+      background:#0d0d0d;transition:.2s
+    }
+    .upload.drag{border-color:var(--red2);background:rgba(212,0,0,.05)}
+    .upload input{display:none}
+    .upload label{display:block;cursor:pointer}
+    .upload-icon{font-size:27px}
+    .upload strong{display:block;margin-top:6px;font-size:13px}
+    .upload span{font-size:11px;color:#888}
+    #previewWrap{display:none;margin-top:12px}
+    #preview{max-width:100%;max-height:230px;border-radius:13px;border:1px solid #333}
+    .file-name{font-size:11px;color:#999;margin-top:6px;word-break:break-all}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:15px}
+    .input{width:100%;background:#0d0d0d;border:1px solid #303030;color:#fff;border-radius:12px;padding:12px 13px;outline:none}
+    .input:focus{border-color:var(--red2)}
+    .full{grid-column:1/-1}
+    .submit{
+      width:100%;border:0;border-radius:14px;padding:14px 18px;margin-top:16px;
+      background:linear-gradient(90deg,#b00000,var(--red2));color:#fff;font-weight:900;
+      cursor:pointer;box-shadow:0 10px 26px rgba(212,0,0,.24);transition:.2s
+    }
+    .submit:hover{transform:translateY(-1px);filter:brightness(1.07)}
+    .secure{text-align:center;color:#7d7d7d;font-size:10px;margin-top:10px}
+    .help{
+      margin-top:18px;text-align:center;padding:17px;border-radius:16px;
+      border:1px solid #252525;background:#101010;font-size:12px;color:#aaa
+    }
+    .help a{color:#fff;font-weight:900}
+    footer{text-align:center;border-top:1px solid #1f1f1f;color:#747474;font-size:11px;padding:22px}
+    .toast{
+      position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);
+      background:#fff;color:#111;padding:10px 15px;border-radius:12px;font-size:12px;font-weight:800;
+      opacity:0;pointer-events:none;transition:.25s;z-index:100
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media(max-width:760px){
+      .grid{grid-template-columns:1fr}
+      .methods{grid-template-columns:1fr 1fr}
+      .form-grid{grid-template-columns:1fr}
+      .full{grid-column:auto}
+      main{padding-top:25px}
+    }
+    @media(max-width:430px){
+      .plans{grid-template-columns:1fr}
+      .methods{grid-template-columns:1fr}
+      .brand{font-size:18px}
+      .brand-mark{width:35px;height:35px}
+      .card{padding:17px}
+      .hero h1{font-size:29px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">🇮🇶 هذه الصفحة مخصصة للدفع داخل العراق فقط</div>
+
+  <header>
+    <div class="nav">
+      <a class="brand" href="/">
+        <span class="brand-mark">F</span>
+        <span>Family IPTV <span style="display:inline-flex;vertical-align:middle;margin-right:4px;width:17px;height:17px;border-radius:50%;background:#1687ff;align-items:center;justify-content:center;font-size:11px;color:white;font-weight:900;">✓</span></span>
+      </a>
+      <a class="back" href="/shop">عودة للباقات</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="hero-badge">✓ دفع محلي داخل العراق</span>
+      <h1>إكمال دفع اشتراك <span>فاملي</span></h1>
+      <p>اختر طريقة الدفع المناسبة، حوّل المبلغ إلى الحساب الموضح، ثم أرسل بيانات عملية التحويل ليتم التحقق منها وتفعيل اشتراكك.</p>
+    </section>
+
+    <div class="grid">
+      <aside>
+        <div class="card">
+          <h2 class="title"><span class="dot">#</span> ملخص الطلب</h2>
+
+          <div class="order-row"><span>رقم الطلب</span><strong id="orderView">FAM-0000</strong></div>
+          <div class="order-row"><span>الباقة</span><strong id="productView">اشتراك 12 شهر</strong></div>
+          <div class="order-row"><span>حالة الطلب</span><strong class="status">● بانتظار الدفع</strong></div>
+
+          <div class="amount-box">
+            <small>المبلغ المطلوب تحويله</small>
+            <b id="amountView">25,000 IQD</b>
+          </div>
+
+          <div class="notice">
+            <b>مهم:</b> تأكد من تحويل المبلغ الصحيح إلى الحساب الظاهر في طريقة الدفع التي اخترتها، واحتفظ بلقطة شاشة واضحة لإشعار نجاح التحويل.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="title"><span class="dot">?</span> تحتاج مساعدة؟</h2>
+          <div style="font-size:12px;color:#aaa;line-height:1.9">
+            إذا واجهتك مشكلة في التحويل أو لم تعرف أي حساب تستخدم، تواصل مباشرة مع دعم Family IPTV.
+          </div>
+          <div class="help">
+            واتساب الدعم<br>
+            <a href="https://wa.me/9647809522129" target="_blank" rel="noopener">+964 780 952 2129</a>
+          </div>
+        </div>
+      </aside>
+
+      <section>
+        <div class="card">
+          <h2 class="title"><span class="dot">★</span> اختر الباقة</h2>
+
+          <div class="plans">
+            <label class="plan active" data-plan="year">
+              <input type="radio" name="plan" value="اشتراك 12 شهر" data-amount="25000" checked>
+              <span class="plan-badge">الأكثر اختياراً</span>
+              <div class="plan-title">اشتراك 12 شهر</div>
+              <div class="plan-price">25,000 <small>د.ع</small></div>
+              <div class="plan-note">سنة كاملة</div>
+            </label>
+
+            <label class="plan" data-plan="six">
+              <input type="radio" name="plan" value="اشتراك 6 أشهر" data-amount="15000">
+              <div class="plan-title">اشتراك 6 أشهر</div>
+              <div class="plan-price">15,000 <small>د.ع</small></div>
+              <div class="plan-note">نصف سنة</div>
+            </label>
+
+            <label class="plan" data-plan="trial">
+              <input type="radio" name="plan" value="تجربة لمدة 24 ساعة" data-amount="1500">
+              <div class="plan-title">تجربة 24 ساعة</div>
+              <div class="plan-price">1,500 <small>د.ع</small></div>
+              <div class="plan-note">تجربة قبل الاشتراك</div>
+            </label>
+          </div>
+
+          <h2 class="title"><span class="dot">د</span> اختر طريقة الدفع</h2>
+
+          <div class="methods">
+            <label class="method active" data-method="superqi">
+              <input type="radio" name="method" value="SuperQi" checked>
+              <div class="method-icon">SQ</div>
+              <div class="method-name">SuperQi — مصرف الرافدين</div>
+              <div class="method-desc">تحويل محلي عبر تطبيق سوبر كي</div>
+            </label>
+
+            <label class="method" data-method="fib">
+              <input type="radio" name="method" value="FIB">
+              <div class="method-icon">FIB</div>
+              <div class="method-name">First Iraqi Bank — FIB</div>
+              <div class="method-desc">تحويل مباشر عبر تطبيق FIB</div>
+            </label>
+          </div>
+
+          <div class="payment-details active" id="superqiDetails">
+            <div class="pay-head">
+              <strong>بيانات الدفع عبر SuperQi</strong>
+              <span class="status">متاح</span>
+            </div>
+            <div class="pay-body">
+              <div class="field-label">اسم صاحب الحساب</div>
+              <div class="copy-row">
+                <div class="copy-value" id="sqName">اكتب اسم صاحب الحساب هنا</div>
+                <button class="copy-btn" type="button" data-copy="sqName">نسخ</button>
+              </div>
+
+              <div class="field-label">رقم SuperQi / رقم البطاقة أو الحساب</div>
+              <div class="copy-row">
+                <div class="copy-value" id="sqNumber">0000 0000 0000 0000</div>
+                <button class="copy-btn" type="button" data-copy="sqNumber">نسخ</button>
+              </div>
+
+              <ol class="steps">
+                <li>افتح تطبيق SuperQi واختر التحويل المناسب.</li>
+                <li>أدخل بيانات الحساب الظاهرة أعلاه.</li>
+                <li>حوّل المبلغ المطلوب الظاهر في ملخص الطلب.</li>
+                <li>التقط صورة واضحة لإشعار نجاح التحويل.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="payment-details" id="fibDetails">
+            <div class="pay-head">
+              <strong>بيانات الدفع عبر FIB</strong>
+              <span class="status">متاح</span>
+            </div>
+            <div class="pay-body">
+              <div class="field-label">اسم المستلم</div>
+              <div class="copy-row">
+                <div class="copy-value" id="fibName">اكتب اسم صاحب حساب FIB هنا</div>
+                <button class="copy-btn" type="button" data-copy="fibName">نسخ</button>
+              </div>
+
+              <div class="field-label">رقم الهاتف / IBAN / Alias</div>
+              <div class="copy-row">
+                <div class="copy-value" id="fibNumber">ضع بيانات FIB هنا</div>
+                <button class="copy-btn" type="button" data-copy="fibNumber">نسخ</button>
+              </div>
+
+              <ol class="steps">
+                <li>افتح تطبيق FIB ثم اختر إرسال الأموال.</li>
+                <li>أدخل بيانات المستلم الظاهرة أعلاه.</li>
+                <li>حوّل مبلغ الطلب كاملاً.</li>
+                <li>احتفظ بلقطة شاشة من إشعار نجاح التحويل.</li>
+              </ol>
+            </div>
+          </div>
+
+          <h2 class="title" style="margin-top:22px"><span class="dot">✓</span> إثبات الدفع</h2>
+
+          <div class="upload" id="dropArea">
+            <input type="file" id="receipt" accept="image/*">
+            <label for="receipt">
+              <div class="upload-icon">🧾</div>
+              <strong>اختر صورة إثبات التحويل</strong>
+              <span>JPG أو PNG — ستظهر المعاينة هنا قبل الإرسال</span>
+            </label>
+            <div id="previewWrap">
+              <img id="preview" alt="معاينة إثبات الدفع">
+              <div class="file-name" id="fileName"></div>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <input class="input" id="customerName" type="text" placeholder="اسم المشترك">
+            <input class="input" id="customerPhone" type="tel" placeholder="رقم الهاتف / واتساب">
+            <input class="input full" id="transactionId" type="text" placeholder="رقم العملية أو المرجع (إن وجد)">
+          </div>
+
+          <button class="submit" id="sendBtn" type="button">إرسال إثبات الدفع عبر واتساب</button>
+          <div class="secure">🔒 لا يتم حفظ بيانات بطاقتك أو معلومات تسجيل الدخول البنكية في هذه الصفحة.</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>جميع الحقوق محفوظة لموقع Family IPTV ✓ © 2026</footer>
+  <div class="toast" id="toast">تم النسخ</div>
+
+  <script>
+    // =========================================================
+    // إعدادات الصفحة
+    // يمكنك تعديل بيانات الحسابين هنا فقط.
+    // =========================================================
+    const SETTINGS = {
+      whatsapp: "9647809522129",
+      superqi: {
+        name: "اكتب اسم صاحب الحساب هنا",
+        number: "0000 0000 0000 0000"
+      },
+      fib: {
+        name: "اكتب اسم صاحب حساب FIB هنا",
+        number: "ضع بيانات FIB هنا"
+      }
+    };
+
+    document.getElementById("sqName").textContent = SETTINGS.superqi.name;
+    document.getElementById("sqNumber").textContent = SETTINGS.superqi.number;
+    document.getElementById("fibName").textContent = SETTINGS.fib.name;
+    document.getElementById("fibNumber").textContent = SETTINGS.fib.number;
+
+    // استقبال بيانات الطلب من الرابط:
+    // payment-iraq.html?order=1234&product=اشتراك%2012%20شهر&amount=25000
+    const params = new URLSearchParams(location.search);
+    const order = params.get("order") || ("FAM-" + Math.floor(1000 + Math.random() * 9000));
+
+    let product = "اشتراك 12 شهر";
+    let amountNumber = 25000;
+    let amountText = new Intl.NumberFormat("en-US").format(amountNumber) + " IQD";
+
+    document.getElementById("orderView").textContent = order;
+    document.getElementById("productView").textContent = product;
+    document.getElementById("amountView").textContent = amountText;
+
+    // اختيار الباقة
+    const plans = document.querySelectorAll(".plan");
+    plans.forEach(plan => {
+      plan.addEventListener("click", () => {
+        plans.forEach(p => p.classList.remove("active"));
+        plan.classList.add("active");
+
+        const input = plan.querySelector('input[name="plan"]');
+        input.checked = true;
+
+        product = input.value;
+        amountNumber = Number(input.dataset.amount);
+        amountText = new Intl.NumberFormat("en-US").format(amountNumber) + " IQD";
+
+        document.getElementById("productView").textContent = product;
+        document.getElementById("amountView").textContent = amountText;
+      });
+    });
+
+    // اختيار طريقة الدفع
+    const methods = document.querySelectorAll(".method");
+    methods.forEach(method => {
+      method.addEventListener("click", () => {
+        methods.forEach(m => m.classList.remove("active"));
+        method.classList.add("active");
+
+        document.getElementById("superqiDetails").classList.remove("active");
+        document.getElementById("fibDetails").classList.remove("active");
+
+        const key = method.dataset.method;
+        document.getElementById(key + "Details").classList.add("active");
+      });
+    });
+
+    // نسخ البيانات
+    const toast = document.getElementById("toast");
+    function showToast(text){
+      toast.textContent = text;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1600);
+    }
+
+    document.querySelectorAll("[data-copy]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const value = document.getElementById(btn.dataset.copy).textContent.trim();
+        try {
+          await navigator.clipboard.writeText(value);
+          showToast("تم النسخ");
+        } catch(e) {
+          showToast("تعذر النسخ تلقائياً");
+        }
+      });
+    });
+
+    // معاينة الإثبات
+    const receipt = document.getElementById("receipt");
+    const previewWrap = document.getElementById("previewWrap");
+    const preview = document.getElementById("preview");
+    const fileName = document.getElementById("fileName");
+    let selectedFile = null;
+
+    receipt.addEventListener("change", () => {
+      selectedFile = receipt.files && receipt.files[0] ? receipt.files[0] : null;
+      if(!selectedFile){
+        previewWrap.style.display = "none";
+        return;
+      }
+      if(!selectedFile.type.startsWith("image/")){
+        showToast("اختر ملف صورة فقط");
+        receipt.value = "";
+        selectedFile = null;
+        return;
+      }
+      preview.src = URL.createObjectURL(selectedFile);
+      fileName.textContent = selectedFile.name;
+      previewWrap.style.display = "block";
+    });
+
+    // إرسال بيانات الطلب إلى واتساب.
+    // ملاحظة: المتصفح لا يستطيع إرفاق الصورة تلقائياً داخل واتساب،
+    // لذلك تظهر رسالة تطلب من العميل إرفاق الصورة التي اختارها.
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const selectedMethod = document.querySelector('input[name="method"]:checked')?.value || "SuperQi";
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("customerPhone").value.trim();
+      const tx = document.getElementById("transactionId").value.trim();
+
+      if(!name){
+        showToast("اكتب اسم المشترك");
+        document.getElementById("customerName").focus();
+        return;
+      }
+      if(!phone){
+        showToast("اكتب رقم الهاتف");
+        document.getElementById("customerPhone").focus();
+        return;
+      }
+
+      const msg =
+`مرحباً Family IPTV،
+أرسلت دفعة اشتراك داخل العراق وأريد تأكيدها.
+
+رقم الطلب: ${order}
+الباقة: ${product}
+المبلغ: ${amountText}
+طريقة الدفع: ${selectedMethod}
+اسم المشترك: ${name}
+رقم الهاتف: ${phone}
+رقم العملية: ${tx || "غير مذكور"}
+
+${selectedFile ? "لدي صورة إثبات التحويل وسأرفقها الآن في المحادثة." : "سأرسل صورة إثبات التحويل في المحادثة."}`;
+
+      const url = `https://wa.me/${SETTINGS.whatsapp}?text=${encodeURIComponent(msg)}`;
+      window.open(url, "_blank", "noopener");
+    });
+  </script>
+</body>
+</html>
