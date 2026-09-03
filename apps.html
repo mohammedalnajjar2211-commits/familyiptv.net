@@ -3,271 +3,511 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07080b">
 <title>Family IPTV — التطبيقات</title>
-<meta name="description" content="تحميل تطبيقات Family IPTV لأندرويد TV والجوال والآيفون مع أكواد Downloader وروابط مباشرة وباركود QR.">
-<meta name="theme-color" content="#0a0a0d">
+<meta name="description" content="تحميل تطبيقات Family IPTV لأندرويد وAndroid TV والآيفون والويندوز مع أكواد Downloader وروابط مباشرة وباركود QR.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 :root{
-  --bg:#07070a; --card:#111116; --card2:#17171d; --text:#fff;
-  --muted:#aaaab5; --red:#e50914; --red2:#ff3b45; --line:#24242d;
-  --green:#19c37d; --shadow:0 18px 55px rgba(0,0,0,.35);
+  --bg:#07080b;
+  --surface:#0d0f14;
+  --surface-2:#11141b;
+  --surface-3:#171a22;
+  --text:#ffffff;
+  --muted:#9da3b2;
+  --line:#242933;
+  --red:#ef101f;
+  --red2:#ff2d3b;
+  --blue:#1d9bf0;
+  --shadow:0 18px 50px rgba(0,0,0,.35);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;background:
-  radial-gradient(circle at 15% 10%,rgba(229,9,20,.18),transparent 25%),
-  radial-gradient(circle at 90% 0%,rgba(255,59,69,.08),transparent 22%),
-  var(--bg);color:var(--text);font-family:"Cairo",sans-serif;min-height:100vh;
+  margin:0;
+  min-height:100vh;
+  font-family:"Cairo",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 8% 30%,rgba(239,16,31,.13),transparent 28%),
+    radial-gradient(circle at 92% 70%,rgba(239,16,31,.07),transparent 24%),
+    linear-gradient(180deg,#08090c 0%,#06070a 100%);
 }
 a{text-decoration:none;color:inherit}
 button{font:inherit}
-.wrap{width:min(1180px,calc(100% - 28px));margin:auto}
-header{
-  position:sticky;top:0;z-index:50;background:rgba(7,7,10,.78);
-  backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.06)
+.wrap{width:min(1280px,calc(100% - 28px));margin-inline:auto}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:80;
+  background:rgba(7,8,11,.90);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
-.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:21px}
-.logo{
-  width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
-  background:linear-gradient(145deg,var(--red2),#9c0008);box-shadow:0 10px 30px rgba(229,9,20,.3);
-  font-size:23px;font-weight:900
+.header-row{
+  min-height:76px;
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:16px;
 }
+.brand{
+  grid-column:2;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.brand-icon{
+  width:46px;height:46px;border-radius:13px;
+  display:grid;place-items:center;
+  background:linear-gradient(145deg,#ff3140,#bd0010);
+  box-shadow:0 9px 28px rgba(239,16,31,.34),inset 0 1px 0 rgba(255,255,255,.16);
+}
+.brand-icon svg{width:25px;height:25px}
+.brand-name{font-size:22px;line-height:1}
+.brand-sub{font-size:10px;color:#a9aeba;font-weight:600;margin-top:5px}
 .verified{
-  width:19px;height:19px;border-radius:50%;display:inline-grid;place-items:center;
-  background:#1d9bf0;font-size:12px;color:#fff
+  width:21px;height:21px;border-radius:50%;
+  background:var(--red);display:inline-grid;place-items:center;
+  font-size:13px;box-shadow:0 0 0 4px rgba(239,16,31,.12)
 }
-.lang{
-  display:flex;background:#111116;border:1px solid var(--line);padding:4px;border-radius:12px
+.lang-switch{
+  justify-self:end;
+  display:flex;direction:ltr;
+  background:#101219;border:1px solid var(--line);padding:4px;border-radius:13px;
 }
-.lang button{
-  border:0;color:var(--muted);background:transparent;padding:8px 12px;border-radius:9px;cursor:pointer
+.lang-switch button{
+  border:0;background:transparent;color:#aeb3c0;
+  padding:9px 14px;border-radius:10px;cursor:pointer;font-weight:700;
 }
-.lang button.active{color:#fff;background:var(--red)}
-.hero{padding:76px 0 34px;text-align:center}
-.badge{
-  display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(229,9,20,.35);
-  background:rgba(229,9,20,.08);color:#ff7c83;padding:7px 13px;border-radius:999px;font-size:13px;font-weight:700
+.lang-switch button.active{background:var(--red);color:#fff}
+.contact-btn{
+  justify-self:start;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 15px;border-radius:12px;
+  background:linear-gradient(135deg,#ef101f,#ce0010);
+  color:#fff;font-size:13px;font-weight:800;
+  border:1px solid rgba(255,255,255,.08);
 }
-.hero h1{font-size:clamp(34px,7vw,68px);line-height:1.05;margin:18px 0 12px;font-weight:900}
-.hero h1 span{color:var(--red2)}
-.hero p{max-width:700px;margin:auto;color:var(--muted);font-size:clamp(15px,2.4vw,19px);line-height:1.9}
-.tabs-wrap{position:sticky;top:72px;z-index:40;padding:12px 0 10px;background:linear-gradient(var(--bg) 60%,transparent)}
+
+/* Navigation */
+.tabs-shell{padding-top:18px}
 .tabs{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;background:#101015;border:1px solid var(--line);
-  padding:6px;border-radius:17px;box-shadow:var(--shadow)
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:7px;padding:7px;
+  background:linear-gradient(180deg,#11141a,#0c0e13);
+  border:1px solid var(--line);
+  border-radius:18px;box-shadow:var(--shadow);
 }
 .tab{
-  border:0;background:transparent;color:#a8a8b2;border-radius:12px;padding:12px 10px;
-  cursor:pointer;font-weight:800;transition:.2s
+  border:0;background:transparent;color:#a6abb8;
+  border-radius:13px;padding:14px 10px;cursor:pointer;
+  font-weight:900;transition:.2s;
 }
-.tab.active{background:linear-gradient(135deg,var(--red),#b90009);color:#fff;box-shadow:0 10px 28px rgba(229,9,20,.25)}
-.panel{display:none;padding:28px 0 70px}
+.tab:hover{color:#fff;background:#161922}
+.tab.active{
+  color:#fff;
+  background:linear-gradient(135deg,#fa1324,#d90011);
+  box-shadow:0 7px 24px rgba(239,16,31,.25);
+}
+
+/* panels */
+.panel{display:none;padding:18px 0 48px}
 .panel.active{display:block}
-.tip{
-  display:flex;align-items:flex-start;gap:12px;background:rgba(255,255,255,.035);
-  border:1px solid var(--line);padding:16px 18px;border-radius:16px;color:#c6c6ce;margin-bottom:24px;line-height:1.8
+.filters{
+  display:flex;gap:9px;flex-wrap:wrap;
+  justify-content:flex-start;margin:0 0 16px;
 }
-.tip b{color:#fff}
-.filters{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 20px}
 .filter{
-  border:1px solid var(--line);background:#101015;color:#b8b8c2;padding:9px 14px;border-radius:999px;cursor:pointer;font-weight:700
+  border:1px solid var(--line);background:#0f1117;color:#b6bbc7;
+  padding:9px 15px;border-radius:999px;cursor:pointer;font-weight:800;
 }
-.filter.active{background:#fff;color:#08080a;border-color:#fff}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{
-  position:relative;overflow:hidden;border:1px solid var(--line);background:
-  linear-gradient(145deg,rgba(255,255,255,.035),transparent 40%),var(--card);
-  border-radius:22px;padding:20px;min-height:245px;transition:.22s;box-shadow:0 10px 35px rgba(0,0,0,.18)
+.filter.active{background:#fff;color:#090a0d;border-color:#fff}
+
+/* App cards */
+.apps-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
 }
-.card:hover{transform:translateY(-4px);border-color:rgba(229,9,20,.45);box-shadow:0 18px 45px rgba(0,0,0,.28)}
-.card::after{
-  content:"";position:absolute;width:130px;height:130px;border-radius:50%;background:var(--red);
-  filter:blur(75px);opacity:.11;left:-40px;top:-40px;pointer-events:none
+.app-card{
+  position:relative;
+  min-width:0;
+  overflow:hidden;
+  padding:14px;
+  background:
+    radial-gradient(circle at 100% 0%,rgba(239,16,31,.09),transparent 33%),
+    linear-gradient(145deg,rgba(255,255,255,.035),transparent 32%),
+    var(--surface);
+  border:1px solid #292d37;
+  border-radius:19px;
+  box-shadow:0 10px 34px rgba(0,0,0,.20);
+  transition:transform .2s,border-color .2s,box-shadow .2s;
 }
-.app-media{
-  position:relative;width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;
-  background:linear-gradient(145deg,#18181e,#09090c);border:1px solid #262630;
-  display:grid;place-items:center;margin-bottom:16px
+.app-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(239,16,31,.48);
+  box-shadow:0 20px 50px rgba(0,0,0,.32);
 }
-.app-media img{width:100%;height:100%;object-fit:contain;background:#09090c}
-.app-media .media-fallback{width:100%;height:100%;display:none;place-items:center;background:radial-gradient(circle at 50% 35%,rgba(229,9,20,.28),transparent 34%),#09090c}
-.app-media .media-fallback svg{width:92px;height:92px;color:#fff;filter:drop-shadow(0 10px 30px rgba(229,9,20,.22))}
-.app-info{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.app-name{font-size:18px;font-weight:900;margin:0}
-.platform{font-size:12px;color:#ff858c;margin-top:4px;font-weight:700}
-.os-badge{font-size:11px;border:1px solid #30303a;background:#18181e;color:#ddd;padding:6px 9px;border-radius:999px;font-weight:800;white-space:nowrap}
-.app-icon{
-  width:45px;height:45px;border-radius:13px;background:linear-gradient(145deg,#24242c,#0b0b0e);
-  border:1px solid #2b2b35;display:grid;place-items:center;overflow:hidden;flex:0 0 auto
+.app-image{
+  width:100%;
+  aspect-ratio:1 / 1;
+  border-radius:15px;
+  overflow:hidden;
+  display:grid;place-items:center;
+  background:#06070a;
+  border:1px solid #303540;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.018);
 }
-.app-icon img{width:100%;height:100%;object-fit:cover}
-.fallback{font-size:20px;font-weight:900;color:#fff}
-.desc{color:#aaaab5;font-size:13px;line-height:1.8;min-height:66px;margin:13px 0 18px}
-.actions{display:flex;gap:8px}
+.app-image img{
+  display:block;
+  width:100%;
+  height:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  object-position:center;
+}
+.image-fallback{
+  width:100%;height:100%;display:none;place-items:center;
+  background:radial-gradient(circle at 50% 45%,rgba(239,16,31,.24),transparent 34%),#07080b;
+}
+.image-fallback svg{width:76px;height:76px;color:#fff}
+.app-meta{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:10px;margin-top:12px;
+}
+.app-title{font-size:15px;font-weight:900;margin:0;line-height:1.5}
+.app-platform{font-size:11px;color:#ff5360;font-weight:800;margin-top:3px}
+.os-pill{
+  flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+  border:1px solid #303540;background:#151820;color:#e8eaf0;
+  border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;
+}
+.os-dot{width:7px;height:7px;border-radius:50%;background:#73d13d;box-shadow:0 0 10px rgba(115,209,61,.55)}
+.os-pill.ios .os-dot{background:#d5d8df;box-shadow:none}
+.os-pill.windows .os-dot{background:#46a2ff;box-shadow:0 0 10px rgba(70,162,255,.45)}
+.app-desc{
+  color:#aab0bd;font-size:11.5px;line-height:1.85;
+  min-height:65px;margin:10px 0 12px;
+}
+.card-bottom{
+  display:grid;grid-template-columns:70px 1fr;gap:10px;align-items:stretch;
+}
+.card-qr{
+  width:70px;height:70px;border-radius:10px;background:#fff;padding:5px;
+  display:grid;place-items:center;overflow:hidden;
+}
+.card-qr img,.card-qr canvas{width:100%!important;height:100%!important;display:block}
+.card-qr.empty-qr{background:#11141a;border:1px dashed #333944;color:#787f8e;font-size:9px;text-align:center;padding:8px}
+.card-actions{display:grid;grid-template-rows:1fr 1fr;gap:7px}
 .btn{
-  flex:1;border:0;border-radius:12px;padding:11px 12px;cursor:pointer;font-weight:800;display:flex;
-  justify-content:center;align-items:center;gap:7px
+  min-height:31px;border-radius:9px;border:1px solid transparent;
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  cursor:pointer;font-weight:900;font-size:11px;
 }
-.btn.red{background:linear-gradient(135deg,var(--red2),#c9000a);color:#fff}
-.btn.dark{background:#1a1a21;color:#fff;border:1px solid #292932}
-.code-card,.link-card,.qr-card{
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:11px
+.btn.copy{background:#181b23;border-color:#2c313b;color:#eceef3}
+.btn.download{background:linear-gradient(135deg,#f51a2b,#d60011);color:#fff;box-shadow:0 8px 20px rgba(239,16,31,.16)}
+.btn.disabled{opacity:.52;cursor:not-allowed;background:#171920;border-color:#292e38;color:#a0a5b1}
+
+/* Lists */
+.info-note{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 15px;margin-bottom:14px;
+  border:1px solid var(--line);border-radius:14px;
+  background:#0e1016;color:#afb4c0;font-size:12px;line-height:1.8;
 }
-.mini-app{display:flex;align-items:center;gap:12px;min-width:0}
-.mini-icon{width:45px;height:45px;border-radius:13px;background:#1b1b22;display:grid;place-items:center;font-weight:900;overflow:hidden}
+.info-note b{color:#fff}
+.list-stack{display:grid;gap:10px}
+.list-card{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;
+  padding:13px 14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+}
+.mini-app{display:flex;align-items:center;gap:11px;min-width:0}
+.mini-icon{width:48px;height:48px;border-radius:11px;overflow:hidden;background:#08090d;border:1px solid #2a2f39;flex:0 0 auto}
 .mini-icon img{width:100%;height:100%;object-fit:cover}
-.mini-name{font-weight:900}.mini-sub{font-size:12px;color:var(--muted)}
-.code{
-  direction:ltr;background:#0a0a0d;border:1px dashed #3a3a45;border-radius:12px;padding:9px 14px;
-  font-weight:900;letter-spacing:1.3px;color:#fff;min-width:118px;text-align:center
+.mini-fallback{width:100%;height:100%;display:none;place-items:center}
+.mini-fallback svg{width:22px;height:22px}
+.mini-name{font-size:13px;font-weight:900}.mini-sub{font-size:10px;color:#8f95a3;margin-top:2px}
+.code-box{display:flex;gap:7px;align-items:center;direction:ltr}
+.code-value{
+  min-width:122px;text-align:center;padding:9px 12px;border-radius:10px;
+  background:#08090d;border:1px dashed #3a404b;color:#fff;font-weight:900;letter-spacing:1px;
 }
-.copy{
-  border:1px solid #30303a;background:#1a1a20;color:#fff;padding:9px 12px;border-radius:11px;cursor:pointer;font-weight:800
+.small-copy{border:1px solid #303641;background:#181b23;color:#fff;border-radius:9px;padding:9px 11px;cursor:pointer;font-weight:800}
+.link-line{display:flex;gap:7px;min-width:min(100%,560px);direction:ltr}
+.link-value{
+  min-width:0;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  background:#08090d;border:1px solid #262b35;border-radius:9px;padding:9px 11px;color:#aeb4c0;font-size:11px;
 }
-.link-box{display:flex;align-items:center;gap:8px;min-width:48%;direction:ltr}
-.link-text{
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#bdbdc7;background:#0b0b0e;
-  border:1px solid #24242c;border-radius:11px;padding:9px 11px;flex:1;font-size:12px
+.qr-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.qr-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center}
+.qr-box{width:170px;height:170px;margin:14px auto;background:#fff;border-radius:13px;padding:9px;display:grid;place-items:center}
+.qr-box img,.qr-box canvas{width:100%!important;height:100%!important}
+.qr-url{direction:ltr;color:#858c9a;font-size:9.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+
+/* Official-style side shortcuts */
+.side-actions{
+  position:fixed;
+  inset-inline-start:18px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:75;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
 }
-.qr-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.qr-card{display:block;text-align:center;margin:0;padding:20px}
-.qrbox{width:178px;height:178px;margin:16px auto;background:#fff;border-radius:16px;padding:10px;display:grid;place-items:center}
-.qrbox img,.qrbox canvas{max-width:100%!important;max-height:100%!important}
-.qr-url{font-size:11px;direction:ltr;color:#8f8f99;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.empty{padding:35px;text-align:center;color:#888}
-.footer{border-top:1px solid var(--line);padding:30px 0 36px;text-align:center;color:#8d8d98;font-size:13px}
-.footer .social{display:flex;justify-content:center;gap:10px;margin-bottom:16px}
-.social a{
-  border:1px solid #2d2d36;background:#121217;padding:9px 14px;border-radius:999px;color:#fff;font-weight:700
+.side-action{
+  width:46px;height:46px;
+  border-radius:14px;
+  display:grid;place-items:center;
+  color:#fff;
+  background:linear-gradient(145deg,#141720,#0c0e13);
+  border:1px solid #2a2f39;
+  box-shadow:0 12px 30px rgba(0,0,0,.28);
+  transition:.2s ease;
+  position:relative;
 }
+.side-action:hover{
+  transform:translateX(4px);
+  border-color:rgba(239,16,31,.55);
+  background:linear-gradient(145deg,#ef101f,#c90010);
+}
+.side-action svg{width:20px;height:20px;display:block}
+.side-action .side-label{
+  position:absolute;
+  inset-inline-start:56px;
+  top:50%;
+  transform:translateY(-50%);
+  opacity:0;
+  pointer-events:none;
+  white-space:nowrap;
+  background:#11141a;
+  border:1px solid #2b303a;
+  color:#fff;
+  border-radius:9px;
+  padding:6px 9px;
+  font-size:10px;
+  font-weight:800;
+  transition:.18s;
+}
+.side-action:hover .side-label{opacity:1}
+.side-action.whatsapp{
+  background:linear-gradient(145deg,#ef101f,#c90010);
+  border-color:rgba(255,255,255,.08);
+}
+@media(max-width:820px){
+  .side-actions{
+    top:auto;
+    bottom:14px;
+    inset-inline-start:50%;
+    transform:translateX(-50%);
+    flex-direction:row;
+    padding:6px;
+    border-radius:16px;
+    background:rgba(9,10,14,.88);
+    backdrop-filter:blur(15px);
+    border:1px solid #262b35;
+  }
+  .side-action{width:42px;height:42px;border-radius:12px}
+  .side-action:hover{transform:none}
+  .side-action .side-label{display:none}
+  body{padding-bottom:76px}
+}
+
+/* Footer */
+.footer-note{
+  width:min(1280px,calc(100% - 28px));margin:0 auto 15px;
+  border-top:1px solid rgba(255,255,255,.07);
+  padding-top:15px;text-align:center;color:#9ca2af;font-size:11px;
+}
+.footer{padding:0 0 32px;color:#777e8c;text-align:center;font-size:11px}
 .toast{
-  position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:#fff;color:#08080a;
-  padding:11px 18px;border-radius:12px;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:100
+  position:fixed;left:50%;bottom:24px;z-index:120;
+  transform:translate(-50%,18px);opacity:0;pointer-events:none;
+  background:#fff;color:#090a0d;padding:10px 16px;border-radius:10px;font-size:12px;font-weight:900;
+  transition:.22s;box-shadow:0 12px 35px rgba(0,0,0,.35)
 }
 .toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:900px){.grid,.qr-list{grid-template-columns:repeat(2,1fr)}}
+
+@media(max-width:1100px){
+  .apps-grid,.qr-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:820px){
+  .header-row{grid-template-columns:auto 1fr auto}
+  .brand{grid-column:2}
+  .contact-btn{display:none}
+  .apps-grid,.qr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media(max-width:620px){
-  .wrap{width:min(100% - 20px,1180px)}
-  .nav{height:64px}.tabs-wrap{top:64px}.brand{font-size:17px}.logo{width:38px;height:38px}
-  .hero{padding:52px 0 26px}.hero h1{font-size:39px}
-  .tabs{gap:4px}.tab{font-size:12px;padding:10px 5px}
-  .grid,.qr-list{grid-template-columns:1fr}
-  .code-card,.link-card{align-items:flex-start;flex-direction:column}
-  .code,.link-box{width:100%;min-width:0}
-  .link-box{flex-direction:column}.link-text,.copy{width:100%}
+  .wrap{width:min(100% - 18px,1280px)}
+  .header-row{min-height:64px;gap:8px}
+  .brand-icon{width:39px;height:39px;border-radius:11px}
+  .brand-icon svg{width:22px;height:22px}
+  .brand-name{font-size:16px}.brand-sub{display:none}.verified{width:18px;height:18px;font-size:11px}
+  .lang-switch button{padding:7px 9px;font-size:11px}
+  .tabs-shell{padding-top:10px}
+  .tabs{gap:4px;padding:5px;border-radius:14px}
+  .tab{padding:11px 4px;font-size:11px;border-radius:10px}
+  .panel{padding-top:13px}
+  .filters{gap:6px;margin-bottom:12px}.filter{font-size:10px;padding:7px 10px}
+  .apps-grid,.qr-grid{grid-template-columns:1fr 1fr;gap:9px}
+  .app-card{padding:9px;border-radius:14px}
+  .app-image{border-radius:11px}
+  .app-meta{margin-top:9px;display:block}
+  .os-pill{margin-top:6px;font-size:8px;padding:4px 7px}
+  .app-title{font-size:12px}.app-platform{font-size:9px}
+  .app-desc{font-size:9.5px;line-height:1.7;min-height:62px;margin:8px 0 9px}
+  .card-bottom{grid-template-columns:54px 1fr;gap:7px}.card-qr{width:54px;height:54px;border-radius:8px;padding:4px}
+  .btn{font-size:9px;min-height:24px;border-radius:7px}.card-actions{gap:5px}
+  .list-card{grid-template-columns:1fr;gap:9px}.code-box,.link-line{width:100%}.code-value{flex:1;min-width:0}
+  .qr-box{width:130px;height:130px}
+}
+@media(max-width:390px){
+  .apps-grid,.qr-grid{grid-template-columns:1fr}
+  .app-desc{min-height:auto}
+  .card-bottom{grid-template-columns:64px 1fr}.card-qr{width:64px;height:64px}
 }
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="https://familyiptv.net/">
-      <span class="logo">F</span>
-      <span>FAMILY IPTV <span class="verified">✓</span></span>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="contact-btn" href="https://wa.me/9647809522129" target="_blank" rel="noopener" data-ar="تواصل معنا" data-en="Contact us">✈ تواصل معنا</a>
+
+    <a class="brand" href="https://familyiptv.net/" aria-label="Family IPTV">
+      <span class="brand-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="7" height="7" rx="1.7" stroke="white" stroke-width="2"/>
+          <rect x="14" y="3" width="7" height="7" rx="1.7" stroke="white" stroke-width="2"/>
+          <rect x="3" y="14" width="7" height="7" rx="1.7" stroke="white" stroke-width="2"/>
+          <rect x="14" y="14" width="7" height="7" rx="1.7" stroke="white" stroke-width="2"/>
+        </svg>
+      </span>
+      <span>
+        <span style="display:flex;align-items:center;gap:8px">
+          <span class="brand-name">FAMILY IPTV</span>
+          <span class="verified">✓</span>
+        </span>
+        <span class="brand-sub" data-ar="أفضل التطبيقات لتجربة مشاهدة مثالية" data-en="Official apps for a better viewing experience">أفضل التطبيقات لتجربة مشاهدة مثالية</span>
+      </span>
     </a>
-    <div class="lang">
-      <button id="arBtn" class="active">عربي</button>
+
+    <div class="lang-switch">
       <button id="enBtn">EN</button>
+      <button id="arBtn" class="active">عربي</button>
     </div>
   </div>
 </header>
 
-<main>
-  <section class="hero wrap">
-    <div class="badge" data-ar="● التطبيقات الرسمية" data-en="● Official Apps">● التطبيقات الرسمية</div>
-    <h1>Family <span>Apps</span></h1>
-    <p data-ar="تطبيقات فاملي لأندرويد TV والجوال والآيفون. حمّل التطبيق، استخدم كود Downloader، انسخ الرابط، أو امسح الباركود مباشرة."
-       data-en="Family apps for Android TV, mobile and iPhone. Download, use the Downloader code, copy the link, or scan the QR code.">
-       تطبيقات فاملي لأندرويد TV والجوال والآيفون. حمّل التطبيق، استخدم كود Downloader، انسخ الرابط، أو امسح الباركود مباشرة.
-    </p>
-  </section>
+<nav class="side-actions" aria-label="روابط سريعة">
+  <a class="side-action" href="https://familyiptv.net/" aria-label="الرئيسية" title="الرئيسية">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3.5 10.5 12 3l8.5 7.5v9a1.5 1.5 0 0 1-1.5 1.5h-4.5v-6h-5v6H5a1.5 1.5 0 0 1-1.5-1.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    </svg>
+    <span class="side-label" data-ar="الرئيسية" data-en="Home">الرئيسية</span>
+  </a>
 
-  <div class="wrap tabs-wrap">
-    <div class="tabs">
+  <a class="side-action" href="https://familyiptv.net/shop" aria-label="الباقات" title="الباقات">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 7h16l-1.4 13H5.4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M8 9V6a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    <span class="side-label" data-ar="الباقات" data-en="Packages">الباقات</span>
+  </a>
+
+  <a class="side-action" href="https://familyiptv.net/guide" aria-label="دليل التثبيت" title="دليل التثبيت">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M5 4.5h10a2 2 0 0 1 2 2V20H7a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8 8h6M8 12h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M17 7h2a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-2" stroke="currentColor" stroke-width="1.8"/>
+    </svg>
+    <span class="side-label" data-ar="دليل التثبيت" data-en="Setup Guide">دليل التثبيت</span>
+  </a>
+
+  <a class="side-action" href="https://familyiptv.net/support" aria-label="الدعم الفني" title="الدعم الفني">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M4 13a8 8 0 0 1 16 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M4 13v4a2 2 0 0 0 2 2h2v-7H6a2 2 0 0 0-2 1zm16 0v4a2 2 0 0 1-2 2h-2v-7h2a2 2 0 0 1 2 1z" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M16 19c0 1.1-.9 2-2 2h-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    <span class="side-label" data-ar="الدعم الفني" data-en="Support">الدعم الفني</span>
+  </a>
+
+  <a class="side-action whatsapp" href="https://wa.me/9647809522129" target="_blank" rel="noopener" aria-label="واتساب" title="واتساب">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M20.2 11.7a8.2 8.2 0 0 1-12.1 7.2L4 20l1.1-4a8.2 8.2 0 1 1 15.1-4.3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M9.1 8.2c.2-.4.4-.4.7-.4h.4c.2 0 .3 0 .5.4l.8 1.8c.1.3.1.5-.1.7l-.6.8c-.2.2-.1.4 0 .6.7 1.2 1.7 2.1 2.9 2.7.2.1.4.1.6-.1l.8-1c.2-.2.4-.3.7-.2l1.9.9c.3.1.4.3.4.5 0 .3-.2 1.3-.9 1.9-.6.6-1.5.8-2.4.6-1.2-.3-2.8-1-4.4-2.4-1.9-1.7-3.1-3.8-3.5-5.2-.3-.9 0-1.5.3-1.8.3-.4.8-.7 1.1-.7z" fill="currentColor"/>
+    </svg>
+    <span class="side-label" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
+  </a>
+</nav>
+
+<main>
+  <div class="wrap tabs-shell">
+    <nav class="tabs" aria-label="Apps navigation">
       <button class="tab active" data-target="apps" data-ar="التطبيقات" data-en="Apps">التطبيقات</button>
       <button class="tab" data-target="codes" data-ar="الأكواد" data-en="Codes">الأكواد</button>
       <button class="tab" data-target="links" data-ar="الروابط" data-en="Links">الروابط</button>
       <button class="tab" data-target="qr" data-ar="باركود" data-en="QR Codes">باركود</button>
-    </div>
+    </nav>
   </div>
 
   <section id="apps" class="panel active wrap">
-    <div class="tip">
-      <span>⬇️</span>
-      <div data-ar="<b>طريقة التحميل:</b> اختر التطبيق المناسب لجهازك واضغط تحميل. على Android TV يمكنك استخدام كود Downloader من تبويب الأكواد."
-           data-en="<b>How to download:</b> Choose the app for your device and press Download. On Android TV, you can use the Downloader code from the Codes tab.">
-        <b>طريقة التحميل:</b> اختر التطبيق المناسب لجهازك واضغط تحميل. على Android TV يمكنك استخدام كود Downloader من تبويب الأكواد.
-      </div>
-    </div>
     <div class="filters">
       <button class="filter active" data-filter="all" data-ar="الكل" data-en="All">الكل</button>
-      <button class="filter" data-filter="android" data-ar="Android" data-en="Android">Android</button>
-      <button class="filter" data-filter="ios" data-ar="iPhone / iPad" data-en="iPhone / iPad">iPhone / iPad</button>
-      <button class="filter" data-filter="windows" data-ar="Windows" data-en="Windows">Windows</button>
+      <button class="filter" data-filter="android">Android</button>
+      <button class="filter" data-filter="ios">iPhone / iPad</button>
+      <button class="filter" data-filter="windows">Windows</button>
     </div>
-    <div id="appsGrid" class="grid"></div>
+    <div id="appsGrid" class="apps-grid"></div>
   </section>
 
   <section id="codes" class="panel wrap">
-    <div class="tip">
+    <div class="info-note">
       <span>🔢</span>
-      <div data-ar="<b>Downloader:</b> افتح تطبيق Downloader على Android TV أو Fire TV، اكتب الكود ثم اضغط Go."
-           data-en="<b>Downloader:</b> Open Downloader on Android TV or Fire TV, enter the code and press Go.">
-        <b>Downloader:</b> افتح تطبيق Downloader على Android TV أو Fire TV، اكتب الكود ثم اضغط Go.
-      </div>
+      <span data-ar="<b>أكواد Downloader:</b> افتح تطبيق Downloader على Android TV أو Fire TV، اكتب الكود ثم اضغط Go."
+            data-en="<b>Downloader codes:</b> Open Downloader on Android TV or Fire TV, enter the code and press Go."><b>أكواد Downloader:</b> افتح تطبيق Downloader على Android TV أو Fire TV، اكتب الكود ثم اضغط Go.</span>
     </div>
-    <div id="codesList"></div>
+    <div id="codesList" class="list-stack"></div>
   </section>
 
   <section id="links" class="panel wrap">
-    <div class="tip">
+    <div class="info-note">
       <span>🔗</span>
-      <div data-ar="<b>الروابط:</b> اضغط نسخ ثم أرسل الرابط أو افتحه مباشرة من الجهاز."
-           data-en="<b>Links:</b> Tap Copy, then share the link or open it directly on your device.">
-        <b>الروابط:</b> اضغط نسخ ثم أرسل الرابط أو افتحه مباشرة من الجهاز.
-      </div>
+      <span data-ar="<b>الروابط المباشرة:</b> انسخ رابط التطبيق وافتحه على الجهاز الذي تريد تثبيت التطبيق عليه."
+            data-en="<b>Direct links:</b> Copy an app link and open it on the device where you want to install it."><b>الروابط المباشرة:</b> انسخ رابط التطبيق وافتحه على الجهاز الذي تريد تثبيت التطبيق عليه.</span>
     </div>
-    <div id="linksList"></div>
+    <div id="linksList" class="list-stack"></div>
   </section>
 
   <section id="qr" class="panel wrap">
-    <div class="tip">
+    <div class="info-note">
       <span>▦</span>
-      <div data-ar="<b>الباركود:</b> امسح رمز QR بالكاميرا لفتح رابط التطبيق مباشرة."
-           data-en="<b>QR Code:</b> Scan the QR code with your camera to open the app link directly.">
-        <b>الباركود:</b> امسح رمز QR بالكاميرا لفتح رابط التطبيق مباشرة.
-      </div>
+      <span data-ar="<b>الباركود:</b> امسح رمز QR بكاميرا الهاتف لفتح رابط التطبيق مباشرة."
+            data-en="<b>QR code:</b> Scan the QR code with your phone camera to open the app link directly."><b>الباركود:</b> امسح رمز QR بكاميرا الهاتف لفتح رابط التطبيق مباشرة.</span>
     </div>
-    <div id="qrList" class="qr-list"></div>
+    <div id="qrList" class="qr-grid"></div>
   </section>
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="social">
-      <a href="https://wa.me/9647809522129" target="_blank">WhatsApp</a>
-      <a href="https://familyiptv.net/" target="_blank">Family IPTV</a>
-    </div>
-    <div>Family IPTV © 2026 — All Rights Reserved</div>
-  </div>
-</footer>
-
-<div id="toast" class="toast">تم النسخ</div>
+<div class="footer-note" data-ar="🛡 جميع التطبيقات المضافة في هذه الصفحة هي روابط التطبيقات الرسمية المعتمدة لدى Family IPTV."
+     data-en="🛡 All apps listed on this page use Family IPTV's approved application links.">🛡 جميع التطبيقات المضافة في هذه الصفحة هي روابط التطبيقات الرسمية المعتمدة لدى Family IPTV.</div>
+<footer class="footer">Family IPTV © 2026 — All Rights Reserved</footer>
+<div id="toast" class="toast">تم النسخ ✓</div>
 
 <script>
 /*
-  لإضافة/تعديل تطبيق: غيّر البيانات هنا فقط.
-  روابط Android مبنية على أكواد Downloader الرسمية الحالية: https://aftv.news/CODE
-  روابط iOS الحالية غير ظاهرة لمحرك البحث، لذلك ضع رابط App Store/الرابط المباشر في url عند توفره.
-  لبرنامج Windows: ضع رابط ملف EXE المباشر في url داخل عنصر family-windows.
-  مثال: url:"https://example.com/FamilyIPTV.exe"
+  تعديل التطبيقات يتم من هذا الجزء فقط.
+  جميع تطبيقات Android تستخدم الصورة الموحدة: assets/family-app.png
+  الصور تُعرض دائماً داخل إطار مربع 1:1.
+  رابط Windows المباشر مضاف إلى بطاقة FAMILY IPTV — WINDOWS.
 */
 const APPS = [
   {
@@ -307,165 +547,174 @@ const APPS = [
     code:"919624", url:"https://aftv.news/919624", image:"assets/family-app.png"
   },
   {
-    id:"20-platform", name:"20-Platform", platform:"ios",
-    descAr:"تطبيق بلاتفورم خاص لمشتركينا ويدعم الآيفون والآيباد.",
-    descEn:"Platform app for our subscribers on iPhone and iPad.",
+    id:"20-platform", name:"20-PLATFORM", platform:"ios",
+    descAr:"تطبيق 20-Platform لمشتركينا ويدعم أجهزة iPhone وiPad.",
+    descEn:"20-Platform for Family IPTV subscribers on iPhone and iPad.",
     code:"", url:"", image:"assets/20-platform.png"
   },
   {
-    id:"bplay-one", name:"BPlay One", platform:"ios",
-    descAr:"تطبيق BPlay One لمشتركينا ويدعم الآيفون والآيباد.",
-    descEn:"BPlay One for our subscribers on iPhone and iPad.",
+    id:"bplay-one", name:"BPLAY ONE", platform:"ios",
+    descAr:"تطبيق BPlay One لمشتركينا على أجهزة iPhone وiPad.",
+    descEn:"BPlay One for Family IPTV subscribers on iPhone and iPad.",
     code:"", url:"", image:"assets/bplay-one.png"
   },
   {
     id:"vu-player", name:"VU PLAYER", platform:"ios",
-    descAr:"واجهة أنيقة وسريعة لمحبي البث المباشر على أجهزة Apple.",
-    descEn:"A clean and fast player experience for Apple devices.",
+    descAr:"مشغل سريع بواجهة أنيقة لأجهزة Apple.",
+    descEn:"A fast and clean player for Apple devices.",
     code:"", url:"", image:"assets/vu-player.png"
   },
   {
     id:"smarters-lite", name:"SMARTERS LITE", platform:"ios",
-    descAr:"مشغل IPTV للآيفون والآيباد بجودة ممتازة وسهولة في الاستخدام.",
-    descEn:"IPTV player for iPhone and iPad with an easy interface.",
+    descAr:"مشغل IPTV سهل الاستخدام لأجهزة iPhone وiPad.",
+    descEn:"An easy-to-use IPTV player for iPhone and iPad.",
     code:"", url:"", image:"assets/smarters-lite.png"
   },
   {
     id:"family-windows", name:"FAMILY IPTV — WINDOWS", platform:"windows",
-    descAr:"برنامج Family IPTV المخصص لأجهزة الكمبيوتر واللابتوب بنظام Windows.",
-    descEn:"Family IPTV desktop application for Windows PCs and laptops.",
-    code:"", url:"", image:"assets/family-windows.png"
+    descAr:"برنامج Family IPTV المخصص لأجهزة الكمبيوتر واللابتوب بنظام Windows. تحميل مباشر بصيغة EXE.",
+    descEn:"Family IPTV desktop application for Windows PCs and laptops. Direct EXE download.",
+    code:"", url:"http://getapks.top/download/Family-IPTV-Setup.exe", image:"assets/family-windows.png"
   }
 ];
 
-let lang = "ar";
-let activeFilter = "all";
+let lang="ar";
+let activeFilter="all";
+const $=s=>document.querySelector(s);
+const $$=s=>[...document.querySelectorAll(s)];
 
-const $ = s => document.querySelector(s);
-const $$ = s => [...document.querySelectorAll(s)];
-
-function fallbackSvg(){
+function appsSvg(){
   return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <rect x="3" y="3" width="7" height="7" rx="2" fill="currentColor"/>
-    <rect x="14" y="3" width="7" height="7" rx="2" fill="currentColor"/>
-    <rect x="3" y="14" width="7" height="7" rx="2" fill="currentColor"/>
-    <rect x="14" y="14" width="7" height="7" rx="2" fill="currentColor"/>
+    <rect x="3" y="3" width="7" height="7" rx="1.7" stroke="currentColor" stroke-width="2"/>
+    <rect x="14" y="3" width="7" height="7" rx="1.7" stroke="currentColor" stroke-width="2"/>
+    <rect x="3" y="14" width="7" height="7" rx="1.7" stroke="currentColor" stroke-width="2"/>
+    <rect x="14" y="14" width="7" height="7" rx="1.7" stroke="currentColor" stroke-width="2"/>
   </svg>`;
 }
-function icon(a, mini=false){
-  const cls = mini ? "mini-icon" : "app-icon";
-  return `<div class="${cls}">
-    <img src="${a.image}" alt="${a.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-    <span class="fallback" style="display:none;width:100%;height:100%;place-items:center">${fallbackSvg()}</span>
-  </div>`;
-}
-function media(a){
-  return `<div class="app-media">
-    <img src="${a.image}" alt="${a.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
-    <div class="media-fallback">${fallbackSvg()}</div>
-  </div>`;
-}
+function tr(ar,en){return lang==="ar"?ar:en}
 function platformText(a){
   if(a.platform==="android") return "Android / Android TV";
   if(a.platform==="ios") return "iPhone / iPad";
+  return "Windows (PC)";
+}
+function osName(a){
+  if(a.platform==="android") return "Android";
+  if(a.platform==="ios") return "iOS";
   return "Windows";
 }
-function tr(ar,en){ return lang==="ar" ? ar : en; }
-
+function miniIcon(a){
+  return `<div class="mini-icon">
+    <img src="${a.image}" alt="${a.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="mini-fallback">${appsSvg()}</div>
+  </div>`;
+}
+function appImage(a){
+  return `<div class="app-image">
+    <img src="${a.image}" alt="${a.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+    <div class="image-fallback">${appsSvg()}</div>
+  </div>`;
+}
+function qrPlaceholder(a){
+  if(!a.url) return `<div class="card-qr empty-qr">${tr("أضف الرابط","Add URL")}</div>`;
+  return `<div id="card-qr-${a.id}" class="card-qr"></div>`;
+}
+function createQr(el,text,size=160){
+  if(!el || !text || typeof QRCode==="undefined") return;
+  el.innerHTML="";
+  new QRCode(el,{text,width:size,height:size,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
+}
 function renderApps(){
-  const list = APPS.filter(a => activeFilter==="all" || a.platform===activeFilter);
-  $("#appsGrid").innerHTML = list.map(a => `
-    <article class="card">
-      ${media(a)}
-      <div class="app-info">
+  const list=APPS.filter(a=>activeFilter==="all"||a.platform===activeFilter);
+  $("#appsGrid").innerHTML=list.map(a=>`
+    <article class="app-card">
+      ${appImage(a)}
+      <div class="app-meta">
         <div>
-          <h3 class="app-name">${a.name}</h3>
-          <div class="platform">${platformText(a)}</div>
+          <h3 class="app-title">${a.name}</h3>
+          <div class="app-platform">${platformText(a)}</div>
         </div>
-        <span class="os-badge">${a.platform==="android" ? "Android" : a.platform==="ios" ? "iOS" : "Windows"}</span>
+        <span class="os-pill ${a.platform}"><span class="os-dot"></span>${osName(a)}</span>
       </div>
-      <div class="desc">${lang==="ar" ? a.descAr : a.descEn}</div>
-      <div class="actions">
-        ${a.url
-          ? `<a class="btn red" href="${a.url}" target="_blank" rel="noopener">⬇ ${tr("تحميل","Download")}</a>
-             <button class="btn dark" onclick="copyText('${a.url}')">⧉ ${tr("نسخ","Copy")}</button>`
-          : `<button class="btn dark" disabled style="opacity:.55;cursor:not-allowed">${a.platform==="windows" ? tr("أضف رابط برنامج Windows","Add Windows download URL") : tr("أضف رابط App Store","Add App Store URL")}</button>`
-        }
+      <div class="app-desc">${lang==="ar"?a.descAr:a.descEn}</div>
+      <div class="card-bottom">
+        ${qrPlaceholder(a)}
+        <div class="card-actions">
+          ${a.url
+            ? `<button class="btn copy" onclick="copyText('${a.url}')">🔗 ${tr("نسخ الرابط","Copy link")}</button>
+               <a class="btn download" href="${a.url}" target="_blank" rel="noopener">↓ ${a.platform==="windows"?tr("تحميل EXE","Download EXE"):tr("تحميل","Download")}</a>`
+            : `<button class="btn disabled" disabled>${tr("الرابط غير مضاف","URL not added")}</button>
+               <button class="btn disabled" disabled>${a.platform==="windows"?tr("أضف رابط Windows","Add Windows URL"):tr("أضف رابط App Store","Add App Store URL")}</button>`}
+        </div>
       </div>
-    </article>
-  `).join("");
+    </article>`).join("");
+
+  requestAnimationFrame(()=>{
+    list.forEach(a=>{ if(a.url) createQr(document.getElementById(`card-qr-${a.id}`),a.url,120); });
+  });
 }
 function renderCodes(){
-  const list = APPS.filter(a=>a.code);
-  $("#codesList").innerHTML = list.map(a=>`
-    <div class="code-card">
-      <div class="mini-app">${icon(a,true)}<div><div class="mini-name">${a.name}</div><div class="mini-sub">Downloader</div></div></div>
-      <div style="display:flex;gap:8px;width:min(100%,260px)">
-        <div class="code">${a.code}</div>
-        <button class="copy" onclick="copyText('${a.code}')">${tr("نسخ","Copy")}</button>
-      </div>
-    </div>
-  `).join("");
+  const list=APPS.filter(a=>a.code);
+  $("#codesList").innerHTML=list.map(a=>`
+    <div class="list-card">
+      <div class="mini-app">${miniIcon(a)}<div><div class="mini-name">${a.name}</div><div class="mini-sub">Downloader</div></div></div>
+      <div class="code-box"><div class="code-value">${a.code}</div><button class="small-copy" onclick="copyText('${a.code}')">${tr("نسخ","Copy")}</button></div>
+    </div>`).join("");
 }
 function renderLinks(){
-  const list = APPS.filter(a=>a.url);
-  $("#linksList").innerHTML = list.map(a=>`
-    <div class="link-card">
-      <div class="mini-app">${icon(a,true)}<div><div class="mini-name">${a.name}</div><div class="mini-sub">${platformText(a)}</div></div></div>
-      <div class="link-box">
-        <div class="link-text">${a.url}</div>
-        <button class="copy" onclick="copyText('${a.url}')">${tr("نسخ الرابط","Copy link")}</button>
-      </div>
-    </div>
-  `).join("");
+  const list=APPS.filter(a=>a.url);
+  $("#linksList").innerHTML=list.length?list.map(a=>`
+    <div class="list-card">
+      <div class="mini-app">${miniIcon(a)}<div><div class="mini-name">${a.name}</div><div class="mini-sub">${platformText(a)}</div></div></div>
+      <div class="link-line"><div class="link-value">${a.url}</div><button class="small-copy" onclick="copyText('${a.url}')">${tr("نسخ","Copy")}</button></div>
+    </div>`).join(""):`<div class="info-note">${tr("لا توجد روابط مضافة حالياً.","No links added yet.")}</div>`;
 }
 function renderQR(){
-  const list = APPS.filter(a=>a.url);
-  $("#qrList").innerHTML = list.map(a=>`
+  const list=APPS.filter(a=>a.url);
+  $("#qrList").innerHTML=list.map(a=>`
     <article class="qr-card">
-      <div class="mini-app" style="justify-content:center">${icon(a,true)}<div style="text-align:start"><div class="mini-name">${a.name}</div><div class="mini-sub">${platformText(a)}</div></div></div>
-      <div id="qr-${a.id}" class="qrbox"></div>
+      <div class="mini-app" style="justify-content:center">${miniIcon(a)}<div style="text-align:start"><div class="mini-name">${a.name}</div><div class="mini-sub">${platformText(a)}</div></div></div>
+      <div id="qr-${a.id}" class="qr-box"></div>
       <div class="qr-url">${a.url}</div>
-    </article>
-  `).join("");
-  setTimeout(()=>{
-    list.forEach(a=>{
-      const el = document.getElementById("qr-"+a.id);
-      if(el && typeof QRCode!=="undefined"){
-        el.innerHTML="";
-        new QRCode(el,{text:a.url,width:156,height:156,colorDark:"#000000",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.H});
-      }
-    });
-  },0);
+    </article>`).join("");
+  requestAnimationFrame(()=>list.forEach(a=>createQr(document.getElementById(`qr-${a.id}`),a.url,160)));
+}
+function copyText(text){
+  if(!text) return;
+  const done=()=>{
+    const t=$("#toast");
+    t.textContent=tr("تم النسخ ✓","Copied ✓");t.classList.add("show");
+    setTimeout(()=>t.classList.remove("show"),1400);
+  };
+  if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done));}
+  else fallbackCopy(text,done);
+}
+function fallbackCopy(text,done){
+  const ta=document.createElement("textarea");ta.value=text;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();
+  try{document.execCommand("copy");done();}catch(e){}ta.remove();
 }
 function translate(){
   document.documentElement.lang=lang;
   document.documentElement.dir=lang==="ar"?"rtl":"ltr";
-  $$("[data-ar]").forEach(el=>{
-    const txt = el.getAttribute(lang==="ar"?"data-ar":"data-en");
-    if(txt.includes("<b>")) el.innerHTML=txt; else el.textContent=txt;
+  $$('[data-ar]').forEach(el=>{
+    const text=el.getAttribute(lang==="ar"?"data-ar":"data-en")||"";
+    if(text.includes("<b>")) el.innerHTML=text; else el.textContent=text;
   });
   $("#arBtn").classList.toggle("active",lang==="ar");
   $("#enBtn").classList.toggle("active",lang==="en");
   renderApps();renderCodes();renderLinks();renderQR();
 }
-function copyText(text){
-  navigator.clipboard.writeText(text).then(()=>{
-    const t=$("#toast");t.textContent=tr("تم النسخ ✓","Copied ✓");t.classList.add("show");
-    setTimeout(()=>t.classList.remove("show"),1500);
-  });
-}
-$$(".tab").forEach(btn=>btn.addEventListener("click",()=>{
-  $$(".tab").forEach(x=>x.classList.remove("active")); btn.classList.add("active");
-  $$(".panel").forEach(x=>x.classList.remove("active")); $("#"+btn.dataset.target).classList.add("active");
-  if(btn.dataset.target==="qr") renderQR();
+
+$$('.tab').forEach(btn=>btn.addEventListener('click',()=>{
+  $$('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
+  $$('.panel').forEach(x=>x.classList.remove('active'));document.getElementById(btn.dataset.target).classList.add('active');
+  if(btn.dataset.target==='qr') renderQR();
 }));
-$$(".filter").forEach(btn=>btn.addEventListener("click",()=>{
-  $$(".filter").forEach(x=>x.classList.remove("active"));btn.classList.add("active");
+$$('.filter').forEach(btn=>btn.addEventListener('click',()=>{
+  $$('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');
   activeFilter=btn.dataset.filter;renderApps();
 }));
-$("#arBtn").onclick=()=>{lang="ar";translate()};
-$("#enBtn").onclick=()=>{lang="en";translate()};
+$("#arBtn").addEventListener("click",()=>{lang="ar";translate()});
+$("#enBtn").addEventListener("click",()=>{lang="en";translate()});
 translate();
 </script>
 </body>
