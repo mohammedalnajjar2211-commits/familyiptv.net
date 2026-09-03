@@ -2,79 +2,1149 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="theme-color" content="#d40000">
+
   <title>Family IPTV | إدارة الباقات</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =========================================
+       بيانات الاشتراك
+       ========================================= */
+
+    .connection-box {
+      margin-top: 22px;
+      padding: 24px;
+      background: rgba(17, 20, 26, 0.96);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .connection-header {
+      margin-bottom: 20px;
+    }
+
+    .connection-header h3 {
+      margin: 0 0 7px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .connection-header p {
+      margin: 0;
+      color: #8d929d;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .connection-method {
+      padding: 20px;
+      margin-top: 15px;
+      background: #0b0e13;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+    }
+
+    .method-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .method-icon {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 13px;
+      background: rgba(212,0,0,.15);
+      border: 1px solid rgba(255,45,45,.15);
+      font-size: 20px;
+    }
+
+    .method-title h4 {
+      margin: 0 0 3px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .method-title small {
+      color: #777e89;
+      font-size: 12px;
+    }
+
+    .connection-label {
+      display: block;
+      margin: 0 0 7px;
+      color: #a6abb4;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .copy-field {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .copy-field input {
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+      height: 48px;
+      box-sizing: border-box;
+      padding: 0 15px;
+      color: #ff6969;
+      background: #05070a;
+      border: 1px solid #292e37;
+      border-radius: 11px;
+      outline: none;
+      direction: ltr;
+      text-align: left;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+    }
+
+    .copy-field input:focus {
+      border-color: rgba(255,45,45,.55);
+      box-shadow: 0 0 0 3px rgba(212,0,0,.08);
+    }
+
+    .copy-btn {
+      flex: 0 0 auto;
+      min-width: 110px;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 11px;
+      color: #fff;
+      background: linear-gradient(
+        135deg,
+        #d40000,
+        #ff2d2d
+      );
+      font-family: "Cairo", sans-serif;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .copy-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.08);
+    }
+
+    .copy-btn:active {
+      transform: translateY(0);
+    }
+
+    .copy-btn.copied {
+      background: #198754;
+    }
+
+    .xtream-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .xtream-item {
+      min-width: 0;
+    }
+
+    .host-input {
+      color: #ff6969 !important;
+    }
+
+    .credentials-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-top: 15px;
+      padding: 12px 14px;
+      color: #8d929d;
+      background: rgba(255,255,255,.025);
+      border: 1px solid rgba(255,255,255,.05);
+      border-radius: 11px;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .credentials-note strong {
+      color: #ddd;
+    }
+
+    .copy-all-wrap {
+      margin-top: 14px;
+    }
+
+    .copy-all-btn {
+      width: 100%;
+      min-height: 46px;
+      border: 1px solid rgba(212,0,0,.35);
+      border-radius: 11px;
+      color: #fff;
+      background: rgba(212,0,0,.10);
+      font-family: "Cairo", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .copy-all-btn:hover {
+      background: rgba(212,0,0,.18);
+      border-color: rgba(255,45,45,.5);
+    }
+
+    .copy-all-btn.copied {
+      color: #fff;
+      background: #198754;
+      border-color: #198754;
+    }
+
+    /* العنصر القديم مطلوب حتى لا يحصل خطأ في app.js */
+    #proxyHint {
+      display: none !important;
+    }
+
+    @media (max-width: 650px) {
+
+      .connection-box {
+        padding: 16px;
+      }
+
+      .connection-method {
+        padding: 15px;
+      }
+
+      .connection-header h3 {
+        font-size: 18px;
+      }
+
+      .copy-field {
+        flex-direction: column;
+      }
+
+      .copy-btn {
+        width: 100%;
+        min-height: 45px;
+      }
+
+      .copy-field input {
+        font-size: 11px;
+      }
+    }
+
+  </style>
 </head>
+
+
 <body>
+
   <div class="bg"></div>
 
+
+  <!-- =========================
+       Header
+       ========================= -->
+
   <header class="topbar">
+
     <div class="brand">
+
       <span class="brand-dot"></span>
+
       <span>FAMILY IPTV</span>
+
       <span class="verified">✓</span>
+
     </div>
-    <button id="logoutBtn" class="ghost hidden">تسجيل الخروج</button>
+
+    <button
+      id="logoutBtn"
+      class="ghost hidden"
+    >
+      تسجيل الخروج
+    </button>
+
   </header>
 
+
+  <!-- =========================
+       Main
+       ========================= -->
+
   <main class="wrap">
-    <section id="loginView" class="card login-card">
+
+
+    <!-- =========================
+         Login
+         ========================= -->
+
+    <section
+      id="loginView"
+      class="card login-card"
+    >
+
       <div class="icon">⚙️</div>
+
       <h1>إدارة الباقات</h1>
-      <p>سجّل الدخول ببيانات اشتراك Family IPTV لإخفاء الباقات أو تغيير ترتيبها.</p>
+
+      <p>
+        سجّل الدخول ببيانات اشتراك Family IPTV
+        لإخفاء الباقات أو تغيير ترتيبها.
+      </p>
+
 
       <form id="loginForm">
-        <label>اسم المستخدم</label>
-        <input id="username" autocomplete="username" required>
 
-        <label>كلمة المرور</label>
-        <input id="password" type="password" autocomplete="current-password" required>
+        <label>
+          اسم المستخدم
+        </label>
 
-        <button class="primary" type="submit">دخول</button>
+        <input
+          id="username"
+          autocomplete="username"
+          required
+        >
+
+
+        <label>
+          كلمة المرور
+        </label>
+
+        <input
+          id="password"
+          type="password"
+          autocomplete="current-password"
+          required
+        >
+
+
+        <button
+          class="primary"
+          type="submit"
+        >
+          دخول
+        </button>
+
       </form>
-      <div id="loginMsg" class="msg"></div>
+
+
+      <div
+        id="loginMsg"
+        class="msg"
+      ></div>
+
     </section>
 
-    <section id="managerView" class="hidden">
+
+    <!-- =========================
+         Manager
+         ========================= -->
+
+    <section
+      id="managerView"
+      class="hidden"
+    >
+
+
+      <!-- Hero -->
+
       <div class="hero card">
+
         <div>
-          <span class="eyebrow">FAMILY IPTV</span>
-          <h1>تحكم في باقاتك</h1>
-          <p>اسحب الباقات لتغيير الترتيب، واستخدم المفتاح لإظهار أو إخفاء أي باقة.</p>
+
+          <span class="eyebrow">
+            FAMILY IPTV
+          </span>
+
+          <h1>
+            تحكم في باقاتك
+          </h1>
+
+          <p>
+            اسحب الباقات لتغيير الترتيب،
+            واستخدم المفتاح لإظهار أو إخفاء أي باقة.
+          </p>
+
         </div>
+
+
         <div class="stats">
-          <div><b id="allCount">0</b><span>إجمالي</span></div>
-          <div><b id="visibleCount">0</b><span>ظاهر</span></div>
-          <div><b id="hiddenCount">0</b><span>مخفي</span></div>
+
+          <div>
+            <b id="allCount">0</b>
+            <span>إجمالي</span>
+          </div>
+
+          <div>
+            <b id="visibleCount">0</b>
+            <span>ظاهر</span>
+          </div>
+
+          <div>
+            <b id="hiddenCount">0</b>
+            <span>مخفي</span>
+          </div>
+
         </div>
+
       </div>
+
+
+      <!-- Toolbar -->
 
       <div class="toolbar card">
-        <input id="searchInput" placeholder="ابحث عن باقة...">
+
+        <input
+          id="searchInput"
+          placeholder="ابحث عن باقة..."
+        >
+
+
         <div class="toolbar-actions">
-          <button id="showAllBtn" class="ghost">إظهار الكل</button>
-          <button id="resetBtn" class="ghost">استعادة الافتراضي</button>
-          <button id="saveBtn" class="primary">حفظ التغييرات</button>
+
+          <button
+            id="showAllBtn"
+            class="ghost"
+          >
+            إظهار الكل
+          </button>
+
+
+          <button
+            id="resetBtn"
+            class="ghost"
+          >
+            استعادة الافتراضي
+          </button>
+
+
+          <button
+            id="saveBtn"
+            class="primary"
+          >
+            حفظ التغييرات
+          </button>
+
         </div>
+
       </div>
 
-      <div id="saveMsg" class="msg"></div>
-      <div id="groupsList" class="groups"></div>
 
-      <div class="card playlist-box">
-        <h3>رابط الاشتراك عبر Family Proxy</h3>
-        <p>استخدم هذا الدومين في تطبيقات Xtream أو رابط M3U حتى تُطبق إعدادات الإخفاء والترتيب.</p>
-        <code id="proxyHint">https://api.example.com</code>
+      <div
+        id="saveMsg"
+        class="msg"
+      ></div>
+
+
+      <!-- Categories -->
+
+      <div
+        id="groupsList"
+        class="groups"
+      ></div>
+
+
+      <!-- =========================================
+           Connection information
+           ========================================= -->
+
+      <div class="card connection-box">
+
+        <div class="connection-header">
+
+          <h3>
+            بيانات تشغيل الاشتراك
+          </h3>
+
+          <p>
+            بعد اختيار الباقات وحفظ التغييرات،
+            استخدم رابط M3U أو بيانات Xtream Codes
+            في تطبيق IPTV الخاص بك.
+          </p>
+
+        </div>
+
+
+        <!-- =========================
+             M3U
+             ========================= -->
+
+        <div class="connection-method">
+
+          <div class="method-title">
+
+            <span class="method-icon">
+              📺
+            </span>
+
+            <div>
+
+              <h4>
+                رابط M3U
+              </h4>
+
+              <small>
+                مناسب لـ VLC وتطبيقات IPTV التي تدعم M3U
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <label
+            class="connection-label"
+            for="m3uLink"
+          >
+            رابط الاشتراك
+          </label>
+
+
+          <div class="copy-field">
+
+            <input
+              type="text"
+              id="m3uLink"
+              value=""
+              readonly
+              spellcheck="false"
+            >
+
+
+            <button
+              type="button"
+              class="copy-btn"
+              onclick="copyConnectionField('m3uLink', this)"
+            >
+              نسخ الرابط
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- =========================
+             Xtream Codes
+             ========================= -->
+
+        <div class="connection-method">
+
+          <div class="method-title">
+
+            <span class="method-icon">
+              ⚡
+            </span>
+
+            <div>
+
+              <h4>
+                بيانات Xtream Codes
+              </h4>
+
+              <small>
+                أدخل البيانات التالية في تطبيق IPTV
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="xtream-grid">
+
+
+            <!-- Host -->
+
+            <div class="xtream-item">
+
+              <label
+                class="connection-label"
+                for="xtreamHost"
+              >
+                الهوست / Server URL
+              </label>
+
+              <div class="copy-field">
+
+                <input
+                  type="text"
+                  id="xtreamHost"
+                  class="host-input"
+                  value="https://bouquet.familyiptv.net"
+                  readonly
+                  spellcheck="false"
+                >
+
+                <button
+                  type="button"
+                  class="copy-btn"
+                  onclick="copyConnectionField('xtreamHost', this)"
+                >
+                  نسخ
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <!-- Username -->
+
+            <div class="xtream-item">
+
+              <label
+                class="connection-label"
+                for="xtreamUsername"
+              >
+                اسم المستخدم / Username
+              </label>
+
+              <div class="copy-field">
+
+                <input
+                  type="text"
+                  id="xtreamUsername"
+                  value=""
+                  readonly
+                  spellcheck="false"
+                >
+
+                <button
+                  type="button"
+                  class="copy-btn"
+                  onclick="copyConnectionField('xtreamUsername', this)"
+                >
+                  نسخ
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="xtream-item">
+
+              <label
+                class="connection-label"
+                for="xtreamPassword"
+              >
+                كلمة المرور / Password
+              </label>
+
+              <div class="copy-field">
+
+                <input
+                  type="text"
+                  id="xtreamPassword"
+                  value=""
+                  readonly
+                  spellcheck="false"
+                >
+
+                <button
+                  type="button"
+                  class="copy-btn"
+                  onclick="copyConnectionField('xtreamPassword', this)"
+                >
+                  نسخ
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="copy-all-wrap">
+
+            <button
+              type="button"
+              id="copyAllXtreamBtn"
+              class="copy-all-btn"
+              onclick="copyAllXtream(this)"
+            >
+              📋 نسخ جميع بيانات Xtream
+            </button>
+
+          </div>
+
+
+          <div class="credentials-note">
+
+            <span>ℹ️</span>
+
+            <div>
+              استخدم <strong>https://bouquet.familyiptv.net</strong>
+              كعنوان السيرفر حتى يتم تطبيق الباقات التي اخترتها.
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!--
+          هذا العنصر مخفي وموجود فقط للتوافق
+          مع ملف app.js الحالي.
+        -->
+
+        <code id="proxyHint"></code>
+
       </div>
+
     </section>
+
   </main>
 
-  <footer>جميع الحقوق محفوظة © Family IPTV</footer>
+
+  <!-- =========================
+       Footer
+       ========================= -->
+
+  <footer>
+    جميع الحقوق محفوظة © Family IPTV
+  </footer>
+
+
+  <!-- ملف التطبيق الحالي -->
   <script src="app.js"></script>
+
+
+  <!-- =========================
+       Connection UI Script
+       ========================= -->
+
+  <script>
+
+    const FAMILY_BOUQUET_HOST =
+      "https://bouquet.familyiptv.net";
+
+
+    /*
+     * قراءة بيانات المشترك الموجودة أصلاً
+     * في sessionStorage والتي يحفظها app.js
+     */
+    function getFamilyCredentials() {
+
+      try {
+
+        const saved =
+          JSON.parse(
+            sessionStorage.getItem("family_creds") || "null"
+          );
+
+        if (
+          saved &&
+          saved.username &&
+          saved.password
+        ) {
+          return saved;
+        }
+
+      } catch (error) {
+        console.error(
+          "Unable to read Family credentials",
+          error
+        );
+      }
+
+      return null;
+    }
+
+
+    /*
+     * تحديث رابط M3U وبيانات Xtream
+     */
+    function updateConnectionDetails() {
+
+      const saved =
+        getFamilyCredentials();
+
+      if (!saved) {
+        return;
+      }
+
+
+      const username =
+        String(saved.username || "");
+
+      const password =
+        String(saved.password || "");
+
+
+      const m3u =
+        FAMILY_BOUQUET_HOST +
+        "/get.php" +
+        "?username=" +
+        encodeURIComponent(username) +
+        "&password=" +
+        encodeURIComponent(password) +
+        "&type=m3u_plus&output=ts";
+
+
+      const m3uField =
+        document.getElementById(
+          "m3uLink"
+        );
+
+      const hostField =
+        document.getElementById(
+          "xtreamHost"
+        );
+
+      const usernameField =
+        document.getElementById(
+          "xtreamUsername"
+        );
+
+      const passwordField =
+        document.getElementById(
+          "xtreamPassword"
+        );
+
+
+      if (m3uField) {
+        m3uField.value = m3u;
+      }
+
+
+      if (hostField) {
+        hostField.value =
+          FAMILY_BOUQUET_HOST;
+      }
+
+
+      if (usernameField) {
+        usernameField.value =
+          username;
+      }
+
+
+      if (passwordField) {
+        passwordField.value =
+          password;
+      }
+
+    }
+
+
+    /*
+     * نسخ حقل واحد
+     */
+    async function copyConnectionField(
+      fieldId,
+      button
+    ) {
+
+      const field =
+        document.getElementById(
+          fieldId
+        );
+
+      if (
+        !field ||
+        !field.value
+      ) {
+        return;
+      }
+
+
+      const value =
+        field.value;
+
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          await navigator.clipboard.writeText(
+            value
+          );
+
+        } else {
+
+          fallbackCopy(value);
+
+        }
+
+      } catch (error) {
+
+        fallbackCopy(value);
+
+      }
+
+
+      showCopiedState(
+        button
+      );
+
+    }
+
+
+    /*
+     * نسخ بيانات Xtream كاملة
+     */
+    async function copyAllXtream(
+      button
+    ) {
+
+      const saved =
+        getFamilyCredentials();
+
+      if (!saved) {
+        return;
+      }
+
+
+      const text =
+`Host: ${FAMILY_BOUQUET_HOST}
+Username: ${saved.username}
+Password: ${saved.password}`;
+
+
+      try {
+
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+
+          await navigator.clipboard.writeText(
+            text
+          );
+
+        } else {
+
+          fallbackCopy(text);
+
+        }
+
+      } catch (error) {
+
+        fallbackCopy(text);
+
+      }
+
+
+      showCopiedState(
+        button,
+        "تم نسخ البيانات ✓"
+      );
+
+    }
+
+
+    /*
+     * طريقة احتياطية للنسخ
+     */
+    function fallbackCopy(
+      value
+    ) {
+
+      const textarea =
+        document.createElement(
+          "textarea"
+        );
+
+
+      textarea.value =
+        value;
+
+
+      textarea.style.position =
+        "fixed";
+
+      textarea.style.opacity =
+        "0";
+
+      textarea.style.pointerEvents =
+        "none";
+
+
+      document.body.appendChild(
+        textarea
+      );
+
+
+      textarea.focus();
+
+      textarea.select();
+
+
+      document.execCommand(
+        "copy"
+      );
+
+
+      textarea.remove();
+
+    }
+
+
+    /*
+     * إظهار تم النسخ
+     */
+    function showCopiedState(
+      button,
+      customText = "تم النسخ ✓"
+    ) {
+
+      if (!button) {
+        return;
+      }
+
+
+      const oldText =
+        button.textContent;
+
+
+      button.textContent =
+        customText;
+
+
+      button.classList.add(
+        "copied"
+      );
+
+
+      setTimeout(
+        function () {
+
+          button.textContent =
+            oldText;
+
+          button.classList.remove(
+            "copied"
+          );
+
+        },
+        1500
+      );
+
+    }
+
+
+    /*
+     * عند فتح الصفحة
+     */
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        updateConnectionDetails();
+
+      }
+    );
+
+
+    /*
+     * مراقبة نجاح تسجيل الدخول.
+     * عندما app.js يظهر managerView
+     * نقوم بإظهار بيانات الحساب.
+     */
+    const managerView =
+      document.getElementById(
+        "managerView"
+      );
+
+
+    if (managerView) {
+
+      const observer =
+        new MutationObserver(
+          function () {
+
+            if (
+              !managerView.classList.contains(
+                "hidden"
+              )
+            ) {
+
+              updateConnectionDetails();
+
+            }
+
+          }
+        );
+
+
+      observer.observe(
+        managerView,
+        {
+          attributes: true,
+          attributeFilter: [
+            "class"
+          ]
+        }
+      );
+
+    }
+
+
+    /*
+     * تحديث إضافي بعد تسجيل الدخول
+     */
+    const loginForm =
+      document.getElementById(
+        "loginForm"
+      );
+
+
+    if (loginForm) {
+
+      loginForm.addEventListener(
+        "submit",
+        function () {
+
+          setTimeout(
+            updateConnectionDetails,
+            500
+          );
+
+          setTimeout(
+            updateConnectionDetails,
+            1200
+          );
+
+        }
+      );
+
+    }
+
+  </script>
+
 </body>
 </html>
