@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d40000">
+  <title>Family IPTV | إدارة الباقات</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span>FAMILY IPTV</span>
+      <span class="verified">✓</span>
+    </div>
+    <button id="logoutBtn" class="ghost hidden">تسجيل الخروج</button>
+  </header>
+
+  <main class="wrap">
+    <section id="loginView" class="card login-card">
+      <div class="icon">⚙️</div>
+      <h1>إدارة الباقات</h1>
+      <p>سجّل الدخول ببيانات اشتراك Family IPTV لإخفاء الباقات أو تغيير ترتيبها.</p>
+
+      <form id="loginForm">
+        <label>اسم المستخدم</label>
+        <input id="username" autocomplete="username" required>
+
+        <label>كلمة المرور</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+
+        <button class="primary" type="submit">دخول</button>
+      </form>
+      <div id="loginMsg" class="msg"></div>
+    </section>
+
+    <section id="managerView" class="hidden">
+      <div class="hero card">
+        <div>
+          <span class="eyebrow">FAMILY IPTV</span>
+          <h1>تحكم في باقاتك</h1>
+          <p>اسحب الباقات لتغيير الترتيب، واستخدم المفتاح لإظهار أو إخفاء أي باقة.</p>
+        </div>
+        <div class="stats">
+          <div><b id="allCount">0</b><span>إجمالي</span></div>
+          <div><b id="visibleCount">0</b><span>ظاهر</span></div>
+          <div><b id="hiddenCount">0</b><span>مخفي</span></div>
+        </div>
+      </div>
+
+      <div class="toolbar card">
+        <input id="searchInput" placeholder="ابحث عن باقة...">
+        <div class="toolbar-actions">
+          <button id="showAllBtn" class="ghost">إظهار الكل</button>
+          <button id="resetBtn" class="ghost">استعادة الافتراضي</button>
+          <button id="saveBtn" class="primary">حفظ التغييرات</button>
+        </div>
+      </div>
+
+      <div id="saveMsg" class="msg"></div>
+      <div id="groupsList" class="groups"></div>
+
+      <div class="card playlist-box">
+        <h3>رابط الاشتراك عبر Family Proxy</h3>
+        <p>استخدم هذا الدومين في تطبيقات Xtream أو رابط M3U حتى تُطبق إعدادات الإخفاء والترتيب.</p>
+        <code id="proxyHint">https://api.example.com</code>
+      </div>
+    </section>
+  </main>
+
+  <footer>جميع الحقوق محفوظة © Family IPTV</footer>
+  <script src="app.js"></script>
+</body>
+</html>
