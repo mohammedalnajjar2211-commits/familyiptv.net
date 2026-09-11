@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مشغل البث المباشر</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #080808;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .player-box {
+      width: 100%;
+      max-width: 1100px;
+      background: #111;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,.6);
+    }
+
+    .title {
+      padding: 15px 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    video {
+      width: 100%;
+      display: block;
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+
+    #status {
+      padding: 12px 20px;
+      font-size: 14px;
+      color: #bbb;
+    }
+
+    .error {
+      color: #ff5555 !important;
+    }
+
+    .success {
+      color: #42d77d !important;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="player-box">
+
+  <div class="title">
+    البث المباشر
+  </div>
+
+  <video
+    id="video"
+    controls
+    autoplay
+    playsinline
+    crossorigin="anonymous">
+  </video>
+
+  <div id="status">
+    جاري تحميل البث...
+  </div>
+
+</div>
+
+<script>
+
+const video = document.getElementById("video");
+const statusBox = document.getElementById("status");
+
+const streamUrl =
+"https://livestream.almanasa.tv/news/ch33/ch33_1080.m3u8";
+
+function status(text, type = "") {
+    statusBox.textContent = text;
+    statusBox.className = type;
+}
+
+if (Hls.isSupported()) {
+
+    const hls = new Hls({
+        enableWorker: true,
+        lowLatencyMode: true,
+        backBufferLength: 60
+    });
+
+    hls.loadSource(streamUrl);
+
+    hls.attachMedia(video);
+
+    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+
+        status(
+            "تم تحميل القناة بنجاح",
+            "success"
+        );
+
+        video.play().catch(() => {
+            status(
+                "تم تحميل القناة، اضغط زر التشغيل."
+            );
+        });
+
+    });
+
+    hls.on(Hls.Events.ERROR, function (event, data) {
+
+        console.log("HLS ERROR:", data);
+
+        if (data.fatal) {
+
+            status(
+                "تعذر تشغيل القناة: " +
+                (data.details || "خطأ غير معروف"),
+                "error"
+            );
+
+            switch (data.type) {
+
+                case Hls.ErrorTypes.NETWORK_ERROR:
+                    console.log(
+                        "Network error / CORS / 401 / 403"
+                    );
+                    break;
+
+                case Hls.ErrorTypes.MEDIA_ERROR:
+
+                    hls.recoverMediaError();
+                    break;
+
+                default:
+
+                    hls.destroy();
+                    break;
+            }
+        }
+
+    });
+
+}
+
+else if (
+    video.canPlayType(
+        "application/vnd.apple.mpegurl"
+    )
+) {
+
+    // Safari / iPhone / iPad
+
+    video.src = streamUrl;
+
+    video.addEventListener(
+        "loadedmetadata",
+        function () {
+
+            status(
+                "تم تحميل القناة بنجاح",
+                "success"
+            );
+
+            video.play().catch(() => {});
+
+        }
+    );
+
+}
+
+else {
+
+    status(
+        "المتصفح لا يدعم HLS",
+        "error"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
