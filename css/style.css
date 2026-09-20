@@ -1191,3 +1191,64 @@ font-size:20px;
         font-size: 13px;
     }
 }
+
+
+/* ===================================
+   FAMILY IPTV - SIDEBAR SCROLL FIX
+=================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    height: 100vh;
+    height: 100dvh;
+
+    max-height: 100vh;
+    max-height: 100dvh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+    z-index: 9999;
+}
+
+/* تثبيت عنوان القائمة بالأعلى */
+.sidebar-header {
+    flex-shrink: 0;
+}
+
+/* السماح بتمرير الروابط */
+.sidebar ul {
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
+    margin: 0;
+    padding-bottom: 30px;
+}
+
+/* تخصيص شريط التمرير */
+.sidebar ul::-webkit-scrollbar {
+    width: 5px;
+}
+
+.sidebar ul::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.sidebar ul::-webkit-scrollbar-thumb {
+    background: #d40000;
+    border-radius: 10px;
+}
+
+.sidebar ul::-webkit-scrollbar-thumb:hover {
+    background: #ff3030;
+}
