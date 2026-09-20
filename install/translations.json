@@ -1,0 +1,257 @@
+{
+  "ar": {
+    "name": "العربية",
+    "dir": "rtl",
+    "title": "تثبيت تطبيق فاملي على فايرستك وأندرويد",
+    "sub": "دليل مصوّر من تنزيل Downloader إلى تسجيل الدخول",
+    "fire": "Fire TV Stick",
+    "android": "Android TV / TV Box",
+    "code": "كود Downloader",
+    "copy": "نسخ الكود",
+    "play": "تحميل من Google Play",
+    "start": "اختر نوع جهازك",
+    "warning": "تنبيه: قد تختلف أسماء القوائم بحسب إصدار الجهاز. لا تمنح صلاحية التثبيت إلا لتطبيق تثق به.",
+    "stepsFire": [
+      [
+        "افتح البحث",
+        "من الشاشة الرئيسية اختر رمز البحث واكتب Downloader."
+      ],
+      [
+        "ثبّت Downloader",
+        "اختر تطبيق Downloader من متجر Amazon ثم اضغط Download / Get وافتحه."
+      ],
+      [
+        "اسمح بالوصول",
+        "وافق على طلبات الأذونات اللازمة للتنزيل إذا ظهرت."
+      ],
+      [
+        "أظهر خيارات المطوّر إذا كانت مخفية",
+        "الإعدادات ← My Fire TV ← About، حدّد اسم جهاز Fire TV واضغط زر الوسط 7 مرات؛ ثم ارجع."
+      ],
+      [
+        "فعّل صلاحية Downloader",
+        "الإعدادات ← My Fire TV ← Developer Options ← Install Unknown Apps، ثم اختر Downloader واجعله ON. في الإصدارات الأقدم قد يظهر Apps from Unknown Sources."
+      ],
+      [
+        "أدخل الكود",
+        "افتح Downloader واكتب 3520676 ثم اضغط Go. تأكد أن صفحة التنزيل تخص فاملي."
+      ],
+      [
+        "ثبّت التطبيق",
+        "بعد تنزيل ملف APK اختر Install. إذا ظهرت رسالة منع التثبيت، افتح Settings واسمح لـ Downloader ثم ارجع وأعد التثبيت."
+      ],
+      [
+        "افتح فاملي",
+        "اضغط Open أو افتح Family IPTV من قائمة التطبيقات."
+      ],
+      [
+        "سجّل الدخول",
+        "اختر DNS 1 أو DNS 2 ثم أدخل اسم المستخدم وكلمة المرور الخاصة باشتراكك."
+      ]
+    ],
+    "stepsAndroid": [
+      [
+        "افتح متجر التطبيقات",
+        "من الشاشة الرئيسية افتح Google Play وابحث عن Downloader وثبّته إذا كان متاحاً لجهازك."
+      ],
+      [
+        "افتح Downloader",
+        "شغّل التطبيق واسمح بالأذونات اللازمة إذا طُلبت."
+      ],
+      [
+        "أدخل كود فاملي",
+        "اكتب 3520676 واضغط Go لتنزيل ملف التطبيق."
+      ],
+      [
+        "امنح صلاحية التثبيت",
+        "عند ظهور منع التثبيت اضغط Settings ← Allow from this source لتطبيق Downloader. أو افتح إعدادات الجهاز ← Apps ← Special app access ← Install unknown apps ← Downloader ← Allow. قد تختلف القائمة."
+      ],
+      [
+        "أعد فتح ملف APK",
+        "ارجع إلى Downloader واضغط Install مجدداً."
+      ],
+      [
+        "افتح التطبيق",
+        "اضغط Open بعد اكتمال التثبيت."
+      ],
+      [
+        "اختر DNS وسجّل الدخول",
+        "اختر DNS 1 أو DNS 2 ثم أدخل بيانات الاشتراك."
+      ]
+    ],
+    "faq": "إذا لم تظهر Downloader في قائمة الصلاحيات، افتحه أولاً وحاول تثبيت APK؛ ثم تحقق من تحديثات الجهاز. بعض أجهزة Fire TV الجديدة لا تدعم تثبيت APK خارج المتجر.",
+    "support": "الدعم الفني",
+    "note": "الرسومات توضيحية وليست لقطات فعلية من جهازك.",
+    "done": "تم نسخ الكود"
+  },
+  "en": {
+    "name": "English",
+    "dir": "ltr",
+    "title": "Install Family IPTV on Firestick & Android TV",
+    "sub": "Visual guide from Downloader to sign-in",
+    "fire": "Fire TV Stick",
+    "android": "Android TV / TV Box",
+    "code": "Downloader code",
+    "copy": "Copy code",
+    "play": "Get it on Google Play",
+    "start": "Choose your device",
+    "warning": "Menu names vary by device version. Allow installations only from sources you trust.",
+    "stepsFire": [
+      [
+        "Find Downloader",
+        "From the home screen, search for Downloader."
+      ],
+      [
+        "Install Downloader",
+        "Select Downloader in the Amazon Appstore, choose Get / Download and open it."
+      ],
+      [
+        "Grant access",
+        "Allow required download permissions if prompted."
+      ],
+      [
+        "Reveal Developer Options",
+        "Settings → My Fire TV → About → highlight your device name and press Select seven times, then go back."
+      ],
+      [
+        "Allow Downloader",
+        "Settings → My Fire TV → Developer Options → Install Unknown Apps → Downloader → ON. Older devices may show Apps from Unknown Sources."
+      ],
+      [
+        "Enter the code",
+        "Open Downloader, enter 3520676 and select Go. Verify the download page belongs to Family IPTV."
+      ],
+      [
+        "Install the APK",
+        "Select Install. If blocked, open Settings, allow Downloader, return and try again."
+      ],
+      [
+        "Open Family IPTV",
+        "Select Open or launch the app from your apps list."
+      ],
+      [
+        "Sign in",
+        "Choose DNS 1 or DNS 2 and enter your subscription username and password."
+      ]
+    ],
+    "stepsAndroid": [
+      [
+        "Open the app store",
+        "Find Downloader on Google Play if available for your device."
+      ],
+      [
+        "Launch Downloader",
+        "Open it and grant necessary permissions."
+      ],
+      [
+        "Enter Family code",
+        "Enter 3520676 and select Go to download the APK."
+      ],
+      [
+        "Allow installation",
+        "If blocked, tap Settings → Allow from this source for Downloader; or Settings → Apps → Special app access → Install unknown apps → Downloader → Allow. Menus vary."
+      ],
+      [
+        "Install again",
+        "Return to Downloader and select Install."
+      ],
+      [
+        "Open the app",
+        "Select Open after installation."
+      ],
+      [
+        "Choose DNS and sign in",
+        "Select DNS 1 or DNS 2, then enter your subscription credentials."
+      ]
+    ],
+    "faq": "If Downloader is missing from the permission list, open it and attempt an APK install first; check for system updates. Some newer Fire TV devices do not support APK sideloading.",
+    "support": "Support",
+    "note": "Illustrations are guides, not actual screenshots of your device.",
+    "done": "Code copied"
+  },
+  "ku": {
+    "name": "کوردی",
+    "dir": "rtl",
+    "title": "دامەزراندنی Family IPTV لە Firestick و Android TV",
+    "sub": "ڕێنمایی وێنەدار لە Downloader تا چوونەژوورەوە",
+    "fire": "Fire TV Stick",
+    "android": "Android TV / TV Box",
+    "code": "کۆدی Downloader",
+    "copy": "کۆپی کۆد",
+    "play": "داگرتن لە Google Play",
+    "start": "جۆری ئامێرەکەت هەڵبژێرە",
+    "warning": "ناوی لیستەکان بە پێی وەشانی ئامێر دەگۆڕێت. تەنها بە سەرچاوەی متمانەپێکراو مۆڵەتی دامەزراندن بدە.",
+    "stepsFire": [
+      [
+        "Downloader بدۆزەوە",
+        "لە پەڕەی سەرەکی بگەڕێ بۆ Downloader."
+      ],
+      [
+        "Downloader دابمەزرێنە",
+        "لە فرۆشگای Amazon دایبگرە و بیکەرەوە."
+      ],
+      [
+        "مۆڵەت بدە",
+        "ئەگەر داوای مۆڵەت کرا، ڕێگە بە داگرتن بدە."
+      ],
+      [
+        "Developer Options پیشان بدە",
+        "Settings ← My Fire TV ← About؛ لەسەر ناوی ئامێرەکە ٧ جار دوگمەی ناوەڕاست دابگرە و بگەڕێوە."
+      ],
+      [
+        "مۆڵەتی Downloader چالاک بکە",
+        "Settings ← My Fire TV ← Developer Options ← Install Unknown Apps؛ Downloader بکە ON."
+      ],
+      [
+        "کۆدەکە بنووسە",
+        "لە Downloader کۆدی 3520676 بنووسە و Go هەڵبژێرە."
+      ],
+      [
+        "ئەپەکە دابمەزرێنە",
+        "دوای داگرتنی APK، Install هەڵبژێرە. ئەگەر ڕێگری کرا، لە Settings مۆڵەت بدە و دووبارە هەوڵ بدە."
+      ],
+      [
+        "Family IPTV بکەرەوە",
+        "Open هەڵبژێرە یان لە لیستی ئەپەکان بیکەرەوە."
+      ],
+      [
+        "بچۆ ژوورەوە",
+        "DNS 1 یان DNS 2 هەڵبژێرە و ناوی بەکارهێنەر و وشەی نهێنی بنووسە."
+      ]
+    ],
+    "stepsAndroid": [
+      [
+        "فرۆشگای ئەپەکان بکەرەوە",
+        "لە Google Play بگەڕێ بۆ Downloader ئەگەر بۆ ئامێرەکەت بەردەستە."
+      ],
+      [
+        "Downloader بکەرەوە",
+        "ئەپەکە بکەرەوە و مۆڵەتی پێویست بدە."
+      ],
+      [
+        "کۆدی فاملی بنووسە",
+        "3520676 بنووسە و Go هەڵبژێرە."
+      ],
+      [
+        "مۆڵەتی دامەزراندن بدە",
+        "ئەگەر ڕێگری کرا، Settings ← Allow from this source بۆ Downloader چالاک بکە؛ یان Settings ← Apps ← Special app access ← Install unknown apps."
+      ],
+      [
+        "دووبارە دابمەزرێنە",
+        "بگەڕێوە بۆ Downloader و Install هەڵبژێرە."
+      ],
+      [
+        "ئەپەکە بکەرەوە",
+        "دوای تەواوبوون Open هەڵبژێرە."
+      ],
+      [
+        "DNS هەڵبژێرە و بچۆ ژوورەوە",
+        "DNS 1 یان DNS 2 هەڵبژێرە و زانیارییەکانی بەشداریکردن بنووسە."
+      ]
+    ],
+    "faq": "ئەگەر Downloader لە لیستی مۆڵەتەکان نەبوو، سەرەتا هەوڵی دامەزراندنی APK بدە و نوێکردنەوەی سیستەم بپشکنە. هەندێک Fire TV نوێ پشتگیری دامەزراندنی دەرەکی ناکەن.",
+    "support": "پشتیوانی",
+    "note": "وێنەکان ڕوونکردنەوەن، نەک وێنەی ڕاستەقینەی شاشەی ئامێرەکەت.",
+    "done": "کۆدەکە کۆپی کراوە"
+  }
+}
