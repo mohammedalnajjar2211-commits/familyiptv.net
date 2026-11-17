@@ -1,0 +1,21 @@
+﻿@font-face {
+  font-family: "Family SF Arabic";
+  src: url("/fonts/SF-Pro-AR-Display-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Family SF Arabic";
+  src: url("/fonts/SF-Pro-AR-Display-Semibold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+}
+
+html[data-lang="ar"] body,
+html[data-lang="ar"] body :where(h1,h2,h3,h4,h5,h6,p,span,a,strong,small,label,summary,li,td,th,button,input,textarea,select,option,blockquote) {
+  font-family: "Family SF Arabic", sans-serif !important;
+}
+
